@@ -242,7 +242,7 @@
                 <p class="text-muted fs-7 mb-3">Complete care for a smooth drive. Comprehensive safety check, liquid refills, and cleaning.</p>
               </div>
               <button class="btn btn-red btn-sm w-100 fw-bold btn-book-service" data-service="Car Servicing">
-                <i class="fas fa-calendar-check me-1"></i> Book Service
+                <i class="fas fa-receipt me-1"></i> Book & Generate Bill
               </button>
             </div>
           </div>
@@ -256,7 +256,7 @@
                 <p class="text-muted fs-7 mb-3">Perfect alignment and balancing for smoother driving, tyre longevity, and better performance.</p>
               </div>
               <button class="btn btn-red btn-sm w-100 fw-bold btn-book-service" data-service="Wheel Alignment">
-                <i class="fas fa-calendar-check me-1"></i> Book Service
+                <i class="fas fa-receipt me-1"></i> Book & Generate Bill
               </button>
             </div>
           </div>
@@ -270,7 +270,7 @@
                 <p class="text-muted fs-7 mb-3">Restore the look, renew the pride. Professional dent removal and color-matched paint finishing.</p>
               </div>
               <button class="btn btn-red btn-sm w-100 fw-bold btn-book-service" data-service="Denting & Painting">
-                <i class="fas fa-calendar-check me-1"></i> Book Service
+                <i class="fas fa-receipt me-1"></i> Book & Generate Bill
               </button>
             </div>
           </div>
@@ -284,7 +284,7 @@
                 <p class="text-muted fs-7 mb-3">Cool comfort on every drive. AC gas refill, cooling coil check, and cabin filter replacement.</p>
               </div>
               <button class="btn btn-red btn-sm w-100 fw-bold btn-book-service" data-service="AC Service">
-                <i class="fas fa-calendar-check me-1"></i> Book Service
+                <i class="fas fa-receipt me-1"></i> Book & Generate Bill
               </button>
             </div>
           </div>
@@ -298,7 +298,7 @@
                 <p class="text-muted fs-7 mb-3">Advanced scanner diagnostics, check engine light troubleshooting, and accurate solutions.</p>
               </div>
               <button class="btn btn-red btn-sm w-100 fw-bold btn-book-service" data-service="Engine Diagnostics">
-                <i class="fas fa-calendar-check me-1"></i> Book Service
+                <i class="fas fa-receipt me-1"></i> Book & Generate Bill
               </button>
             </div>
           </div>
@@ -312,7 +312,7 @@
                 <p class="text-muted fs-7 mb-3">Regular preventive maintenance, oil & filter change, and full health checks for longer vehicle life.</p>
               </div>
               <button class="btn btn-red btn-sm w-100 fw-bold btn-book-service" data-service="Periodic Maintenance">
-                <i class="fas fa-calendar-check me-1"></i> Book Service
+                <i class="fas fa-receipt me-1"></i> Book & Generate Bill
               </button>
             </div>
           </div>
@@ -378,8 +378,10 @@
 
           <!-- Appointment Form -->
           <div class="col-lg-7">
-            <div class="p-3 p-md-4 bg-white border rounded-3 shadow-sm">
-              <h4 class="fw-bold text-dark mb-3">Schedule A Workshop Slot</h4>
+            <div class="p-3 p-md-4 bg-white border rounded-3 shadow-sm mb-4">
+              <h4 class="fw-bold text-dark mb-1">Book Workshop Slot & Generate Bill</h4>
+              <p class="text-muted fs-7 mb-3">Fill details below to generate your instant digital service booking voucher!</p>
+              
               <form id="contactForm">
                 <div class="row g-3">
                   <div class="col-md-6">
@@ -407,13 +409,71 @@
                   </div>
                   <div class="col-12">
                     <button type="submit" class="btn btn-red w-100 py-2 fw-bold text-uppercase font-mono">
-                      <i class="fas fa-calendar-check me-2"></i>Send Booking Request
+                      <i class="fas fa-file-invoice-dollar me-2"></i>Generate Digital Booking Bill
                     </button>
                   </div>
                 </div>
               </form>
-              <div id="formAlert" class="alert alert-success d-none mt-3 text-center mb-0">
-                <i class="fas fa-check-circle me-1"></i> Opening WhatsApp for instant booking...
+            </div>
+
+            <!-- ================= GENERATED DIGITAL BOOKING RECEIPT / BILL ================= -->
+            <div id="bookingReceiptContainer" class="d-none">
+              <div class="bill-receipt-card position-relative">
+                <div class="bill-header text-center">
+                  <div class="badge bg-red text-white p-2 rounded-1 mb-2 d-inline-block">
+                    <i class="fas fa-car fs-4"></i>
+                  </div>
+                  <h4 class="fw-bold text-dark font-mono mb-0">SENTHOOR AUTO WORKS</h4>
+                  <small class="text-muted d-block fs-8">Ettayapuram, Athoor, Karur - 624002 • Ph: +91 97875 61810</small>
+                  <span class="badge bg-success-subtle text-success border border-success mt-2 fs-8">SERVICE BOOKING VOUCHER</span>
+                </div>
+
+                <div class="row g-2 mb-3 fs-7">
+                  <div class="col-6">
+                    <strong>Receipt No:</strong> <span id="billReceiptNo" class="font-mono text-red fw-bold">#SAW-2026-1001</span>
+                  </div>
+                  <div class="col-6 text-end">
+                    <strong>Date:</strong> <span id="billDate">28 Jul 2026</span>
+                  </div>
+                </div>
+
+                <table class="table table-bordered bill-table mb-3">
+                  <tbody>
+                    <tr>
+                      <th width="35%">Customer Name</th>
+                      <td id="billName">-</td>
+                    </tr>
+                    <tr>
+                      <th>Phone Number</th>
+                      <td id="billPhone">-</td>
+                    </tr>
+                    <tr>
+                      <th>Vehicle Model</th>
+                      <td id="billCar">-</td>
+                    </tr>
+                    <tr>
+                      <th>Requested Service</th>
+                      <td id="billService" class="fw-bold text-red">-</td>
+                    </tr>
+                    <tr>
+                      <th>Symptoms / Notes</th>
+                      <td id="billNotes">-</td>
+                    </tr>
+                    <tr>
+                      <th>Booking Status</th>
+                      <td><span class="badge bg-warning text-dark"><i class="fas fa-clock me-1"></i> Slot Pending Confirmation</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="d-flex flex-wrap gap-2 no-print">
+                  <button type="button" id="btnSendBillWhatsApp" class="btn btn-success flex-grow-1 fw-bold fs-7 py-2">
+                    <i class="fab fa-whatsapp me-1"></i> Send Bill to WhatsApp
+                  </button>
+                  <button type="button" id="btnPrintBill" class="btn btn-outline-dark fw-bold fs-7 py-2">
+                    <i class="fas fa-print me-1"></i> Print / Save PDF
+                  </button>
+                </div>
               </div>
             </div>
           </div>
