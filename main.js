@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contactForm');
   const receiptContainer = document.getElementById('bookingReceiptContainer');
   let currentWhatsAppUrl = '';
+  let currentBillData = {};
 
   if (form) {
     form.addEventListener('submit', (e) => {
@@ -106,6 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const receiptNo = `#SAW-2026-${Math.floor(1000 + Math.random() * 9000)}`;
       const now = new Date();
       const formattedDate = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) + ' ' + now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+
+      currentBillData = { receiptNo, formattedDate, name, phone, car, service, notes };
 
       // Populate Bill Fields
       document.getElementById('billReceiptNo').textContent = receiptNo;
@@ -148,10 +151,66 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 100% Reliable Dedicated Print Voucher Window
   const btnPrintBill = document.getElementById('btnPrintBill');
   if (btnPrintBill) {
     btnPrintBill.addEventListener('click', () => {
-      window.print();
+      const bill = currentBillData;
+      if (!bill.receiptNo) return;
+
+      const printWin = window.open('', '_blank', 'width=800,height=600');
+      printWin.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Senthoor Auto Works - Booking Receipt ${bill.receiptNo}</title>
+          <style>
+            body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; color: #1e293b; max-width: 650px; margin: 0 auto; }
+            .bill-box { border: 2px dashed #c41e3a; padding: 24px; border-radius: 12px; }
+            .header { text-align: center; border-bottom: 2px solid #c41e3a; padding-bottom: 12px; margin-bottom: 20px; }
+            .header h2 { color: #c41e3a; margin: 0 0 4px 0; font-size: 24px; letter-spacing: 1px; }
+            .header p { margin: 0; font-size: 13px; color: #64748b; }
+            .badge { display: inline-block; background: #22c55e; color: #fff; padding: 4px 10px; font-size: 11px; font-weight: bold; border-radius: 12px; margin-top: 8px; }
+            .row { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 14px; }
+            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+            th, td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: left; font-size: 14px; }
+            th { background: #f1f5f9; width: 35%; }
+            .footer-note { text-align: center; font-size: 12px; color: #64748b; margin-top: 20px; border-top: 1px solid #e2e8f0; padding-top: 10px; }
+          </style>
+        </head>
+        <body>
+          <div class="bill-box">
+            <div class="header">
+              <h2>SENTHOOR AUTO WORKS</h2>
+              <p>Ettayapuram, Athoor, Karur - 624002 | Phone: +91 97875 61810</p>
+              <span class="badge">SERVICE BOOKING VOUCHER</span>
+            </div>
+            <div class="row">
+              <div><strong>Receipt No:</strong> <span style="color:#c41e3a;">${bill.receiptNo}</span></div>
+              <div><strong>Date:</strong> ${bill.formattedDate}</div>
+            </div>
+            <table>
+              <tr><th>Customer Name</th><td>${bill.name}</td></tr>
+              <tr><th>Phone Number</th><td>${bill.phone}</td></tr>
+              <tr><th>Vehicle Model</th><td>${bill.car}</td></tr>
+              <tr><th>Requested Service</th><td style="font-weight:bold; color:#c41e3a;">${bill.service}</td></tr>
+              <tr><th>Symptoms / Notes</th><td>${bill.notes}</td></tr>
+              <tr><th>Booking Status</th><td>Pending Workshop Confirmation</td></tr>
+            </table>
+            <div class="footer-note">
+              <p>Thank you for choosing Senthoor Auto Works! Please show this voucher at our workshop.</p>
+            </div>
+          </div>
+          <script>
+            window.onload = function() {
+              window.print();
+              setTimeout(function(){ window.close(); }, 500);
+            };
+          </script>
+        </body>
+        </html>
+      `);
+      printWin.document.close();
     });
   }
 });
