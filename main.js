@@ -176,17 +176,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Printable Voucher Tab with Exact Logo Path
+  // Printable Voucher Tab with Fixed String Variables
   const btnPrintBill = document.getElementById('btnPrintBill');
   if (btnPrintBill) {
     btnPrintBill.addEventListener('click', () => {
       const receiptNo = document.getElementById('billReceiptNo')?.textContent || '#SAW-2026-1001';
       const date = document.getElementById('billDate')?.textContent || '';
-      const name = document.getElementById('billName')?.textContent || '';
-      const phone = document.getElementById('billPhone')?.textContent || '';
-      const car = document.getElementById('billCar')?.textContent || '';
-      const service = document.getElementById('billService')?.textContent || '';
-      const notes = document.getElementById('billNotes')?.textContent || '';
+      const custName = document.getElementById('billName')?.textContent || '';
+      const custPhone = document.getElementById('billPhone')?.textContent || '';
+      const custCar = document.getElementById('billCar')?.textContent || '';
+      const custService = document.getElementById('billService')?.textContent || '';
+      const custNotes = document.getElementById('billNotes')?.textContent || '';
       const fullLogoUrl = window.location.origin + '/' + activeLogoPath;
 
       const printWin = window.open('', '_blank');
@@ -223,11 +223,11 @@ document.addEventListener('DOMContentLoaded', () => {
               <div><strong>Date:</strong> ${date}</div>
             </div>
             <table>
-              <tr><th>Customer Name</th><td>${name}</td></tr>
-              <tr><th>Phone Number</th><td>${phone}</td></tr>
-              <tr><th>Vehicle Model</th><td>${car}</td></tr>
-              <tr><th>Requested Service</th><td style="font-weight:bold; color:#c41e3a;">${service}</td></tr>
-              <tr><th>Symptoms / Notes</th><td>${notes}</td></tr>
+              <tr><th>Customer Name</th><td>${custName}</td></tr>
+              <tr><th>Phone Number</th><td>${custPhone}</td></tr>
+              <tr><th>Vehicle Model</th><td>${custCar}</td></tr>
+              <tr><th>Requested Service</th><td style="font-weight:bold; color:#c41e3a;">${custService}</td></tr>
+              <tr><th>Symptoms / Notes</th><td>${custNotes}</td></tr>
               <tr><th>Booking Status</th><td>Pending Workshop Confirmation</td></tr>
             </table>
             <div class="footer">
