@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Handle header nav clicks on mobile to switch to correct tab
+  // Handle header nav clicks on mobile
   const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -57,17 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Service Card Booking Click Handler (Fills form & collects info first!)
+  // Service Card Booking Click Handler
   const serviceBookBtns = document.querySelectorAll('.btn-book-service');
   serviceBookBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const serviceName = btn.getAttribute('data-service');
       
-      // Switch to Contact Tab (which has the booking form)
       switchTab('pane-contact');
 
-      // Pre-select service in form
       const serviceSelect = document.getElementById('service');
       if (serviceSelect && serviceName) {
         for (let i = 0; i < serviceSelect.options.length; i++) {
@@ -78,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // Scroll to form and focus name input
       const nameInput = document.getElementById('name');
       if (nameInput) {
         setTimeout(() => {
@@ -89,9 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // WhatsApp Booking Form Handler
+  // ================= DIGITAL BILL / RECEIPT GENERATOR =================
   const form = document.getElementById('contactForm');
-  const alertBox = document.getElementById('formAlert');
+  const receiptContainer = document.getElementById('bookingReceiptContainer');
+  let currentWhatsAppUrl = '';
 
   if (form) {
     form.addEventListener('submit', (e) => {
@@ -102,27 +100,58 @@ document.addEventListener('DOMContentLoaded', () => {
       const car = document.getElementById('car')?.value || '';
       const serviceSelect = document.getElementById('service');
       const service = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex]?.text : '';
-      const notes = document.getElementById('notes')?.value || '';
+      const notes = document.getElementById('notes')?.value || 'Routine Checkup';
 
-      let message = `Hello Senthoor Auto Works! I would like to book a workshop slot:\n\n` +
-        `👤 *Name:* ${name}\n` +
+      // Generate Unique Receipt Number
+      const receiptNo = `#SAW-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+      const now = new Date();
+      const formattedDate = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) + ' ' + now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+
+      // Populate Bill Fields
+      document.getElementById('billReceiptNo').textContent = receiptNo;
+      document.getElementById('billDate').textContent = formattedDate;
+      document.getElementById('billName').textContent = name;
+      document.getElementById('billPhone').textContent = phone;
+      document.getElementById('billCar').textContent = car;
+      document.getElementById('billService').textContent = service;
+      document.getElementById('billNotes').textContent = notes;
+
+      // Create WhatsApp message string
+      const message = `Hello Senthoor Auto Works! I have generated a Service Booking Voucher:\n\n` +
+        `🧾 *Receipt No:* ${receiptNo}\n` +
+        `👤 *Customer Name:* ${name}\n` +
         `📞 *Phone:* ${phone}\n` +
         `🚗 *Car Model:* ${car}\n` +
-        `🛠️ *Service Needed:* ${service}`;
+        `🛠️ *Service Needed:* ${service}\n` +
+        `📝 *Notes:* ${notes}\n\n` +
+        `Please confirm my appointment slot!`;
 
-      if (notes.trim() !== '') {
-        message += `\n📝 *Notes:* ${notes}`;
+      currentWhatsAppUrl = `https://wa.me/919787561810?text=${encodeURIComponent(message)}`;
+
+      // Show Bill Receipt Container
+      if (receiptContainer) {
+        receiptContainer.classList.remove('d-none');
+        receiptContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
-      const whatsappUrl = `https://wa.me/919787561810?text=${encodeURIComponent(message)}`;
-
-      if (alertBox) {
-        alertBox.classList.remove('d-none');
-        setTimeout(() => alertBox.classList.add('d-none'), 5000);
-      }
-
-      window.open(whatsappUrl, '_blank');
       form.reset();
+    });
+  }
+
+  // Bill Action Buttons
+  const btnSendWhatsApp = document.getElementById('btnSendBillWhatsApp');
+  if (btnSendWhatsApp) {
+    btnSendWhatsApp.addEventListener('click', () => {
+      if (currentWhatsAppUrl) {
+        window.open(currentWhatsAppUrl, '_blank');
+      }
+    });
+  }
+
+  const btnPrintBill = document.getElementById('btnPrintBill');
+  if (btnPrintBill) {
+    btnPrintBill.addEventListener('click', () => {
+      window.print();
     });
   }
 });
