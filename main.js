@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Dedicated Print Voucher Window with Absolute Logo & Fallback
+  // Dedicated Print Voucher Window with logo.jpg.jpeg
   const btnPrintBill = document.getElementById('btnPrintBill');
   if (btnPrintBill) {
     btnPrintBill.addEventListener('click', () => {
@@ -160,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const origin = window.location.origin;
       const logoUrl = origin + '/logo.jpg.jpeg';
-      const bannerUrl = origin + '/banner.jpg';
 
       const printWin = window.open('', '_blank', 'width=800,height=650');
       printWin.document.write(`
@@ -172,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             body { font-family: 'Segoe UI', Arial, sans-serif; padding: 24px; color: #1e293b; max-width: 650px; margin: 0 auto; }
             .bill-box { border: 2px dashed #c41e3a; padding: 24px; border-radius: 12px; }
             .header { text-align: center; border-bottom: 2px solid #c41e3a; padding-bottom: 12px; margin-bottom: 20px; }
-            .logo-img { max-height: 75px; max-width: 200px; object-fit: contain; margin-bottom: 8px; border-radius: 6px; }
+            .logo-img { max-height: 80px; max-width: 220px; object-fit: contain; margin-bottom: 8px; border-radius: 6px; }
             .header h2 { color: #c41e3a; margin: 4px 0; font-size: 24px; letter-spacing: 1px; }
             .header p { margin: 0; font-size: 13px; color: #64748b; }
             .badge { display: inline-block; background: #22c55e; color: #fff; padding: 4px 12px; font-size: 11px; font-weight: bold; border-radius: 12px; margin-top: 8px; }
@@ -186,9 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <body>
           <div class="bill-box">
             <div class="header">
-              <div id="logoContainer">
-                <img src="${logoUrl}" alt="Senthoor Auto Works Logo" class="logo-img" onerror="this.onerror=null; this.src='${bannerUrl}';" />
-              </div>
+              <img src="${logoUrl}" alt="Senthoor Auto Works Logo" class="logo-img" />
               <h2>SENTHOOR AUTO WORKS</h2>
               <p>Ettayapuram, Athoor, Karur - 624002 | Phone: +91 97875 61810</p>
               <span class="badge">OFFICIAL SERVICE BOOKING VOUCHER</span>
@@ -214,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
               setTimeout(function(){
                 window.print();
                 setTimeout(function(){ window.close(); }, 800);
-              }, 300);
+              }, 400);
             };
           </script>
         </body>
