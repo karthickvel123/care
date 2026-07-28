@@ -1,7 +1,7 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Auto copyright year
+  // Dynamic copyright year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -27,8 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.add('active');
       }
     });
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   tabBtns.forEach(btn => {
@@ -37,6 +35,56 @@ document.addEventListener('DOMContentLoaded', () => {
       if (tabId) {
         e.preventDefault();
         switchTab(tabId);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Handle header nav clicks on mobile to switch to correct tab
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href === '#why-us' || href === '#about' || href === '#home') {
+        switchTab('pane-home');
+      } else if (href === '#services') {
+        switchTab('pane-services');
+      } else if (href === '#gallery') {
+        switchTab('pane-gallery');
+      } else if (href === '#contact') {
+        switchTab('pane-contact');
+      }
+    });
+  });
+
+  // Service Card Booking Click Handler (Fills form & collects info first!)
+  const serviceBookBtns = document.querySelectorAll('.btn-book-service');
+  serviceBookBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const serviceName = btn.getAttribute('data-service');
+      
+      // Switch to Contact Tab (which has the booking form)
+      switchTab('pane-contact');
+
+      // Pre-select service in form
+      const serviceSelect = document.getElementById('service');
+      if (serviceSelect && serviceName) {
+        for (let i = 0; i < serviceSelect.options.length; i++) {
+          if (serviceSelect.options[i].text.toLowerCase().includes(serviceName.toLowerCase())) {
+            serviceSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+
+      // Scroll to form and focus name input
+      const nameInput = document.getElementById('name');
+      if (nameInput) {
+        setTimeout(() => {
+          nameInput.focus();
+          nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 150);
       }
     });
   });
