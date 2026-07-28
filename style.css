@@ -3,6 +3,7 @@
   --red-hover: #9e142c;
   --red-subtle: #fde8eb;
   --dark: #1e293b;
+  --dark-surface: #0f172a;
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'Rajdhani', sans-serif;
 }
@@ -11,16 +12,19 @@ body {
   font-family: var(--font-main);
   color: #334155;
   background-color: #ffffff;
-  line-height: 1.6;
+  line-height: 1.5;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .font-mono { font-family: var(--font-mono); letter-spacing: 0.5px; }
 .fs-7 { font-size: 0.85rem; }
+.fs-8 { font-size: 0.75rem; }
 .max-w-700 { max-width: 700px; }
 .bg-red { background-color: var(--red) !important; }
 .text-red { color: var(--red) !important; }
 .bg-red-subtle { background-color: var(--red-subtle) !important; }
 
+/* Buttons */
 .btn-red {
   background-color: var(--red);
   color: #ffffff;
@@ -28,52 +32,125 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
-.btn-red:hover {
+.btn-red:hover, .btn-red:focus {
   background-color: var(--red-hover);
   border-color: var(--red-hover);
   color: #ffffff;
 }
 
-.top-bar { font-size: 0.825rem; }
-
-.navbar-nav .nav-link {
-  font-size: 0.925rem;
-  padding: 0.4rem 0.75rem !important;
-  transition: color 0.2s ease;
-}
-
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
-  color: var(--red) !important;
-}
-
+/* Service Card Hover */
 .service-card {
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  border-radius: 12px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: var(--red) !important;
+  box-shadow: 0 10px 20px rgba(196, 30, 58, 0.1) !important;
 }
 
-.float-btn {
+/* Mobile App Bottom Navigation Bar */
+.mobile-bottom-nav {
   position: fixed;
-  right: 20px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background: rgba(30, 41, 59, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1060;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-nav-item {
+  color: #94a3b8;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 1050;
-  text-decoration: none;
-  transition: transform 0.2s ease;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
-.float-btn:hover {
-  transform: scale(1.1);
+.mobile-nav-item i {
+  font-size: 1.25rem;
+  margin-bottom: 2px;
+}
+
+.mobile-nav-item.active,
+.mobile-nav-item:hover {
   color: #ffffff;
 }
 
-.float-whatsapp { bottom: 80px; background-color: #25d366; }
-.float-call { bottom: 20px; background-color: var(--red); }
+.mobile-nav-item.highlight-call {
+  color: #ffffff;
+  background-color: var(--red);
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+.mobile-nav-item.highlight-whatsapp {
+  color: #ffffff;
+  background-color: #25d366;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+/* Screen Spacing adjustments for Mobile */
+@media (max-width: 991.98px) {
+  body {
+    padding-bottom: 70px; /* Account for bottom navigation bar */
+  }
+
+  .display-5 {
+    font-size: 2.1rem;
+  }
+
+  .hero-section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* Floating Action Button for Desktop */
+@media (min-width: 992px) {
+  .mobile-bottom-nav {
+    display: none !important;
+  }
+
+  .float-btn {
+    position: fixed;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  .float-btn:hover {
+    transform: scale(1.1);
+    color: #ffffff;
+  }
+
+  .float-whatsapp { bottom: 85px; background-color: #25d366; }
+  .float-call { bottom: 25px; background-color: var(--red); }
+}
+
+@media (max-width: 991.98px) {
+  .float-btn { display: none !important; }
+}
