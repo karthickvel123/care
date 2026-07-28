@@ -148,11 +148,71 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Direct Page Print Handler
+  // Dedicated Print Voucher Window
   const btnPrintBill = document.getElementById('btnPrintBill');
   if (btnPrintBill) {
     btnPrintBill.addEventListener('click', () => {
-      window.print();
+      const receiptNo = document.getElementById('billReceiptNo')?.textContent || '#SAW-2026-1001';
+      const date = document.getElementById('billDate')?.textContent || '';
+      const name = document.getElementById('billName')?.textContent || '';
+      const phone = document.getElementById('billPhone')?.textContent || '';
+      const car = document.getElementById('billCar')?.textContent || '';
+      const service = document.getElementById('billService')?.textContent || '';
+      const notes = document.getElementById('notes')?.textContent || '';
+
+      const printWin = window.open('', '_blank');
+      printWin.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Senthoor Auto Works - Receipt ${receiptNo}</title>
+          <style>
+            body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; margin: 0; color: #1e293b; background: #fff; }
+            .card { border: 2px dashed #c41e3a; padding: 24px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+            .header { text-align: center; border-bottom: 2px solid #c41e3a; padding-bottom: 12px; margin-bottom: 20px; }
+            .header h2 { margin: 4px 0; color: #c41e3a; font-size: 24px; letter-spacing: 1px; }
+            .header p { margin: 0; font-size: 13px; color: #64748b; }
+            .badge { display: inline-block; background: #22c55e; color: #fff; padding: 4px 12px; font-size: 11px; font-weight: bold; border-radius: 12px; margin-top: 8px; }
+            .info { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 14px; }
+            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+            th, td { border: 1px solid #cbd5e1; padding: 10px 12px; font-size: 14px; text-align: left; }
+            th { background: #f1f5f9; width: 35%; }
+            .footer { text-align: center; font-size: 12px; color: #64748b; margin-top: 20px; border-top: 1px solid #e2e8f0; padding-top: 10px; }
+          </style>
+        </head>
+        <body>
+          <div class="card">
+            <div class="header">
+              <img src="${window.location.origin}/logo.jpg.jpeg" style="max-height: 75px; margin-bottom: 8px;" onerror="this.src='${window.location.origin}/banner.jpg'; this.onerror=null;" />
+              <h2>SENTHOOR AUTO WORKS</h2>
+              <p>Ettayapuram, Athoor, Karur - 624002 | Phone: +91 97875 61810</p>
+              <span class="badge">OFFICIAL SERVICE BOOKING VOUCHER</span>
+            </div>
+            <div class="info">
+              <div><strong>Receipt No:</strong> <span style="color:#c41e3a;">${receiptNo}</span></div>
+              <div><strong>Date:</strong> ${date}</div>
+            </div>
+            <table>
+              <tr><th>Customer Name</th><td>${name}</td></tr>
+              <tr><th>Phone Number</th><td>${phone}</td></tr>
+              <tr><th>Vehicle Model</th><td>${car}</td></tr>
+              <tr><th>Requested Service</th><td style="font-weight:bold; color:#c41e3a;">${service}</td></tr>
+              <tr><th>Symptoms / Notes</th><td>${notes}</td></tr>
+              <tr><th>Booking Status</th><td>Pending Workshop Confirmation</td></tr>
+            </table>
+            <div class="footer">
+              <p>Thank you for choosing Senthoor Auto Works! Please show this voucher at our workshop.</p>
+            </div>
+          </div>
+          <script>
+            window.onload = function() {
+              window.print();
+            };
+          </script>
+        </body>
+        </html>
+      `);
+      printWin.document.close();
     });
   }
 });
