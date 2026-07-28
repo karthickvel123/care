@@ -145,7 +145,51 @@ body {
   border-radius: 20px;
 }
 
-/* Mobile view show/hide app tab panes */
+/* ================= DIGITAL BOOKING RECEIPT / BILL MODAL ================= */
+.bill-receipt-card {
+  background: #ffffff;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.bill-header {
+  border-bottom: 2px solid var(--red);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.bill-table th {
+  background: #f1f5f9;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.bill-table td {
+  font-size: 0.85rem;
+}
+
+/* Print View Adjustments */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #bookingReceiptContainer, #bookingReceiptContainer * {
+    visibility: visible;
+  }
+  #bookingReceiptContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Mobile View Adjustments */
 @media (max-width: 991.98px) {
   body {
     padding-bottom: 70px;
