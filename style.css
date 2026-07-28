@@ -145,7 +145,7 @@ body {
   border-radius: 20px;
 }
 
-/* ================= DIGITAL BOOKING RECEIPT / BILL MODAL ================= */
+/* ================= DIGITAL BOOKING RECEIPT / BILL ================= */
 .bill-receipt-card {
   background: #ffffff;
   border: 2px dashed #cbd5e1;
@@ -170,22 +170,41 @@ body {
   font-size: 0.85rem;
 }
 
-/* Print View Adjustments */
+/* Perfect 1-Page PDF Print View Fix */
 @media print {
-  body * {
-    visibility: hidden;
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
-  #bookingReceiptContainer, #bookingReceiptContainer * {
-    visibility: visible;
-  }
-  #bookingReceiptContainer {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-  .no-print {
+  
+  header, footer, nav, .top-bar, .mobile-bottom-nav, .float-btn, .hero-section, #about, #why-us, #services, #gallery, #contactForm, .mobile-app-tabs-container, .no-print {
     display: none !important;
+  }
+
+  .mobile-app-pane {
+    display: block !important;
+  }
+
+  #contact {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  #bookingReceiptContainer {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+  }
+
+  .bill-receipt-card {
+    border: 2px solid #000000 !important;
+    box-shadow: none !important;
+    padding: 24px !important;
   }
 }
 
