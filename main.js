@@ -5,29 +5,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Smart Logo Detector for Vercel
-  const possibleLogos = ['logo.jpg.jpeg', 'logo.jpg', 'logo.png', 'logo.jpeg', 'LOGO.JPG', 'banner.jpg'];
-  let activeLogoUrl = 'logo.jpg.jpeg';
+  // Smart Logo Detector for exact uploaded filenames
+  const logoCandidates = ['logo.jpg.jpeg', 'logo.jpg%20.jpeg', 'logo.jpg', 'logo.png', 'logo.jpeg'];
+  let activeLogoPath = 'logo.jpg.jpeg';
 
-  function detectActiveLogo() {
-    let index = 0;
-    function tryNext() {
-      if (index >= possibleLogos.length) return;
+  function findExactLogo() {
+    let i = 0;
+    function checkNext() {
+      if (i >= logoCandidates.length) return;
       const img = new Image();
       img.onload = () => {
-        activeLogoUrl = possibleLogos[index];
+        activeLogoPath = logoCandidates[i];
         const billLogo = document.getElementById('billHeaderLogo');
-        if (billLogo) billLogo.src = activeLogoUrl;
+        if (billLogo) billLogo.src = activeLogoPath;
       };
       img.onerror = () => {
-        index++;
-        tryNext();
+        i++;
+        checkNext();
       };
-      img.src = possibleLogos[index];
+      img.src = logoCandidates[i];
     }
-    tryNext();
+    checkNext();
   }
-  detectActiveLogo();
+  findExactLogo();
 
   // Mobile App Tab Switcher Logic
   const tabBtns = document.querySelectorAll('.app-tab-btn, .mobile-nav-item[data-tab]');
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Update Bill Header Image
       const billLogo = document.getElementById('billHeaderLogo');
-      if (billLogo) billLogo.src = activeLogoUrl;
+      if (billLogo) billLogo.src = activeLogoPath;
 
       // Create WhatsApp message string
       const message = `Hello Senthoor Auto Works! I have generated a Service Booking Voucher:\n\n` +
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Printable Voucher Tab with Detected Logo URL
+  // Printable Voucher Tab with Exact Logo Path
   const btnPrintBill = document.getElementById('btnPrintBill');
   if (btnPrintBill) {
     btnPrintBill.addEventListener('click', () => {
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const car = document.getElementById('billCar')?.textContent || '';
       const service = document.getElementById('billService')?.textContent || '';
       const notes = document.getElementById('billNotes')?.textContent || '';
-      const fullLogoUrl = window.location.origin + '/' + activeLogoUrl;
+      const fullLogoUrl = window.location.origin + '/' + activeLogoPath;
 
       const printWin = window.open('', '_blank');
       printWin.document.write(`
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
             body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; margin: 0; color: #1e293b; background: #fff; }
             .card { border: 2px dashed #c41e3a; padding: 24px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
             .header { text-align: center; border-bottom: 2px solid #c41e3a; padding-bottom: 12px; margin-bottom: 20px; }
-            .header img { max-height: 80px; max-width: 220px; object-fit: contain; margin-bottom: 8px; border-radius: 6px; }
+            .header img { max-height: 85px; max-width: 240px; object-fit: contain; margin-bottom: 8px; border-radius: 6px; }
             .header h2 { margin: 4px 0; color: #c41e3a; font-size: 24px; letter-spacing: 1px; }
             .header p { margin: 0; font-size: 13px; color: #64748b; }
             .badge { display: inline-block; background: #22c55e; color: #fff; padding: 4px 12px; font-size: 11px; font-weight: bold; border-radius: 12px; margin-top: 8px; }
@@ -223,11 +223,11 @@ document.addEventListener('DOMContentLoaded', () => {
               <div><strong>Date:</strong> ${date}</div>
             </div>
             <table>
-              <tr><th>Customer Name</th><td>${billName}</td></tr>
-              <tr><th>Phone Number</th><td>${billPhone}</td></tr>
-              <tr><th>Vehicle Model</th><td>${billCar}</td></tr>
-              <tr><th>Requested Service</th><td style="font-weight:bold; color:#c41e3a;">${billService}</td></tr>
-              <tr><th>Symptoms / Notes</th><td>${billNotes}</td></tr>
+              <tr><th>Customer Name</th><td>${name}</td></tr>
+              <tr><th>Phone Number</th><td>${phone}</td></tr>
+              <tr><th>Vehicle Model</th><td>${car}</td></tr>
+              <tr><th>Requested Service</th><td style="font-weight:bold; color:#c41e3a;">${service}</td></tr>
+              <tr><th>Symptoms / Notes</th><td>${notes}</td></tr>
               <tr><th>Booking Status</th><td>Pending Workshop Confirmation</td></tr>
             </table>
             <div class="footer">
