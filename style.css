@@ -170,16 +170,16 @@ body {
   font-size: 0.85rem;
 }
 
-/* Guaranteed 1-Page PDF Print View Fix */
+/* Perfect 1-Page Print View Fix */
 @media print {
-  html, body {
+  body {
     background: #ffffff !important;
     color: #000000 !important;
-    margin: 0 !important;
     padding: 0 !important;
+    margin: 0 !important;
   }
-
-  header, footer, nav, .top-bar, .mobile-bottom-nav, .float-btn, .hero-section, #home, #about, #why-us, #services, #gallery, #contactForm, .mobile-app-tabs-container, .no-print, .col-lg-5 {
+  
+  header, footer, nav, .top-bar, .mobile-bottom-nav, .float-btn, .hero-section, #home, #about, #why-us, #services, #gallery, #contactForm, .mobile-app-tabs-container, .no-print, .col-lg-5, .navbar {
     display: none !important;
   }
 
@@ -192,7 +192,6 @@ body {
     width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
-    background: #ffffff !important;
   }
 
   #bookingReceiptContainer {
@@ -209,6 +208,12 @@ body {
     background: #ffffff !important;
     color: #000000 !important;
     padding: 20px !important;
+  }
+
+  .bill-receipt-card img {
+    display: block !important;
+    margin: 0 auto 10px auto !important;
+    max-height: 80px !important;
   }
 }
 
