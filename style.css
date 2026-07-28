@@ -170,50 +170,44 @@ body {
   font-size: 0.85rem;
 }
 
-/* Perfect 1-Page Print View Fix */
+/* ================= 100% PERFECT 1-PAGE PRINT VOUCHER FIX ================= */
 @media print {
-  body {
+  html, body {
+    visibility: hidden !important;
     background: #ffffff !important;
-    color: #000000 !important;
-    padding: 0 !important;
     margin: 0 !important;
-  }
-  
-  header, footer, nav, .top-bar, .mobile-bottom-nav, .float-btn, .hero-section, #home, #about, #why-us, #services, #gallery, #contactForm, .mobile-app-tabs-container, .no-print, .col-lg-5, .navbar {
-    display: none !important;
+    padding: 0 !important;
   }
 
-  .mobile-app-pane {
-    display: block !important;
-  }
-
-  #contact, .col-lg-7 {
-    display: block !important;
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
+  #bookingReceiptContainer,
+  #bookingReceiptContainer * {
+    visibility: visible !important;
   }
 
   #bookingReceiptContainer {
-    display: block !important;
-    position: static !important;
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
     width: 100% !important;
+    max-width: 700px !important;
+    height: auto !important;
     margin: 0 auto !important;
-    padding: 0 !important;
+    padding: 24px !important;
+    background: #ffffff !important;
+    z-index: 9999999 !important;
+    box-shadow: none !important;
   }
 
   .bill-receipt-card {
     border: 2px solid #000000 !important;
     box-shadow: none !important;
-    background: #ffffff !important;
-    color: #000000 !important;
     padding: 20px !important;
+    background: #ffffff !important;
   }
 
-  .bill-receipt-card img {
-    display: block !important;
-    margin: 0 auto 10px auto !important;
-    max-height: 80px !important;
+  .no-print {
+    display: none !important;
+    visibility: hidden !important;
   }
 }
 
