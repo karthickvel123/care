@@ -5,6 +5,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Mobile App Tab Switcher Logic
+  const tabBtns = document.querySelectorAll('.app-tab-btn, .mobile-nav-item[data-tab]');
+  const appPanes = document.querySelectorAll('.mobile-app-pane');
+
+  function switchTab(tabId) {
+    if (!tabId) return;
+    
+    // Update Panes
+    appPanes.forEach(pane => {
+      pane.classList.remove('active');
+      if (pane.id === tabId) {
+        pane.classList.add('active');
+      }
+    });
+
+    // Update Active Buttons
+    tabBtns.forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.getAttribute('data-tab') === tabId) {
+        btn.classList.add('active');
+      }
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const tabId = btn.getAttribute('data-tab');
+      if (tabId) {
+        e.preventDefault();
+        switchTab(tabId);
+      }
+    });
+  });
+
   // WhatsApp Booking Form Handler
   const form = document.getElementById('contactForm');
   const alertBox = document.getElementById('formAlert');
@@ -20,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const service = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex]?.text : '';
       const notes = document.getElementById('notes')?.value || '';
 
-      // Format WhatsApp message cleanly
       let message = `Hello Senthoor Auto Works! I would like to book a workshop slot:\n\n` +
         `👤 *Name:* ${name}\n` +
         `📞 *Phone:* ${phone}\n` +
@@ -31,39 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
         message += `\n📝 *Notes:* ${notes}`;
       }
 
-      // Create WhatsApp URL for 9787561810
       const whatsappUrl = `https://wa.me/919787561810?text=${encodeURIComponent(message)}`;
 
-      // Show alert & Open WhatsApp
       if (alertBox) {
         alertBox.classList.remove('d-none');
         setTimeout(() => alertBox.classList.add('d-none'), 5000);
       }
 
-      // Redirect to WhatsApp
       window.open(whatsappUrl, '_blank');
-
       form.reset();
     });
   }
-
-  // Active nav link highlight on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    const scrollPos = window.scrollY + 100;
-    sections.forEach(section => {
-      if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-        current = section.getAttribute('id');
-      }
-    });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
 });
