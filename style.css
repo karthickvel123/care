@@ -1,0 +1,79 @@
+:root {
+  --red: #c41e3a;
+  --red-hover: #9e142c;
+  --red-subtle: #fde8eb;
+  --dark: #1e293b;
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Rajdhani', sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  color: #334155;
+  background-color: #ffffff;
+  line-height: 1.6;
+}
+
+.font-mono { font-family: var(--font-mono); letter-spacing: 0.5px; }
+.fs-7 { font-size: 0.85rem; }
+.max-w-700 { max-width: 700px; }
+.bg-red { background-color: var(--red) !important; }
+.text-red { color: var(--red) !important; }
+.bg-red-subtle { background-color: var(--red-subtle) !important; }
+
+.btn-red {
+  background-color: var(--red);
+  color: #ffffff;
+  border: 1px solid var(--red);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-red:hover {
+  background-color: var(--red-hover);
+  border-color: var(--red-hover);
+  color: #ffffff;
+}
+
+.top-bar { font-size: 0.825rem; }
+
+.navbar-nav .nav-link {
+  font-size: 0.925rem;
+  padding: 0.4rem 0.75rem !important;
+  transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--red) !important;
+}
+
+.service-card {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--red) !important;
+}
+
+.float-btn {
+  position: fixed;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.float-btn:hover {
+  transform: scale(1.1);
+  color: #ffffff;
+}
+
+.float-whatsapp { bottom: 80px; background-color: #25d366; }
+.float-call { bottom: 20px; background-color: var(--red); }
