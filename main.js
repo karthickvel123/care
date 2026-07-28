@@ -1,225 +1,278 @@
-'use strict';
+:root {
+  --red: #c41e3a;
+  --red-hover: #9e142c;
+  --red-subtle: #fde8eb;
+  --dark: #1e293b;
+  --dark-surface: #0f172a;
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Rajdhani', sans-serif;
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Dynamic copyright year
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+body {
+  font-family: var(--font-main);
+  color: #334155;
+  background-color: #f8fafc;
+  line-height: 1.5;
+  -webkit-tap-highlight-color: transparent;
+}
 
-  // Mobile App Tab Switcher Logic
-  const tabBtns = document.querySelectorAll('.app-tab-btn, .mobile-nav-item[data-tab]');
-  const appPanes = document.querySelectorAll('.mobile-app-pane');
+.font-mono { font-family: var(--font-mono); letter-spacing: 0.5px; }
+.fs-7 { font-size: 0.85rem; }
+.fs-8 { font-size: 0.75rem; }
+.max-w-700 { max-width: 700px; }
+.bg-red { background-color: var(--red) !important; }
+.text-red { color: var(--red) !important; }
+.bg-red-subtle { background-color: var(--red-subtle) !important; }
 
-  function switchTab(tabId) {
-    if (!tabId) return;
-    
-    // Update Panes
-    appPanes.forEach(pane => {
-      pane.classList.remove('active');
-      if (pane.id === tabId) {
-        pane.classList.add('active');
-      }
-    });
+/* Buttons */
+.btn-red {
+  background-color: var(--red);
+  color: #ffffff;
+  border: 1px solid var(--red);
+  transition: all 0.2s ease-in-out;
+}
 
-    // Update Active Buttons
-    tabBtns.forEach(btn => {
-      btn.classList.remove('active');
-      if (btn.getAttribute('data-tab') === tabId) {
-        btn.classList.add('active');
-      }
-    });
+.btn-red:hover, .btn-red:focus {
+  background-color: var(--red-hover);
+  border-color: var(--red-hover);
+  color: #ffffff;
+}
+
+/* Service Card */
+.service-card {
+  border-radius: 12px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--red) !important;
+  box-shadow: 0 10px 20px rgba(196, 30, 58, 0.1) !important;
+}
+
+/* Mobile App Segmented Tab Bar */
+.mobile-app-tabs {
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 12px;
+  display: flex;
+  gap: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  border: 1px solid #e2e8f0;
+}
+
+.app-tab-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #64748b;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  transition: all 0.2s ease;
+}
+
+.app-tab-btn i {
+  font-size: 1.1rem;
+}
+
+.app-tab-btn.active {
+  background: var(--red);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(196, 30, 58, 0.25);
+}
+
+/* Mobile App Bottom Navigation Bar */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background: rgba(30, 41, 59, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1060;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-nav-item {
+  color: #94a3b8;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+}
+
+.mobile-nav-item i {
+  font-size: 1.2rem;
+  margin-bottom: 2px;
+}
+
+.mobile-nav-item.active,
+.mobile-nav-item:hover {
+  color: #ffffff;
+}
+
+.mobile-nav-item.highlight-call {
+  color: #ffffff;
+  background-color: var(--red);
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+.mobile-nav-item.highlight-whatsapp {
+  color: #ffffff;
+  background-color: #25d366;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+/* ================= DIGITAL BOOKING RECEIPT / BILL ================= */
+.bill-receipt-card {
+  background: #ffffff;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.bill-header {
+  border-bottom: 2px solid var(--red);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.bill-table th {
+  background: #f1f5f9;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.bill-table td {
+  font-size: 0.85rem;
+}
+
+/* ================= 100% PERFECT 1-PAGE PRINT VOUCHER FIX ================= */
+@media print {
+  html, body {
+    visibility: hidden !important;
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const tabId = btn.getAttribute('data-tab');
-      if (tabId) {
-        e.preventDefault();
-        switchTab(tabId);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
-  });
-
-  // Handle header nav clicks on mobile
-  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (href === '#why-us' || href === '#about' || href === '#home') {
-        switchTab('pane-home');
-      } else if (href === '#services') {
-        switchTab('pane-services');
-      } else if (href === '#gallery') {
-        switchTab('pane-gallery');
-      } else if (href === '#contact') {
-        switchTab('pane-contact');
-      }
-    });
-  });
-
-  // Service Card Booking Click Handler
-  const serviceBookBtns = document.querySelectorAll('.btn-book-service');
-  serviceBookBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const serviceName = btn.getAttribute('data-service');
-      
-      switchTab('pane-contact');
-
-      const serviceSelect = document.getElementById('service');
-      if (serviceSelect && serviceName) {
-        for (let i = 0; i < serviceSelect.options.length; i++) {
-          if (serviceSelect.options[i].text.toLowerCase().includes(serviceName.toLowerCase())) {
-            serviceSelect.selectedIndex = i;
-            break;
-          }
-        }
-      }
-
-      const nameInput = document.getElementById('name');
-      if (nameInput) {
-        setTimeout(() => {
-          nameInput.focus();
-          nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 150);
-      }
-    });
-  });
-
-  // ================= DIGITAL BILL / RECEIPT GENERATOR =================
-  const form = document.getElementById('contactForm');
-  const receiptContainer = document.getElementById('bookingReceiptContainer');
-  let currentWhatsAppUrl = '';
-  let currentBillData = {};
-
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById('name')?.value || '';
-      const phone = document.getElementById('phone')?.value || '';
-      const car = document.getElementById('car')?.value || '';
-      const serviceSelect = document.getElementById('service');
-      const service = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex]?.text : '';
-      const notes = document.getElementById('notes')?.value || 'Routine Checkup';
-
-      // Generate Unique Receipt Number
-      const receiptNo = `#SAW-2026-${Math.floor(1000 + Math.random() * 9000)}`;
-      const now = new Date();
-      const formattedDate = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) + ' ' + now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
-
-      currentBillData = { receiptNo, formattedDate, name, phone, car, service, notes };
-
-      // Populate Bill Fields
-      document.getElementById('billReceiptNo').textContent = receiptNo;
-      document.getElementById('billDate').textContent = formattedDate;
-      document.getElementById('billName').textContent = name;
-      document.getElementById('billPhone').textContent = phone;
-      document.getElementById('billCar').textContent = car;
-      document.getElementById('billService').textContent = service;
-      document.getElementById('billNotes').textContent = notes;
-
-      // Create WhatsApp message string
-      const message = `Hello Senthoor Auto Works! I have generated a Service Booking Voucher:\n\n` +
-        `🧾 *Receipt No:* ${receiptNo}\n` +
-        `👤 *Customer Name:* ${name}\n` +
-        `📞 *Phone:* ${phone}\n` +
-        `🚗 *Car Model:* ${car}\n` +
-        `🛠️ *Service Needed:* ${service}\n` +
-        `📝 *Notes:* ${notes}\n\n` +
-        `Please confirm my appointment slot!`;
-
-      currentWhatsAppUrl = `https://wa.me/919787561810?text=${encodeURIComponent(message)}`;
-
-      // Show Bill Receipt Container
-      if (receiptContainer) {
-        receiptContainer.classList.remove('d-none');
-        receiptContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      form.reset();
-    });
+  #bookingReceiptContainer,
+  #bookingReceiptContainer * {
+    visibility: visible !important;
   }
 
-  // Bill Action Buttons
-  const btnSendWhatsApp = document.getElementById('btnSendBillWhatsApp');
-  if (btnSendWhatsApp) {
-    btnSendWhatsApp.addEventListener('click', () => {
-      if (currentWhatsAppUrl) {
-        window.open(currentWhatsAppUrl, '_blank');
-      }
-    });
+  #bookingReceiptContainer {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 700px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    padding: 24px !important;
+    background: #ffffff !important;
+    z-index: 9999999 !important;
+    box-shadow: none !important;
   }
 
-  // Dedicated Print Voucher Window with Smart Fallbacks
-  const btnPrintBill = document.getElementById('btnPrintBill');
-  if (btnPrintBill) {
-    btnPrintBill.addEventListener('click', () => {
-      const bill = currentBillData;
-      if (!bill.receiptNo) return;
-
-      const origin = window.location.origin;
-      const logoUrl1 = origin + '/logo.jpg.jpeg';
-      const logoUrl2 = origin + '/logo.jpg';
-      const logoUrl3 = origin + '/banner.jpg';
-
-      const printWin = window.open('', '_blank', 'width=800,height=650');
-      printWin.document.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <title>Senthoor Auto Works - Booking Receipt ${bill.receiptNo}</title>
-          <style>
-            body { font-family: 'Segoe UI', Arial, sans-serif; padding: 24px; color: #1e293b; max-width: 650px; margin: 0 auto; }
-            .bill-box { border: 2px dashed #c41e3a; padding: 24px; border-radius: 12px; }
-            .header { text-align: center; border-bottom: 2px solid #c41e3a; padding-bottom: 12px; margin-bottom: 20px; }
-            .logo-img { max-height: 80px; max-width: 220px; object-fit: contain; margin-bottom: 8px; border-radius: 6px; }
-            .header h2 { color: #c41e3a; margin: 4px 0; font-size: 24px; letter-spacing: 1px; }
-            .header p { margin: 0; font-size: 13px; color: #64748b; }
-            .badge { display: inline-block; background: #22c55e; color: #fff; padding: 4px 12px; font-size: 11px; font-weight: bold; border-radius: 12px; margin-top: 8px; }
-            .row { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 14px; }
-            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-            th, td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: left; font-size: 14px; }
-            th { background: #f1f5f9; width: 35%; }
-            .footer-note { text-align: center; font-size: 12px; color: #64748b; margin-top: 20px; border-top: 1px solid #e2e8f0; padding-top: 10px; }
-          </style>
-        </head>
-        <body>
-          <div class="bill-box">
-            <div class="header">
-              <img id="printLogo" src="${logoUrl1}" alt="Senthoor Auto Works Logo" class="logo-img" onerror="if(this.src!=='${logoUrl2}'){this.src='${logoUrl2}';}else{this.src='${logoUrl3}';}" />
-              <h2>SENTHOOR AUTO WORKS</h2>
-              <p>Ettayapuram, Athoor, Karur - 624002 | Phone: +91 97875 61810</p>
-              <span class="badge">OFFICIAL SERVICE BOOKING VOUCHER</span>
-            </div>
-            <div class="row">
-              <div><strong>Receipt No:</strong> <span style="color:#c41e3a;">${bill.receiptNo}</span></div>
-              <div><strong>Date:</strong> ${bill.formattedDate}</div>
-            </div>
-            <table>
-              <tr><th>Customer Name</th><td>${bill.name}</td></tr>
-              <tr><th>Phone Number</th><td>${bill.phone}</td></tr>
-              <tr><th>Vehicle Model</th><td>${bill.car}</td></tr>
-              <tr><th>Requested Service</th><td style="font-weight:bold; color:#c41e3a;">${bill.service}</td></tr>
-              <tr><th>Symptoms / Notes</th><td>${bill.notes}</td></tr>
-              <tr><th>Booking Status</th><td>Pending Workshop Confirmation</td></tr>
-            </table>
-            <div class="footer-note">
-              <p>Thank you for choosing Senthoor Auto Works! Please show this voucher at our workshop.</p>
-            </div>
-          </div>
-          <script>
-            window.onload = function() {
-              setTimeout(function(){
-                window.print();
-                setTimeout(function(){ window.close(); }, 800);
-              }, 500);
-            };
-          </script>
-        </body>
-        </html>
-      `);
-      printWin.document.close();
-    });
+  .bill-receipt-card {
+    border: 2px solid #000000 !important;
+    box-shadow: none !important;
+    padding: 20px !important;
+    background: #ffffff !important;
   }
-});
+
+  .no-print {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 991.98px) {
+  body {
+    padding-bottom: 70px;
+  }
+
+  .mobile-app-pane {
+    display: none;
+  }
+
+  .mobile-app-pane.active {
+    display: block !important;
+    animation: fadeIn 0.25s ease-in-out;
+  }
+
+  .display-5 {
+    font-size: 1.9rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Desktop layout */
+@media (min-width: 992px) {
+  .mobile-app-tabs-container {
+    display: none !important;
+  }
+
+  .mobile-app-pane {
+    display: block !important;
+  }
+
+  .mobile-bottom-nav {
+    display: none !important;
+  }
+
+  .float-btn {
+    position: fixed;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  .float-btn:hover {
+    transform: scale(1.1);
+    color: #ffffff;
+  }
+
+  .float-whatsapp { bottom: 85px; background-color: #25d366; }
+  .float-call { bottom: 25px; background-color: var(--red); }
+}
+
+@media (max-width: 991.98px) {
+  .float-btn { display: none !important; }
+}
