@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Dedicated Print Voucher Window with logo.jpg.jpeg
+  // Dedicated Print Voucher Window with Smart Fallbacks
   const btnPrintBill = document.getElementById('btnPrintBill');
   if (btnPrintBill) {
     btnPrintBill.addEventListener('click', () => {
@@ -159,7 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!bill.receiptNo) return;
 
       const origin = window.location.origin;
-      const logoUrl = origin + '/logo.jpg.jpeg';
+      const logoUrl1 = origin + '/logo.jpg.jpeg';
+      const logoUrl2 = origin + '/logo.jpg';
+      const logoUrl3 = origin + '/banner.jpg';
 
       const printWin = window.open('', '_blank', 'width=800,height=650');
       printWin.document.write(`
@@ -185,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <body>
           <div class="bill-box">
             <div class="header">
-              <img src="${logoUrl}" alt="Senthoor Auto Works Logo" class="logo-img" />
+              <img id="printLogo" src="${logoUrl1}" alt="Senthoor Auto Works Logo" class="logo-img" onerror="if(this.src!=='${logoUrl2}'){this.src='${logoUrl2}';}else{this.src='${logoUrl3}';}" />
               <h2>SENTHOOR AUTO WORKS</h2>
               <p>Ettayapuram, Athoor, Karur - 624002 | Phone: +91 97875 61810</p>
               <span class="badge">OFFICIAL SERVICE BOOKING VOUCHER</span>
@@ -211,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
               setTimeout(function(){
                 window.print();
                 setTimeout(function(){ window.close(); }, 800);
-              }, 400);
+              }, 500);
             };
           </script>
         </body>
