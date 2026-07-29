@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Printable Voucher Tab with Fixed String Variables
+  // Printable Voucher Tab with Exact Logo Path & Clean Address
   const btnPrintBill = document.getElementById('btnPrintBill');
   if (btnPrintBill) {
     btnPrintBill.addEventListener('click', () => {
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="header">
               <img src="${fullLogoUrl}" alt="Senthoor Auto Works Logo" />
               <h2>SENTHOOR AUTO WORKS</h2>
-              <p>Ettayapuram, Athoor, Karur - 624002 | Phone: +91 97875 61810</p>
+              <p>Karur Main Road, Karur - 639001 | Phone: +91 97875 61810</p>
               <span class="badge">OFFICIAL SERVICE BOOKING VOUCHER</span>
             </div>
             <div class="info">
