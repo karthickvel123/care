@@ -56,12 +56,12 @@
 
         <div class="collapse navbar-collapse" id="navContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-semibold fs-6 gap-lg-2">
-            <li class="nav-item"><a class="nav-link text-dark active" href="#home">Home</a></li>
-            <li class="nav-item"><a class="nav-link text-dark" href="#about">About Us</a></li>
-            <li class="nav-item"><a class="nav-link text-dark" href="#services">Services</a></li>
-            <li class="nav-item"><a class="nav-link text-dark" href="#why-us">Why Choose Us</a></li>
-            <li class="nav-item"><a class="nav-link text-dark" href="#gallery">Gallery</a></li>
-            <li class="nav-item"><a class="nav-link text-dark" href="#contact">Location & Contact</a></li>
+            <li class="nav-item"><a class="nav-link text-dark active" href="#home" data-tab="pane-home">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-dark" href="#about" data-tab="pane-home">About Us</a></li>
+            <li class="nav-item"><a class="nav-link text-dark" href="#services" data-tab="pane-services">Services</a></li>
+            <li class="nav-item"><a class="nav-link text-dark" href="#why-us" data-tab="pane-home">Why Choose Us</a></li>
+            <li class="nav-item"><a class="nav-link text-dark" href="#gallery" data-tab="pane-gallery">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link text-dark" href="#contact" data-tab="pane-contact">Location & Contact</a></li>
           </ul>
           <div class="ms-lg-3">
             <a href="tel:+919787561810" class="btn btn-red px-3 py-2 rounded-1 fw-bold fs-7">
@@ -161,7 +161,7 @@
                    alt="Senthoor Auto Works Official Poster" 
                    class="img-fluid w-100 rounded-2" 
                    style="max-height: 400px; object-fit: contain;" 
-                   onerror="if(this.src.indexOf('second.jpg')!==-1){this.src='second.png';}else if(this.src.indexOf('second.png')!==-1){this.src='second.jpeg';}else{this.src='first.jpg';}" />
+                   onerror="if(this.src.indexOf('second.jpg')!==-1){this.src='third.jpg';}else if(this.src.indexOf('third.jpg')!==-1){this.src='first.jpg';}else{this.src='https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?q=80&w=800';}" />
             </div>
           </div>
         </div>
@@ -336,204 +336,13 @@
 
         <div class="row g-3">
           <div class="col-md-6 col-12">
-            <img src="gallery1.jpg.jpeg" alt="Senthoor Auto Works Gallery 1" class="img-fluid rounded-2 border shadow-sm" style="height: 280px; width:100%; object-fit:cover;" />
+            <img src="gallery1.jpg.jpeg" alt="Senthoor Auto Works Gallery 1" class="img-fluid rounded-2 border shadow-sm" style="height: 280px; width:100%; object-fit:cover;" onerror="this.src='second.jpg';" />
           </div>
           <div class="col-md-6 col-12">
-            <img src="gallery2.jpg.jpeg" alt="Senthoor Auto Works Gallery 2" class="img-fluid rounded-2 border shadow-sm" style="height: 280px; width:100%; object-fit:cover;" />
+            <img src="gallery2.jpg.jpeg" alt="Senthoor Auto Works Gallery 2" class="img-fluid rounded-2 border shadow-sm" style="height: 280px; width:100%; object-fit:cover;" onerror="this.src='third.jpg';" />
           </div>
           <div class="col-md-6 col-12">
-            <img src="gallery3.jpg.jpeg" alt="Senthoor Auto Works Gallery 3" class="img-fluid rounded-2 border shadow-sm" style="height: 280px; width:100%; object-fit:cover;" />
+            <img src="gallery3.jpg.jpeg" alt="Senthoor Auto Works Gallery 3" class="img-fluid rounded-2 border shadow-sm" style="height: 280px; width:100%; object-fit:cover;" onerror="this.src='second.jpg';" />
           </div>
           <div class="col-md-6 col-12">
-            <img src="gallery4.jpg.jpeg" alt="Senthoor Auto Works Gallery 4" class="img-fluid rounded-2 border shadow-sm" style="height: 280px; width:100%; object-fit:cover;" />
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ================= TAB 4: LOCATION & CONTACT ================= -->
-  <div class="mobile-app-pane" id="pane-contact">
-    <section class="py-4 bg-light border-top" id="contact">
-      <div class="container-xl">
-        <div class="row g-4">
-          <!-- Contact Details & Location Card -->
-          <div class="col-lg-5">
-            <span class="text-red font-mono text-uppercase fw-bold fs-7">Find Us On Map</span>
-            <h2 class="fw-bold text-dark display-6 mt-1 mb-2">Location & Contact</h2>
-
-            <div class="mb-2"><i class="fas fa-location-dot text-red me-2 fs-5"></i> <strong>Address:</strong> Odakkattupudur, Athur, Karur - 639008</div>
-            <div class="mb-2"><i class="fas fa-phone text-red me-2 fs-5"></i> <strong>Phone:</strong> <a href="tel:+919787561810" class="text-dark text-decoration-none">+91 97875 61810</a></div>
-            <div class="mb-2"><i class="fab fa-whatsapp text-success me-2 fs-5"></i> <strong>WhatsApp:</strong> <a href="https://wa.me/919787561810" target="_blank" class="text-dark text-decoration-none">+91 97875 61810</a></div>
-            <div class="mb-3"><i class="fas fa-clock text-red me-2 fs-5"></i> <strong>Working Hours:</strong> Mon-Sat: 10:00 AM - 7:00 PM</div>
-
-            <!-- Touch-friendly Location Card -->
-            <div class="card border-0 bg-dark text-white rounded-3 overflow-hidden shadow-sm mt-3">
-              <div class="p-3 text-center">
-                <div class="mb-1 text-red fs-2"><i class="fas fa-map-location-dot"></i></div>
-                <h6 class="fw-bold text-white mb-1">Senthoor Auto Works</h6>
-                <p class="text-white-50 fs-8 mb-2">Odakkattupudur, Athur, Karur - 639008</p>
-                <a href="https://www.google.com/maps/place/Senthoor+Auto+Works/@10.9853746,78.0303491,16.93z/data=!4m6!3m5!1s0x3baa2f007b24e005:0x4771382ccff15f46!8m2!3d10.985304!4d78.032888!16s%2Fg%2F11z8j_g0k7" target="_blank" class="btn btn-red btn-sm fw-bold font-mono text-uppercase px-3 py-2 w-100">
-                  <i class="fas fa-directions me-2"></i>Open Map & Directions <i class="fas fa-arrow-up-right-from-square ms-1"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Appointment Form -->
-          <div class="col-lg-7">
-            <div class="p-3 p-md-4 bg-white border rounded-3 shadow-sm mb-4">
-              <h4 class="fw-bold text-dark mb-1">Book Workshop Slot & Generate Bill</h4>
-              <p class="text-muted fs-7 mb-2">Fill details below to generate your instant digital service booking voucher!</p>
-              <div class="badge bg-success-subtle text-success border border-success mb-3 p-2 fs-8 w-100 text-center">
-                🟢 Direct Reservation Tied to Senthoor Auto Works Garage (+91 97875 61810)
-              </div>
-              
-              <form id="contactForm">
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <input type="text" class="form-control py-2" id="name" placeholder="Your Name *" required />
-                  </div>
-                  <div class="col-md-6">
-                    <input type="tel" class="form-control py-2" id="phone" placeholder="Phone Number *" required />
-                  </div>
-                  <div class="col-md-6">
-                    <input type="text" class="form-control py-2" id="car" placeholder="Car Model (e.g. Swift / Baleno) *" required />
-                  </div>
-                  <div class="col-md-6">
-                    <select class="form-select py-2" id="service" required>
-                      <option value="" selected disabled>Select Service Needed *</option>
-                      <option>Car Servicing</option>
-                      <option>Wheel Alignment</option>
-                      <option>Denting & Painting</option>
-                      <option>AC Service</option>
-                      <option>Engine Diagnostics</option>
-                      <option>Periodic Maintenance</option>
-                    </select>
-                  </div>
-                  <div class="col-12">
-                    <textarea class="form-control py-2" id="notes" rows="3" placeholder="Describe any issues or symptoms..."></textarea>
-                  </div>
-                  <div class="col-12">
-                    <button type="submit" class="btn btn-red w-100 py-2 fw-bold text-uppercase font-mono">
-                      <i class="fas fa-file-invoice-dollar me-2"></i>Generate Digital Booking Bill
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-
-            <!-- ================= GENERATED DIGITAL BOOKING RECEIPT / BILL ================= -->
-            <div id="bookingReceiptContainer" class="d-none">
-              <div class="bill-receipt-card position-relative">
-                <div class="bill-header text-center">
-                  <img src="logo.jpg.jpeg" id="billHeaderLogo" alt="Senthoor Auto Works Logo" class="mb-2 rounded" style="max-height: 70px; max-width: 200px; object-fit: contain;" />
-                  <h4 class="fw-bold text-dark font-mono mb-0">SENTHOOR AUTO WORKS</h4>
-                  <small class="text-muted d-block fs-8">Odakkattupudur, Athur, Karur - 639008 • Ph: +91 97875 61810</small>
-                  <span class="badge bg-success-subtle text-success border border-success mt-2 fs-8">OFFICIAL SERVICE BOOKING VOUCHER</span>
-                </div>
-
-                <div class="row g-2 mb-3 fs-7">
-                  <div class="col-6">
-                    <strong>Receipt No:</strong> <span id="billReceiptNo" class="font-mono text-red fw-bold">#SAW-2026-1001</span>
-                  </div>
-                  <div class="col-6 text-end">
-                    <strong>Date:</strong> <span id="billDate">29 Jul 2026</span>
-                  </div>
-                </div>
-
-                <table class="table table-bordered bill-table mb-3">
-                  <tbody>
-                    <tr>
-                      <th width="35%">Customer Name</th>
-                      <td id="billName">-</td>
-                    </tr>
-                    <tr>
-                      <th>Phone Number</th>
-                      <td id="billPhone">-</td>
-                    </tr>
-                    <tr>
-                      <th>Vehicle Model</th>
-                      <td id="billCar">-</td>
-                    </tr>
-                    <tr>
-                      <th>Requested Service</th>
-                      <td id="billService" class="fw-bold text-red">-</td>
-                    </tr>
-                    <tr>
-                      <th>Symptoms / Notes</th>
-                      <td id="billNotes">-</td>
-                    </tr>
-                    <tr>
-                      <th>Booking Status</th>
-                      <td><span class="badge bg-warning text-dark"><i class="fas fa-clock me-1"></i> Slot Pending Confirmation</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <div class="d-flex flex-wrap gap-2 no-print">
-                  <button type="button" id="btnSendBillWhatsApp" class="btn btn-success flex-grow-1 fw-bold fs-7 py-2">
-                    <i class="fab fa-whatsapp me-1"></i> Send Bill to WhatsApp
-                  </button>
-                  <button type="button" id="btnPrintBill" class="btn btn-outline-dark fw-bold fs-7 py-2">
-                    <i class="fas fa-print me-1"></i> Print / Save PDF
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="bg-dark text-white py-4 border-top">
-    <div class="container-xl d-flex flex-column flex-md-row justify-content-between align-items-center fs-7 text-white-50">
-      <div>
-        <strong class="text-white font-mono me-2">SENTHOOR AUTO WORKS</strong> © <span id="year">2026</span>. Odakkattupudur, Athur, Karur - 639008.
-      </div>
-      <div class="d-flex gap-3 mt-2 mt-md-0">
-        <a href="tel:+919787561810" class="text-white-50 text-decoration-none"><i class="fas fa-phone text-red me-1"></i> +91 97875 61810</a>
-        <a href="https://wa.me/919787561810" class="text-success text-decoration-none" target="_blank"><i class="fab fa-whatsapp me-1"></i> WhatsApp</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ================= MOBILE APP BOTTOM NAVIGATION BAR ================= -->
-  <div class="mobile-bottom-nav">
-    <button class="mobile-nav-item active" data-tab="pane-home">
-      <i class="fas fa-house"></i>
-      <span>Home</span>
-    </button>
-    <button class="mobile-nav-item" data-tab="pane-services">
-      <i class="fas fa-wrench"></i>
-      <span>Services</span>
-    </button>
-    <button class="mobile-nav-item" data-tab="pane-gallery">
-      <i class="fas fa-images"></i>
-      <span>Gallery</span>
-    </button>
-    <button class="mobile-nav-item" data-tab="pane-contact">
-      <i class="fas fa-location-dot"></i>
-      <span>Contact</span>
-    </button>
-    <a href="https://wa.me/919787561810" target="_blank" class="mobile-nav-item highlight-whatsapp">
-      <i class="fab fa-whatsapp"></i>
-      <span>Chat</span>
-    </a>
-  </div>
-
-  <!-- Desktop Floating Buttons -->
-  <a href="https://wa.me/919787561810" class="float-btn float-whatsapp text-white shadow" target="_blank">
-    <i class="fab fa-whatsapp fs-4"></i>
-  </a>
-  <a href="tel:+919787561810" class="float-btn float-call text-white shadow">
-    <i class="fas fa-phone fs-5"></i>
-  </a>
-
-  <!-- JS Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="main.js"></script>
-</body>
-</html>
+            <img src="gallery4.jpg.jpeg"
