@@ -5,7 +5,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // 2. Mobile App Tab Switcher Logic
+  // 2. Smart Logo Detector for exact uploaded filenames
+  const logoCandidates = ['logo.jpg.jpeg', 'logo.jpg%20.jpeg', 'logo.jpg', 'logo.png', 'logo.jpeg'];
+  let activeLogoPath = 'logo.jpg.jpeg';
+
+  function findExactLogo() {
+    let i = 0;
+    function checkNext() {
+      if (i >= logoCandidates.length) return;
+      const img = new Image();
+      img.onload = () => {
+        activeLogoPath = logoCandidates[i];
+        const billLogo = document.getElementById('billHeaderLogo');
+        if (billLogo) billLogo.src = activeLogoPath;
+      };
+      img.onerror = () => {
+        i++;
+        checkNext();
+      };
+      img.src = logoCandidates[i];
+    }
+    checkNext();
+  }
+  findExactLogo();
+
+  // 3. Mobile App Tab Switcher Logic
   const tabBtns = document.querySelectorAll('.app-tab-btn, .mobile-nav-item[data-tab]');
   const appPanes = document.querySelectorAll('.mobile-app-pane');
 
@@ -41,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 3. Navbar link handler (Desktop & Mobile)
+  // 4. Navbar link handler (Desktop & Mobile)
   const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -67,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. Service Card "Book & Generate Bill" Buttons
+  // 5. Service Card "Book & Generate Bill" Buttons
   const serviceBookBtns = document.querySelectorAll('.btn-book-service');
   serviceBookBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -96,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Digital Bill / Receipt Generator Form
+  // 6. Digital Bill / Receipt Generator Form
   const form = document.getElementById('contactForm');
   const receiptContainer = document.getElementById('bookingReceiptContainer');
   let currentWhatsAppUrl = '';
@@ -126,6 +150,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('billService').textContent = service;
       document.getElementById('billNotes').textContent = notes;
 
+      // Update Bill Header Image
+      const billLogo = document.getElementById('billHeaderLogo');
+      if (billLogo) billLogo.src = activeLogoPath;
+
       // WhatsApp URL string
       const message = `Hello Senthoor Auto Works! I have generated a Service Booking Voucher:\n\n` +
         `🧾 *Receipt No:* ${receiptNo}\n` +
@@ -148,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Send to WhatsApp Button
+  // 7. Send to WhatsApp Button
   const btnSendWhatsApp = document.getElementById('btnSendBillWhatsApp');
   if (btnSendWhatsApp) {
     btnSendWhatsApp.addEventListener('click', () => {
@@ -160,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. Print / Save PDF Button
+  // 8. Print / Save PDF Button with Logo Image Tag
   const btnPrintBill = document.getElementById('btnPrintBill');
   if (btnPrintBill) {
     btnPrintBill.addEventListener('click', () => {
@@ -171,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const custCar = document.getElementById('billCar')?.textContent || '';
       const custService = document.getElementById('billService')?.textContent || '';
       const custNotes = document.getElementById('billNotes')?.textContent || '';
+      const fullLogoUrl = window.location.origin + '/' + activeLogoPath;
 
       const printWin = window.open('', '_blank');
       printWin.document.write(`
@@ -182,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; margin: 0; color: #1e293b; background: #fff; }
             .card { border: 2px dashed #c41e3a; padding: 24px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
             .header { text-align: center; border-bottom: 2px solid #c41e3a; padding-bottom: 12px; margin-bottom: 20px; }
+            .header img { max-height: 85px; max-width: 240px; object-fit: contain; margin-bottom: 8px; border-radius: 6px; }
             .header h2 { margin: 4px 0; color: #c41e3a; font-size: 24px; letter-spacing: 1px; }
             .header p { margin: 0; font-size: 13px; color: #64748b; }
             .badge { display: inline-block; background: #22c55e; color: #fff; padding: 4px 12px; font-size: 11px; font-weight: bold; border-radius: 12px; margin-top: 8px; }
@@ -195,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <body>
           <div class="card">
             <div class="header">
+              <img src="${fullLogoUrl}" alt="Senthoor Auto Works Logo" />
               <h2>SENTHOOR AUTO WORKS</h2>
               <p>Odakkattupudur, Athur, Karur - 639008 | Phone: +91 97875 61810</p>
               <span class="badge">OFFICIAL SERVICE BOOKING VOUCHER</span>
