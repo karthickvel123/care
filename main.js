@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="card">
             <div class="header">
               <h2>SENTHOOR AUTO WORKS</h2>
-              <p>Karur Main Road, Karur - 639001 | Phone: +91 97875 61810</p>
+              <p>Odakkattupudur, Athur, Karur - 639008 | Phone: +91 97875 61810</p>
               <span class="badge">OFFICIAL SERVICE BOOKING VOUCHER</span>
             </div>
             <div class="info">
