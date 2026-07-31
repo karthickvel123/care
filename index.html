@@ -18,8 +18,9 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css?v=2.7" />
 
-  <!-- Embedded Styles for Moving Logo Banner (Does not disturb existing style.css) -->
+  <!-- Embedded Styles for Moving Logo Ticker & Hero Background Video -->
   <style>
+    /* ================= MOVING TICKER BANNER ================= */
     .moving-ticker-container {
       width: 100%;
       overflow: hidden;
@@ -52,6 +53,43 @@
       100% {
         transform: translateX(-50%);
       }
+    }
+
+    /* ================= HERO BACKGROUND VIDEO STYLES ================= */
+    .hero-video-wrapper {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      background-color: #000000;
+    }
+
+    .hero-bg-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      opacity: 0.45; /* Adjust video contrast here */
+    }
+
+    .hero-video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.85) 100%);
+      z-index: 2;
+    }
+
+    .hero-video-content {
+      position: relative;
+      z-index: 3;
     }
   </style>
 </head>
@@ -171,13 +209,25 @@
   <main>
     <!-- ================= TAB 1: OVERVIEW & HOME ================= -->
     <div class="mobile-app-pane active" id="pane-home" role="tabpanel">
-      <section class="hero-section py-4 bg-light position-relative" id="home">
-        <div class="container-xl">
+      
+      <!-- ================= HERO SECTION WITH BACKGROUND VIDEO ================= -->
+      <section class="hero-video-wrapper py-5 text-white" id="home">
+        
+        <!-- Video element (Replace hero-bg.mp4 with your video file name) -->
+        <video class="hero-bg-video" autoplay loop muted playsinline poster="second.jpg">
+          <source src="hero-bg.mp4" type="video/mp4" />
+          <source src="hero-bg.webm" type="video/webm" />
+        </video>
+        
+        <!-- Semi-transparent dark overlay mask for text contrast -->
+        <div class="hero-video-overlay"></div>
+
+        <div class="container-xl hero-video-content py-3">
           <div class="row align-items-center g-4">
             <div class="col-lg-6">
-              <span class="badge bg-red-subtle text-red font-mono px-3 py-2 text-uppercase mb-2">Your Car • Our Care</span>
-              <h1 class="display-5 fw-bold text-dark mb-2">Drive With <span class="text-red">Confidence</span></h1>
-              <p class="lead text-muted mb-3 fs-6">
+              <span class="badge bg-danger text-white font-mono px-3 py-2 text-uppercase mb-2">Your Car • Our Care</span>
+              <h1 class="display-4 fw-bold text-white mb-2">Drive With <span class="text-danger">Confidence</span></h1>
+              <p class="lead text-light mb-4 fs-6">
                 We provide complete car care solutions with advanced equipment, skilled technicians, and 100% genuine spare parts.
               </p>
 
@@ -194,8 +244,8 @@
                   </a>
                 </div>
                 <div class="col-12">
-                  <a href="https://www.google.com/maps/place/Senthoor+Auto+Works/@10.9853746,78.0303491,16.93z/data=!4m6!3m5!1s0x3baa2f007b24e005:0x4771382ccff15f46!8m2!3d10.985304!4d78.032888!16s%2Fg%2F11z8j_g0k7" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark w-100 py-2 fs-7 fw-semibold rounded-2">
-                    <i class="fas fa-location-dot text-red me-2" aria-hidden="true"></i>Odakkattupudur, Athur, Karur - 639008 <i class="fas fa-arrow-up-right-from-square ms-1" aria-hidden="true"></i>
+                  <a href="https://www.google.com/maps/place/Senthoor+Auto+Works/@10.9853746,78.0303491,16.93z/data=!4m6!3m5!1s0x3baa2f007b24e005:0x4771382ccff15f46!8m2!3d10.985304!4d78.032888!16s%2Fg%2F11z8j_g0k7" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light w-100 py-2 fs-7 fw-semibold rounded-2">
+                    <i class="fas fa-location-dot text-danger me-2" aria-hidden="true"></i>Odakkattupudur, Athur, Karur - 639008 <i class="fas fa-arrow-up-right-from-square ms-1" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -203,34 +253,34 @@
               <!-- Feature Badges Strip -->
               <div class="row g-2 mb-3 text-center">
                 <div class="col-3">
-                  <div class="p-2 bg-white border rounded-2 shadow-sm">
-                    <i class="fas fa-user-gear text-red fs-5 d-block mb-1" aria-hidden="true"></i>
-                    <small class="fw-bold text-dark fs-8">Expert Techs</small>
+                  <div class="p-2 bg-dark bg-opacity-75 border border-secondary rounded-2 shadow-sm">
+                    <i class="fas fa-user-gear text-danger fs-5 d-block mb-1" aria-hidden="true"></i>
+                    <small class="fw-bold text-white fs-8">Expert Techs</small>
                   </div>
                 </div>
                 <div class="col-3">
-                  <div class="p-2 bg-white border rounded-2 shadow-sm">
-                    <i class="fas fa-shield-halved text-red fs-5 d-block mb-1" aria-hidden="true"></i>
-                    <small class="fw-bold text-dark fs-8">Genuine Parts</small>
+                  <div class="p-2 bg-dark bg-opacity-75 border border-secondary rounded-2 shadow-sm">
+                    <i class="fas fa-shield-halved text-danger fs-5 d-block mb-1" aria-hidden="true"></i>
+                    <small class="fw-bold text-white fs-8">Genuine Parts</small>
                   </div>
                 </div>
                 <div class="col-3">
-                  <div class="p-2 bg-white border rounded-2 shadow-sm">
-                    <i class="fas fa-indian-rupee-sign text-red fs-5 d-block mb-1" aria-hidden="true"></i>
-                    <small class="fw-bold text-dark fs-8">Affordable</small>
+                  <div class="p-2 bg-dark bg-opacity-75 border border-secondary rounded-2 shadow-sm">
+                    <i class="fas fa-indian-rupee-sign text-danger fs-5 d-block mb-1" aria-hidden="true"></i>
+                    <small class="fw-bold text-white fs-8">Affordable</small>
                   </div>
                 </div>
                 <div class="col-3">
-                  <div class="p-2 bg-white border rounded-2 shadow-sm">
-                    <i class="fas fa-thumbs-up text-red fs-5 d-block mb-1" aria-hidden="true"></i>
-                    <small class="fw-bold text-dark fs-8">100% Satisfied</small>
+                  <div class="p-2 bg-dark bg-opacity-75 border border-secondary rounded-2 shadow-sm">
+                    <i class="fas fa-thumbs-up text-danger fs-5 d-block mb-1" aria-hidden="true"></i>
+                    <small class="fw-bold text-white fs-8">100% Satisfied</small>
                   </div>
                 </div>
               </div>
             </div>
 
             <div class="col-lg-6">
-              <div class="rounded-3 overflow-hidden shadow border bg-dark p-2">
+              <div class="rounded-3 overflow-hidden shadow border border-secondary bg-dark p-2">
                 <img src="second.jpg" alt="Senthoor Auto Works Official Workshop" class="img-fluid w-100 rounded-2" style="max-height: 400px; object-fit: contain;" />
               </div>
             </div>
