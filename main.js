@@ -1,260 +1,182 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Dynamic copyright year
+  // 1. Dynamic Copyright Year
   const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // 2. Smart Logo Detector for exact uploaded filenames
-  const logoCandidates = ['logo.jpg.jpeg', 'logo.jpg%20.jpeg', 'logo.jpg', 'logo.png', 'logo.jpeg'];
-  let activeLogoPath = 'logo.jpg.jpeg';
-
-  function findExactLogo() {
-    let i = 0;
-    function checkNext() {
-      if (i >= logoCandidates.length) return;
-      const img = new Image();
-      img.onload = () => {
-        activeLogoPath = logoCandidates[i];
-        const billLogo = document.getElementById('billHeaderLogo');
-        if (billLogo) billLogo.src = activeLogoPath;
-      };
-      img.onerror = () => {
-        i++;
-        checkNext();
-      };
-      img.src = logoCandidates[i];
-    }
-    checkNext();
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
   }
-  findExactLogo();
 
-  // 3. Mobile App Tab Switcher Logic
-  const tabBtns = document.querySelectorAll('.app-tab-btn, .mobile-nav-item[data-tab]');
-  const appPanes = document.querySelectorAll('.mobile-app-pane');
+  // 2. Real-time Workshop Operating Status Indicator (Mon-Sat 10 AM - 7 PM IST)
+  function updateWorkshopStatus() {
+    const statusPulse = document.getElementById('statusPulse');
+    const statusText = document.getElementById('statusText');
+    if (!statusPulse || !statusText) return;
 
-  function switchTab(tabId) {
-    if (!tabId) return;
+    const now = new Date();
+    // Convert to IST offset (+5.5 hours)
+    const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const istDate = new Date(utcTime + (3600000 * 5.5));
     
-    // Update Panes
-    appPanes.forEach(pane => {
-      pane.classList.remove('active');
-      if (pane.id === tabId) {
-        pane.classList.add('active');
-      }
-    });
+    const day = istDate.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+    const hour = istDate.getHours();
 
-    // Update Active Tab Buttons
-    tabBtns.forEach(btn => {
-      if (btn.getAttribute('data-tab') === tabId) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
-    });
+    const isOpen = (day >= 1 && day <= 6) && (hour >= 10 && hour < 19);
+
+    if (isOpen) {
+      statusPulse.className = 'pulse-indicator';
+      statusText.className = 'text-green';
+      statusText.textContent = 'Open Today • 10 AM - 7 PM';
+    } else {
+      statusPulse.className = 'pulse-indicator closed';
+      statusText.className = 'text-red';
+      statusText.textContent = 'Closed Now • Opens 10 AM';
+    }
   }
+  updateWorkshopStatus();
+  setInterval(updateWorkshopStatus, 60000); // Re-check every minute
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const tabId = btn.getAttribute('data-tab');
-      if (tabId) {
-        e.preventDefault();
-        switchTab(tabId);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
-  });
-
-  // 4. Navbar link handler (Desktop & Mobile)
-  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('http')) return;
-      
-      if (href === '#why-us' || href === '#about' || href === '#home') {
-        switchTab('pane-home');
-      } else if (href === '#services') {
-        switchTab('pane-services');
-      } else if (href === '#gallery') {
-        switchTab('pane-gallery');
-      } else if (href === '#contact') {
-        switchTab('pane-contact');
-      }
-
-      // Close mobile navbar collapse if open
-      const navCollapse = document.getElementById('navContent');
-      if (navCollapse && navCollapse.classList.contains('show')) {
-        const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
-        if (bsCollapse) bsCollapse.hide();
-      }
-    });
-  });
-
-  // 5. Service Card "Book & Generate Bill" Buttons
-  const serviceBookBtns = document.querySelectorAll('.btn-book-service');
+  // 3. Service Card "Book & Generate Estimate" Trigger Buttons
+  const serviceBookBtns = document.querySelectorAll('.btn-book-trigger');
   serviceBookBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const serviceName = btn.getAttribute('data-service');
-      
-      switchTab('pane-contact');
-
       const serviceSelect = document.getElementById('service');
+
       if (serviceSelect && serviceName) {
         for (let i = 0; i < serviceSelect.options.length; i++) {
-          if (serviceSelect.options[i].text.toLowerCase().includes(serviceName.toLowerCase())) {
+          if (serviceSelect.options[i].value === serviceName || serviceSelect.options[i].text.includes(serviceName)) {
             serviceSelect.selectedIndex = i;
             break;
           }
         }
       }
 
+      // Scroll smoothly to contact / booking section
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Focus on customer name field
       const nameInput = document.getElementById('name');
       if (nameInput) {
         setTimeout(() => {
           nameInput.focus();
-          nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 150);
+        }, 300);
       }
     });
   });
 
-  // 6. Digital Bill / Receipt Generator Form
-  const form = document.getElementById('contactForm');
+  // 4. Digital Service Bill & Estimate Receipt Generator
+  const contactForm = document.getElementById('contactForm');
   const receiptContainer = document.getElementById('bookingReceiptContainer');
-  let currentWhatsAppUrl = '';
 
-  if (form) {
-    form.addEventListener('submit', (e) => {
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
       const name = document.getElementById('name')?.value || '';
       const phone = document.getElementById('phone')?.value || '';
       const car = document.getElementById('car')?.value || '';
       const serviceSelect = document.getElementById('service');
-      const service = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex]?.text : '';
-      const notes = document.getElementById('notes')?.value || 'Routine Checkup';
+      const selectedOption = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex] : null;
+      const serviceName = selectedOption ? selectedOption.value : '';
+      const priceEstimate = selectedOption ? selectedOption.getAttribute('data-price') || '1499' : '1499';
+      const notes = document.getElementById('notes')?.value || 'Standard Inspection & Maintenance';
 
-      // Generate Unique Receipt Number
-      const receiptNo = `#SAW-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+      // Generate Unique Receipt Number & Timestamp
+      const randomId = Math.floor(1000 + Math.random() * 9000);
+      const receiptNo = `#SAW-2026-${randomId}`;
       const now = new Date();
       const formattedDate = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) + ' ' + now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
 
-      // Populate Bill Fields
+      // Update Bill Fields
       document.getElementById('billReceiptNo').textContent = receiptNo;
       document.getElementById('billDate').textContent = formattedDate;
       document.getElementById('billName').textContent = name;
       document.getElementById('billPhone').textContent = phone;
       document.getElementById('billCar').textContent = car;
-      document.getElementById('billService').textContent = service;
+      document.getElementById('billService').textContent = serviceName;
+      document.getElementById('billAmount').textContent = `₹${parseInt(priceEstimate).toLocaleString('en-IN')}`;
+      document.getElementById('billTotal').textContent = `₹${parseInt(priceEstimate).toLocaleString('en-IN')}`;
       document.getElementById('billNotes').textContent = notes;
 
-      // Update Bill Header Image
-      const billLogo = document.getElementById('billHeaderLogo');
-      if (billLogo) billLogo.src = activeLogoPath;
+      // Generate WhatsApp Share Link
+      const waMessage = `*SENTHOOR AUTO WORKS - SERVICE BOOKING ESTIMATE*%0A` +
+        `*Receipt No:* ${receiptNo}%0A` +
+        `*Date:* ${formattedDate}%0A` +
+        `*Customer Name:* ${name}%0A` +
+        `*Phone:* ${phone}%0A` +
+        `*Vehicle:* ${car}%0A` +
+        `*Service Requested:* ${serviceName}%0A` +
+        `*Est. Amount:* ₹${parseInt(priceEstimate).toLocaleString('en-IN')}%0A` +
+        `*Notes:* ${notes}%0A%0A` +
+        `Please confirm my appointment at Odakkattupudur, Athur, Karur.`;
 
-      // WhatsApp URL string
-      const message = `Hello Senthoor Auto Works! I have generated a Service Booking Voucher:\n\n` +
-        `🧾 *Receipt No:* ${receiptNo}\n` +
-        `👤 *Customer Name:* ${name}\n` +
-        `📞 *Phone:* ${phone}\n` +
-        `🚗 *Car Model:* ${car}\n` +
-        `🛠️ *Service Needed:* ${service}\n` +
-        `📝 *Notes:* ${notes}\n\n` +
-        `Please confirm my appointment slot!`;
+      const waShareBtn = document.getElementById('btnShareWhatsApp');
+      if (waShareBtn) {
+        waShareBtn.href = `https://wa.me/919787561810?text=${waMessage}`;
+      }
 
-      currentWhatsAppUrl = `https://wa.me/919787561810?text=${encodeURIComponent(message)}`;
-
-      // Show Bill Container
+      // Show Receipt Container & Scroll
       if (receiptContainer) {
         receiptContainer.classList.remove('d-none');
-        receiptContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      form.reset();
-    });
-  }
-
-  // 7. Send to WhatsApp Button
-  const btnSendWhatsApp = document.getElementById('btnSendBillWhatsApp');
-  if (btnSendWhatsApp) {
-    btnSendWhatsApp.addEventListener('click', () => {
-      if (currentWhatsAppUrl) {
-        window.open(currentWhatsAppUrl, '_blank');
-      } else {
-        window.open('https://wa.me/919787561810', '_blank');
+        receiptContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
   }
 
-  // 8. Print / Save PDF Button with Logo Image Tag
-  const btnPrintBill = document.getElementById('btnPrintBill');
-  if (btnPrintBill) {
-    btnPrintBill.addEventListener('click', () => {
-      const receiptNo = document.getElementById('billReceiptNo')?.textContent || '#SAW-2026-1001';
-      const date = document.getElementById('billDate')?.textContent || '';
-      const custName = document.getElementById('billName')?.textContent || '';
-      const custPhone = document.getElementById('billPhone')?.textContent || '';
-      const custCar = document.getElementById('billCar')?.textContent || '';
-      const custService = document.getElementById('billService')?.textContent || '';
-      const custNotes = document.getElementById('billNotes')?.textContent || '';
-      const fullLogoUrl = window.location.origin + '/' + activeLogoPath;
-
-      const printWin = window.open('', '_blank');
-      printWin.document.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <title>Senthoor Auto Works - Receipt ${receiptNo}</title>
-          <style>
-            body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; margin: 0; color: #1e293b; background: #fff; }
-            .card { border: 2px dashed #c41e3a; padding: 24px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
-            .header { text-align: center; border-bottom: 2px solid #c41e3a; padding-bottom: 12px; margin-bottom: 20px; }
-            .header img { max-height: 85px; max-width: 240px; object-fit: contain; margin-bottom: 8px; border-radius: 6px; }
-            .header h2 { margin: 4px 0; color: #c41e3a; font-size: 24px; letter-spacing: 1px; }
-            .header p { margin: 0; font-size: 13px; color: #64748b; }
-            .badge { display: inline-block; background: #22c55e; color: #fff; padding: 4px 12px; font-size: 11px; font-weight: bold; border-radius: 12px; margin-top: 8px; }
-            .info { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 14px; }
-            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-            th, td { border: 1px solid #cbd5e1; padding: 10px 12px; font-size: 14px; text-align: left; }
-            th { background: #f1f5f9; width: 35%; }
-            .footer { text-align: center; font-size: 12px; color: #64748b; margin-top: 20px; border-top: 1px solid #e2e8f0; padding-top: 10px; }
-          </style>
-        </head>
-        <body>
-          <div class="card">
-            <div class="header">
-              <img src="${fullLogoUrl}" alt="Senthoor Auto Works Logo" />
-              <h2>SENTHOOR AUTO WORKS</h2>
-              <p>Odakkattupudur, Athur, Karur - 639008 | Phone: +91 97875 61810</p>
-              <span class="badge">OFFICIAL SERVICE BOOKING VOUCHER</span>
-            </div>
-            <div class="info">
-              <div><strong>Receipt No:</strong> <span style="color:#c41e3a;">${receiptNo}</span></div>
-              <div><strong>Date:</strong> ${date}</div>
-            </div>
-            <table>
-              <tr><th>Customer Name</th><td>${custName}</td></tr>
-              <tr><th>Phone Number</th><td>${custPhone}</td></tr>
-              <tr><th>Vehicle Model</th><td>${custCar}</td></tr>
-              <tr><th>Requested Service</th><td style="font-weight:bold; color:#c41e3a;">${custService}</td></tr>
-              <tr><th>Symptoms / Notes</th><td>${custNotes}</td></tr>
-              <tr><th>Booking Status</th><td>Pending Workshop Confirmation</td></tr>
-            </table>
-            <div class="footer">
-              <p>Thank you for choosing Senthoor Auto Works! Please show this voucher at our workshop.</p>
-            </div>
-          </div>
-          <script>
-            window.onload = function() {
-              window.print();
-            };
-          </script>
-        </body>
-        </html>
-      `);
-      printWin.document.close();
+  // 5. Print Receipt Button
+  const btnPrintReceipt = document.getElementById('btnPrintReceipt');
+  if (btnPrintReceipt) {
+    btnPrintReceipt.addEventListener('click', () => {
+      window.print();
     });
   }
+
+  // 6. Lightbox Gallery Modal Handler
+  const lightboxModal = document.getElementById('lightboxModal');
+  if (lightboxModal) {
+    lightboxModal.addEventListener('show.bs.modal', (e) => {
+      const trigger = e.relatedTarget;
+      if (!trigger) return;
+
+      const imgSrc = trigger.getAttribute('data-img-src');
+      const imgTitle = trigger.getAttribute('data-img-title');
+
+      const modalImg = document.getElementById('lightboxImg');
+      const modalTitle = document.getElementById('lightboxTitle');
+
+      if (modalImg && imgSrc) modalImg.src = imgSrc;
+      if (modalTitle && imgTitle) modalTitle.textContent = imgTitle;
+    });
+  }
+
+  // 7. Navigation Active Link & Scroll Spy
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link-custom, .mobile-nav-btn');
+
+  function highlightNavOnScroll() {
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(current => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.offsetTop - 120;
+      const sectionId = current.getAttribute('id');
+
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', highlightNavOnScroll);
 });
