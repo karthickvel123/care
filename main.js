@@ -1,64 +1,78 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Dynamic Year
+  // 1. Dynamic copyright year
   const yearEl = document.getElementById('year');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // 2. Smart Logo Detector for exact uploaded filenames
+  const logoCandidates = ['logo.jpg.jpeg', 'logo.jpg%20.jpeg', 'logo.jpg', 'logo.png', 'logo.jpeg'];
+  let activeLogoPath = 'logo.jpg.jpeg';
+
+  function findExactLogo() {
+    let i = 0;
+    function checkNext() {
+      if (i >= logoCandidates.length) return;
+      const img = new Image();
+      img.onload = () => {
+        activeLogoPath = logoCandidates[i];
+        const billLogo = document.getElementById('billHeaderLogo');
+        if (billLogo) billLogo.src = activeLogoPath;
+      };
+      img.onerror = () => {
+        i++;
+        checkNext();
+      };
+      img.src = logoCandidates[i];
+    }
+    checkNext();
   }
+  findExactLogo();
 
-  // 2. Active Logo
-  const activeLogoPath = 'logo.jpg';
-
-  // 3. Mobile App Tab Switcher Engine
-  const tabButtons = document.querySelectorAll('.app-tab-btn, .mobile-nav-item[data-tab]');
+  // 3. Mobile App Tab Switcher Logic
+  const tabBtns = document.querySelectorAll('.app-tab-btn, .mobile-nav-item[data-tab]');
   const appPanes = document.querySelectorAll('.mobile-app-pane');
 
-  function switchTab(targetTabId) {
-    if (!targetTabId) return;
+  function switchTab(tabId) {
+    if (!tabId) return;
 
-    tabButtons.forEach(btn => {
-      if (btn.getAttribute('data-tab') === targetTabId) {
+    // Update Panes
+    appPanes.forEach(pane => {
+      pane.classList.remove('active');
+      if (pane.id === tabId) {
+        pane.classList.add('active');
+      }
+    });
+
+    // Update Active Tab Buttons
+    tabBtns.forEach(btn => {
+      if (btn.getAttribute('data-tab') === tabId) {
         btn.classList.add('active');
-        if (btn.hasAttribute('aria-selected')) {
-          btn.setAttribute('aria-selected', 'true');
-        }
       } else {
         btn.classList.remove('active');
-        if (btn.hasAttribute('aria-selected')) {
-          btn.setAttribute('aria-selected', 'false');
-        }
       }
     });
-
-    appPanes.forEach(pane => {
-      if (pane.id === targetTabId) {
-        pane.classList.add('active');
-      } else {
-        pane.classList.remove('active');
-      }
-    });
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  tabButtons.forEach(btn => {
+  tabBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      const targetTab = btn.getAttribute('data-tab');
-      if (targetTab) {
+      const tabId = btn.getAttribute('data-tab');
+      if (tabId) {
         e.preventDefault();
-        switchTab(targetTab);
+        switchTab(tabId);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
   });
 
-  // 4. Desktop Navbar Link Interceptor for Mobile Tabs
-  const navLinks = document.querySelectorAll('.navbar-nav .nav-link, .navbar-brand');
+  // 4. Navbar link handler (Desktop & Mobile)
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
-      
-      if (href === '#home' || href === '#about' || href === '#why-us') {
+      if (!href || href.startsWith('http')) return;
+
+      if (href === '#why-us' || href === '#about' || href === '#home') {
         switchTab('pane-home');
       } else if (href === '#services') {
         switchTab('pane-services');
@@ -83,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const serviceName = btn.getAttribute('data-service');
-      
+
       switchTab('pane-contact');
 
       const serviceSelect = document.getElementById('service');
@@ -148,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `🚗 *Car Model:* ${car}\n` +
         `🛠️ *Service Needed:* ${service}\n` +
         `📝 *Notes:* ${notes}\n\n` +
-        `Please confirm my appointment slot at Odakkattupudur, Athur, Karur.`;
+        `Please confirm my appointment slot!`;
 
       currentWhatsAppUrl = `https://wa.me/919787561810?text=${encodeURIComponent(message)}`;
 
@@ -157,6 +171,8 @@ document.addEventListener('DOMContentLoaded', () => {
         receiptContainer.classList.remove('d-none');
         receiptContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+
+      form.reset();
     });
   }
 

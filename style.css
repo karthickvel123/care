@@ -1,340 +1,224 @@
 :root {
-  --red: #c41e3a;
-  --red-hover: #9e142c;
-  --red-subtle: #fde8eb;
-  --dark: #1e293b;
-  --dark-surface: #0f172a;
-  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'Rajdhani', sans-serif;
+  --primary-red: #c41e3a;
+  --secondary-dark: #111111;
+  --light-bg: #f8f9fa;
+  --text-dark: #212529;
 }
 
 body {
-  font-family: var(--font-main);
-  color: #334155;
-  background-color: #f8fafc;
-  line-height: 1.5;
-  -webkit-tap-highlight-color: transparent;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  padding-bottom: 60px;
+  /* Space for mobile bottom bar */
 }
 
-.font-mono { font-family: var(--font-mono); letter-spacing: 0.5px; }
-.fs-7 { font-size: 0.85rem; }
-.fs-8 { font-size: 0.75rem; }
-.max-w-700 { max-width: 700px; }
-.bg-red { background-color: var(--red) !important; }
-.text-red { color: var(--red) !important; }
-.bg-red-subtle { background-color: var(--red-subtle) !important; }
-
-/* Navbar Logo */
-.navbar-brand-logo {
-  height: 42px;
-  width: 42px;
-  border-radius: 6px;
-  object-fit: cover;
-  border: 1px solid #e2e8f0;
+@media (min-width: 992px) {
+  body {
+    padding-bottom: 0;
+  }
 }
 
-/* Buttons */
+.font-mono {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.text-red {
+  color: var(--primary-red) !important;
+}
+
+.bg-red {
+  background-color: var(--primary-red) !important;
+}
+
 .btn-red {
-  background-color: var(--red);
-  color: #ffffff;
-  border: 1px solid var(--red);
-  transition: all 0.2s ease-in-out;
-}
-
-.btn-red:hover, .btn-red:focus {
-  background-color: var(--red-hover);
-  border-color: var(--red-hover);
+  background-color: var(--primary-red);
+  border-color: var(--primary-red);
   color: #ffffff;
 }
 
-/* Service Card */
+.btn-red:hover {
+  background-color: #a0172e;
+  border-color: #a0172e;
+  color: #ffffff;
+}
+
+.fs-7 {
+  font-size: 0.85rem;
+}
+
+.fs-8 {
+  font-size: 0.75rem;
+}
+
+.max-w-700 {
+  max-width: 700px;
+}
+
+.w-35 {
+  width: 35%;
+}
+
+/* Service Card Hover */
 .service-card {
-  border-radius: 12px;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--red) !important;
-  box-shadow: 0 10px 20px rgba(196, 30, 58, 0.1) !important;
+  transform: translateY(-4px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Continuous Moving Logo Banner */
-.moving-ticker-container {
-  width: 100%;
-  overflow: hidden;
-  background: #0f172a;
-  border-bottom: 1px solid #334155;
+/* Tab Panes */
+.mobile-app-pane {
+  display: none;
 }
 
-.moving-ticker-track {
+.mobile-app-pane.active {
+  display: block;
+}
+
+/* Mobile App Top Sub-Header Tabs */
+.mobile-app-tabs-container {
   display: flex;
-  width: max-content;
-  animation: tickerScroll 24s linear infinite;
+  justify-content: space-around;
+  border-top: 1px solid #e9ecef;
 }
 
-.moving-ticker-container:hover .moving-ticker-track {
-  animation-play-state: paused;
+@media (min-width: 992px) {
+  .mobile-app-tabs-container {
+    display: none;
+  }
 }
 
-.ticker-item {
-  padding: 0 1.25rem;
-  white-space: nowrap;
-}
-
-@keyframes tickerScroll {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-/* Hero Section */
-.hero-video-wrapper {
-  position: relative;
-  background: radial-gradient(circle at 80% 20%, rgba(196, 30, 58, 0.2) 0%, transparent 60%),
-              radial-gradient(circle at 10% 80%, rgba(30, 41, 59, 0.9) 0%, transparent 60%),
-              #0f172a;
-  overflow: hidden;
-}
-
-.hero-video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(15, 23, 42, 0.7);
-  z-index: 1;
-}
-
-.hero-video-content {
-  position: relative;
-  z-index: 2;
-}
-
-/* Mobile App Segmented Tab Bar */
 .mobile-app-tabs {
-  background: #ffffff;
-  padding: 6px;
-  border-radius: 12px;
   display: flex;
-  gap: 4px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  border: 1px solid #e2e8f0;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .app-tab-btn {
-  flex: 1;
+  background: none;
   border: none;
-  background: transparent;
-  padding: 8px 4px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #64748b;
-  border-radius: 8px;
+  padding: 6px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  transition: all 0.2s ease;
+  font-size: 0.75rem;
+  color: #6c757d;
+  font-weight: 600;
+  border-radius: 4px;
 }
 
 .app-tab-btn i {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  margin-bottom: 2px;
 }
 
 .app-tab-btn.active {
-  background: var(--red);
-  color: #ffffff;
-  box-shadow: 0 4px 10px rgba(196, 30, 58, 0.25);
+  color: var(--primary-red);
+  background-color: #fbebee;
 }
 
-/* Mobile App Bottom Navigation Bar */
+/* Mobile Bottom Navigation Bar */
 .mobile-bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
-  right: 0;
-  height: 65px;
-  background: rgba(30, 41, 59, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  z-index: 1060;
+  width: 100%;
+  height: 60px;
+  background: #ffffff;
+  border-top: 1px solid #dee2e6;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1040;
+}
+
+@media (min-width: 992px) {
+  .mobile-bottom-nav {
+    display: none;
+  }
 }
 
 .mobile-nav-item {
-  color: #94a3b8;
-  text-decoration: none;
+  background: none;
+  border: none;
+  color: #6c757d;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: 0.7rem;
-  font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  border: none;
-  background: transparent;
+  text-decoration: none;
+  width: 20%;
 }
 
 .mobile-nav-item i {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   margin-bottom: 2px;
 }
 
-.mobile-nav-item.active,
-.mobile-nav-item:hover {
-  color: #ffffff;
+.mobile-nav-item.active {
+  color: var(--primary-red);
+  font-weight: 700;
 }
 
 .mobile-nav-item.highlight-whatsapp {
-  color: #ffffff;
+  color: #25d366;
+  font-weight: 700;
+}
+
+/* Desktop Floating Action Buttons */
+.float-btn {
+  position: fixed;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1030;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.float-btn:hover {
+  transform: scale(1.1);
+}
+
+@media (min-width: 992px) {
+  .float-btn {
+    display: flex;
+  }
+}
+
+.float-whatsapp {
+  bottom: 80px;
   background-color: #25d366;
-  padding: 8px 14px;
-  border-radius: 20px;
 }
 
-/* ================= DIGITAL BOOKING RECEIPT / BILL ================= */
+.float-call {
+  bottom: 20px;
+  background-color: var(--primary-red);
+}
+
+/* Digital Bill Styling */
 .bill-receipt-card {
-  background: #ffffff;
-  border: 2px dashed #cbd5e1;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-.bill-header {
-  border-bottom: 2px solid var(--red);
-  padding-bottom: 12px;
-  margin-bottom: 16px;
-}
-
-.receipt-brand-logo {
-  height: 38px;
-  width: 38px;
-  border-radius: 4px;
-  object-fit: cover;
-  border: 1px solid #cbd5e1;
+  border: 2px dashed #c41e3a !important;
+  background-color: #ffffff;
 }
 
 .bill-table th {
-  background: #f1f5f9;
-  font-size: 0.8rem;
-  text-transform: uppercase;
+  background-color: #f8f9fa;
+  font-size: 0.85rem;
 }
 
 .bill-table td {
   font-size: 0.85rem;
 }
 
-/* ================= 100% PERFECT 1-PAGE PRINT VOUCHER FIX ================= */
 @media print {
-  html, body {
-    visibility: hidden !important;
-    background: #ffffff !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  #bookingReceiptContainer,
-  #bookingReceiptContainer * {
-    visibility: visible !important;
-  }
-
-  #bookingReceiptContainer {
-    position: fixed !important;
-    left: 0 !important;
-    top: 0 !important;
-    width: 100% !important;
-    max-width: 700px !important;
-    height: auto !important;
-    margin: 0 auto !important;
-    padding: 24px !important;
-    background: #ffffff !important;
-    z-index: 9999999 !important;
-    box-shadow: none !important;
-  }
-
-  .bill-receipt-card {
-    border: 2px solid #000000 !important;
-    box-shadow: none !important;
-    padding: 20px !important;
-    background: #ffffff !important;
-  }
-
   .no-print {
     display: none !important;
-    visibility: hidden !important;
   }
-}
-
-/* Mobile View Adjustments */
-@media (max-width: 991.98px) {
-  body {
-    padding-bottom: 70px;
-  }
-
-  .mobile-app-pane {
-    display: none;
-  }
-
-  .mobile-app-pane.active {
-    display: block !important;
-    animation: fadeIn 0.25s ease-in-out;
-  }
-
-  .display-4 {
-    font-size: 2.2rem;
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Desktop layout */
-@media (min-width: 992px) {
-  .mobile-app-tabs-container {
-    display: none !important;
-  }
-
-  .mobile-app-pane {
-    display: block !important;
-  }
-
-  .mobile-bottom-nav {
-    display: none !important;
-  }
-
-  .float-btn {
-    position: fixed;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1050;
-    text-decoration: none;
-    transition: transform 0.2s ease;
-  }
-
-  .float-btn:hover {
-    transform: scale(1.1);
-    color: #ffffff;
-  }
-
-  .float-whatsapp { bottom: 85px; background-color: #25d366; }
-  .float-call { bottom: 25px; background-color: var(--red); }
-}
-
-@media (max-width: 991.98px) {
-  .float-btn { display: none !important; }
 }
