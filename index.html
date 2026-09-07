@@ -3,880 +3,696 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Senthoor Auto Works (செந்தூர் ஆட்டோ ஒர்க்ஸ்) – Premier Multi-Brand Car Care Workshop in Odakkattupudur, Athur, Karur 639008. Complete car servicing, 3D wheel alignment, denting, painting, AC service, electrical wiring & computerized engine diagnostics." />
-  <title>Senthoor Auto Works | Multi-Brand Car Service | Karur 639008</title>
+  <meta name="description" content="Senthoor Auto Works – Premium car service workshop in Odakkattupudur, Athur, Karur, Tamil Nadu 639008. Complete car care, engine diagnostics, wheel alignment, denting, and painting." />
+  <title>Senthoor Auto Works | Car Service & Maintenance | Karur 639008</title>
 
-  <!-- Google Fonts: Outfit, Inter & Rajdhani -->
+  <!-- Google Fonts: Inter & Rajdhani -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
 
   <!-- Bootstrap 5 CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css?v=3.2" />
+  <link rel="stylesheet" href="style.css?v=aug1" />
 </head>
 <body>
 
   <!-- ================= TOP UTILITY BAR ================= -->
-  <div class="top-bar py-2 text-white">
-    <div class="container-xl d-flex justify-content-between align-items-center flex-wrap gap-2">
+  <div class="bg-dark text-white py-2 fs-8 border-bottom border-secondary">
+    <div class="container-xl d-flex justify-content-between align-items-center">
       <div class="d-flex align-items-center gap-3">
-        <a href="https://www.google.com/maps/place/Senthoor+Auto+Works/@10.9853746,78.0303491,16.93z/data=!4m6!3m5!1s0x3baa2f007b24e005:0x4771382ccff15f46!8m2!3d10.985304!4d78.032888!16s%2Fg%2F11z8j_g0k7" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-none d-flex align-items-center gap-1 fs-7">
-          <i class="fas fa-location-dot text-red" aria-hidden="true"></i>
+        <a href="https://www.google.com/maps/place/Senthoor+Auto+Works/@10.9853746,78.0303491,16.93z/data=!4m6!3m5!1s0x3baa2f007b24e005:0x4771382ccff15f46!8m2!3d10.985304!4d78.032888!16s%2Fg%2F11z8j_g0k7" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-none d-flex align-items-center gap-1">
+          <i class="fas fa-location-dot text-danger" aria-hidden="true"></i>
           <span>Odakkattupudur, Athur, Karur - 639008</span>
-          <span class="badge bg-danger-subtle text-red ms-1 fs-8">Maps <i class="fas fa-arrow-up-right-from-square fs-8"></i></span>
+          <span class="badge bg-danger ms-1">Maps <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
         </a>
-        <span class="d-none d-md-inline text-muted">|</span>
-        <span class="d-none d-md-inline fs-7 text-muted">
-          <i class="fas fa-clock text-red me-1"></i> Mon - Sat: 10:00 AM - 7:00 PM
+        <span class="d-none d-md-inline text-secondary">|</span>
+        <span class="d-none d-md-inline text-light">
+          <i class="fas fa-clock text-danger me-1" aria-hidden="true"></i> Mon - Sat: 10:00 AM - 7:00 PM
         </span>
       </div>
 
-      <div class="d-flex align-items-center gap-3">
-        <div id="workshopStatusBadge" class="d-flex align-items-center gap-2 fs-7 fw-semibold">
-          <span class="pulse-indicator" id="statusPulse"></span>
-          <span id="statusText" class="text-green">Open Today • 10 AM - 7 PM</span>
-        </div>
-        <a href="tel:+919787561810" class="text-white text-decoration-none fw-bold fs-7 ms-2">
-          <i class="fas fa-phone text-red me-1"></i> +91 97875 61810
+      <div class="d-flex align-items-center gap-2">
+        <span class="badge bg-success-subtle text-success border border-success d-none d-sm-inline">Open Today</span>
+        <a href="tel:+919787561810" class="text-white text-decoration-none fw-bold">
+          <i class="fas fa-phone text-danger me-1" aria-hidden="true"></i> +91 97875 61810
         </a>
       </div>
     </div>
   </div>
 
   <!-- ================= MAIN HEADER NAVBAR ================= -->
-  <header class="header-sticky py-2">
+  <header class="sticky-top bg-white border-bottom shadow-sm">
     <div class="container-xl">
-      <nav class="navbar navbar-expand-lg navbar-dark p-0" aria-label="Main Navigation">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
-          <div class="brand-logo-frame">
-            <img src="logo.jpg" alt="Senthoor Auto Works Logo" class="brand-logo-img" />
-          </div>
+      <nav class="navbar navbar-expand-lg navbar-light py-2" aria-label="Main Navigation">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#home" data-tab="pane-home">
+          <img src="logo.jpg" alt="Senthoor Auto Works Logo" id="navbarLogo" class="navbar-brand-logo" />
           <div>
-            <span class="font-heading fw-bold text-white fs-4 d-block lh-1 brand-title">SENTHOOR AUTO WORKS</span>
-            <span class="text-muted fs-8 font-mono text-uppercase">செந்தூர் ஆட்டோ ஒர்க்ஸ் • Multi-Brand Car Care</span>
+            <span class="font-mono fw-bold text-dark fs-4 d-block lh-1">SENTHOOR AUTO WORKS</span>
+            <small class="text-muted fs-8 font-mono text-uppercase">Multi-Brand Car Care Workshop</small>
           </div>
         </a>
 
-        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars fs-3 text-white"></i>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-1 fs-6">
-            <li class="nav-item"><a class="nav-link nav-link-custom active" href="#home">Home</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#services">Services</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#gallery">Real Works</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#why-us">Why Us</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#reviews">Reviews</a></li>
-            <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact">Estimate & Booking</a></li>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-semibold fs-6 gap-lg-2">
+            <li class="nav-item"><a class="nav-link text-dark active" href="#home" data-tab="pane-home">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-dark" href="#about" data-tab="pane-home">About Us</a></li>
+            <li class="nav-item"><a class="nav-link text-dark" href="#services" data-tab="pane-services">Services</a></li>
+            <li class="nav-item"><a class="nav-link text-dark" href="#why-us" data-tab="pane-home">Why Choose Us</a></li>
+            <li class="nav-item"><a class="nav-link text-dark" href="#gallery" data-tab="pane-gallery">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link text-dark" href="#contact" data-tab="pane-contact">Location & Contact</a></li>
           </ul>
-          <div class="ms-lg-3 d-flex gap-2">
-            <a href="tel:+919787561810" class="btn btn-red-action btn-sm d-flex align-items-center gap-1">
-              <i class="fas fa-phone-volume"></i>
-              <span>Call Workshop</span>
+          <div class="ms-lg-3">
+            <a href="tel:+919787561810" class="btn btn-red px-3 py-2 rounded-1 fw-bold fs-7">
+              <i class="fas fa-phone me-1" aria-hidden="true"></i> Call Workshop
             </a>
           </div>
         </div>
       </nav>
+
+      <!-- Mobile App Top Tab Switcher -->
+      <div class="mobile-app-tabs-container py-2">
+        <div class="mobile-app-tabs" role="tablist">
+          <button class="app-tab-btn active" data-tab="pane-home" role="tab" aria-selected="true">
+            <i class="fas fa-house" aria-hidden="true"></i>
+            <span>Overview</span>
+          </button>
+          <button class="app-tab-btn" data-tab="pane-services" role="tab" aria-selected="false">
+            <i class="fas fa-wrench" aria-hidden="true"></i>
+            <span>Services</span>
+          </button>
+          <button class="app-tab-btn" data-tab="pane-gallery" role="tab" aria-selected="false">
+            <i class="fas fa-images" aria-hidden="true"></i>
+            <span>Gallery</span>
+          </button>
+          <button class="app-tab-btn" data-tab="pane-contact" role="tab" aria-selected="false">
+            <i class="fas fa-location-dot" aria-hidden="true"></i>
+            <span>Contact</span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- ================= CONTINUOUS MOVING TICKER BANNER ================= -->
-  <div class="ticker-banner">
-    <div class="ticker-track">
+  <!-- ================= CONTINUOUS MOVING LOGO BANNER ================= -->
+  <div class="moving-ticker-container py-2">
+    <div class="moving-ticker-track">
       <!-- Group 1 -->
       <div class="d-flex align-items-center">
-        <div class="ticker-item text-white"><i class="fas fa-car text-red me-2"></i>SENTHOOR AUTO WORKS</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-wrench text-red me-2"></i>PERIODIC CAR SERVICING</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-dharmachakra text-red me-2"></i>3D WHEEL ALIGNMENT & BALANCING</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-spray-can text-red me-2"></i>PREMIUM DENTING & PAINTING</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-bolt text-red me-2"></i>ELECTRICAL WIRING & HARNESS REPAIR</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-snowflake text-red me-2"></i>CAR AC DIAGNOSTICS & REFILL</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-microchip text-red me-2"></i>COMPUTERIZED ENGINE DIAGNOSTICS</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-shield-halved text-red me-2"></i>INSURANCE CLAIM ASSISTANCE</div>
-        <div class="ticker-item text-muted">•</div>
+        <div class="ticker-item"><span class="text-white font-mono fw-bold fs-7"><i class="fas fa-car text-danger me-2"></i>SENTHOOR AUTO WORKS</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
+        <div class="ticker-item"><span class="text-light font-mono fs-7"><i class="fas fa-wrench text-danger me-2"></i>CAR SERVICING</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
+        <div class="ticker-item"><span class="text-light font-mono fs-7"><i class="fas fa-dharmachakra text-danger me-2"></i>WHEEL ALIGNMENT</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
+        <div class="ticker-item"><span class="text-light font-mono fs-7"><i class="fas fa-spray-can text-danger me-2"></i>DENTING & PAINTING</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
+        <div class="ticker-item"><span class="text-light font-mono fs-7"><i class="fas fa-bolt text-danger me-2"></i>ELECTRICAL WIRING</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
+        <div class="ticker-item"><span class="text-light font-mono fs-7"><i class="fas fa-snowflake text-danger me-2"></i>AC SERVICE</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
+        <div class="ticker-item"><span class="text-light font-mono fs-7"><i class="fas fa-microchip text-danger me-2"></i>ENGINE DIAGNOSTICS</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
       </div>
-      <!-- Group 2 (Seamless Duplicate) -->
+      <!-- Group 2 (Exact Duplicate for Seamless Loop) -->
       <div class="d-flex align-items-center" aria-hidden="true">
-        <div class="ticker-item text-white"><i class="fas fa-car text-red me-2"></i>SENTHOOR AUTO WORKS</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-wrench text-red me-2"></i>PERIODIC CAR SERVICING</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-dharmachakra text-red me-2"></i>3D WHEEL ALIGNMENT & BALANCING</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-spray-can text-red me-2"></i>PREMIUM DENTING & PAINTING</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-bolt text-red me-2"></i>ELECTRICAL WIRING & HARNESS REPAIR</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-snowflake text-red me-2"></i>CAR AC DIAGNOSTICS & REFILL</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-microchip text-red me-2"></i>COMPUTERIZED ENGINE DIAGNOSTICS</div>
-        <div class="ticker-item text-muted">•</div>
-        <div class="ticker-item text-muted"><i class="fas fa-shield-halved text-red me-2"></i>INSURANCE CLAIM ASSISTANCE</div>
-        <div class="ticker-item text-muted">•</div>
+        <div class="ticker-item"><span class="text-white font-mono fw-bold fs-7"><i class="fas fa-car text-danger me-2"></i>SENTHOOR AUTO WORKS</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
+        <div class="ticker-item"><span class="text-light font-mono fs-7"><i class="fas fa-wrench text-danger me-2"></i>CAR SERVICING</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
+        <div class="ticker-item"><span class="text-light font-mono fs-7"><i class="fas fa-dharmachakra text-danger me-2"></i>WHEEL ALIGNMENT</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
+        <div class="ticker-item"><span class="text-light font-mono fs-7"><i class="fas fa-spray-can text-danger me-2"></i>DENTING & PAINTING</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
+        <div class="ticker-item"><span class="text-light font-mono fs-7"><i class="fas fa-bolt text-danger me-2"></i>ELECTRICAL WIRING</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
+        <div class="ticker-item"><span class="text-light font-mono fs-7"><i class="fas fa-snowflake text-danger me-2"></i>AC SERVICE</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
+        <div class="ticker-item"><span class="text-light font-mono fs-7"><i class="fas fa-microchip text-danger me-2"></i>ENGINE DIAGNOSTICS</span></div>
+        <div class="ticker-item"><span class="text-white-50">•</span></div>
       </div>
     </div>
   </div>
 
   <main>
-    <!-- ================= HERO SECTION ================= -->
-    <section class="hero-wrapper py-5 text-white" id="home">
-      <div class="hero-overlay"></div>
+    <!-- ================= TAB 1: OVERVIEW & HOME ================= -->
+    <div class="mobile-app-pane active" id="pane-home" role="tabpanel">
+      
+      <!-- ================= HERO SECTION ================= -->
+      <section class="hero-video-wrapper py-5 text-white" id="home">
+        <div class="hero-video-overlay"></div>
 
-      <div class="container-xl hero-content py-4">
-        <div class="row align-items-center g-5">
-          <!-- Left Column -->
-          <div class="col-lg-7">
-            <div class="d-inline-flex align-items-center gap-2 px-3 py-1 bg-red-subtle border border-danger border-opacity-25 rounded-pill mb-3">
-              <i class="fas fa-shield-halved text-red"></i>
-              <span class="text-red font-mono fs-7 fw-bold">KARUR'S TRUSTED MULTI-BRAND CAR CARE WORKSHOP</span>
-            </div>
+        <div class="container-xl hero-video-content py-3">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+              <span class="badge bg-danger text-white font-mono px-3 py-2 text-uppercase mb-2">Your Car • Our Care</span>
+              <h1 class="display-4 fw-bold text-white mb-2">Drive With <span class="text-danger">Confidence</span></h1>
+              <p class="lead text-light mb-4 fs-6">
+                We provide complete car care solutions with advanced equipment, skilled technicians, and 100% genuine spare parts in Odakkattupudur, Athur, Karur.
+              </p>
 
-            <h1 class="display-3 font-heading fw-extrabold text-white mb-3 lh-1">
-              Your Car, <span class="text-red">Our Care.</span><br />
-              <span class="fs-2 fw-semibold text-light">Drive With Total Confidence</span>
-            </h1>
-            <p class="lead text-muted mb-4 fs-5 max-w-700">
-              Expert technicians, hydraulic service bays, computerized engine diagnostics, precision denting & painting, in-cabin electrical rewiring, and 100% genuine spare parts in Odakkattupudur, Athur, Karur.
-            </p>
-
-            <!-- Quick Action Buttons -->
-            <div class="d-flex flex-wrap gap-3 mb-4">
-              <a href="tel:+919787561810" class="btn btn-red-action d-inline-flex align-items-center gap-2">
-                <i class="fas fa-phone-volume fs-5"></i>
-                <span>Call +91 97875 61810</span>
-              </a>
-              <a href="https://wa.me/919787561810?text=Hi%20Senthoor%20Auto%20Works,%20I%20would%20like%20to%20book%20a%20car%20service." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp d-inline-flex align-items-center gap-2">
-                <i class="fab fa-whatsapp fs-5"></i>
-                <span>WhatsApp Booking</span>
-              </a>
-              <a href="#contact" class="btn btn-outline-glass d-inline-flex align-items-center gap-2">
-                <i class="fas fa-calculator text-red"></i>
-                <span>Instant Digital Estimate</span>
-              </a>
-            </div>
-
-            <!-- Feature Badges -->
-            <div class="row g-2 text-center pt-2">
-              <div class="col-6 col-sm-3">
-                <div class="glass-panel p-2 text-center h-100">
-                  <i class="fas fa-user-gear text-red fs-5 d-block mb-1"></i>
-                  <span class="fw-bold text-white fs-8">Certified Mechanics</span>
+              <!-- 1-Tap Mobile Action Bar -->
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <a href="tel:+919787561810" class="btn btn-red w-100 py-2 fw-bold fs-7 rounded-2">
+                    <i class="fas fa-phone me-1" aria-hidden="true"></i> Call 97875 61810
+                  </a>
                 </div>
-              </div>
-              <div class="col-6 col-sm-3">
-                <div class="glass-panel p-2 text-center h-100">
-                  <i class="fas fa-shield-check text-red fs-5 d-block mb-1"></i>
-                  <span class="fw-bold text-white fs-8">100% OEM Spares</span>
+                <div class="col-6">
+                  <a href="https://wa.me/919787561810" target="_blank" rel="noopener noreferrer" class="btn btn-success w-100 py-2 fw-bold fs-7 rounded-2">
+                    <i class="fab fa-whatsapp me-1" aria-hidden="true"></i> WhatsApp Us
+                  </a>
                 </div>
-              </div>
-              <div class="col-6 col-sm-3">
-                <div class="glass-panel p-2 text-center h-100">
-                  <i class="fas fa-indian-rupee-sign text-red fs-5 d-block mb-1"></i>
-                  <span class="fw-bold text-white fs-8">Transparent Pricing</span>
-                </div>
-              </div>
-              <div class="col-6 col-sm-3">
-                <div class="glass-panel p-2 text-center h-100">
-                  <i class="fas fa-clock-rotate-left text-red fs-5 d-block mb-1"></i>
-                  <span class="fw-bold text-white fs-8">Quick Turnaround</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column: Real Workshop Frontage Showcase -->
-          <div class="col-lg-5">
-            <div class="hero-media-card position-relative">
-              <div class="hero-image-box" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img-src="workshop-front.jpg" data-img-title="Senthoor Auto Works Main Workshop Bay (Odakkattupudur, Athur, Karur)">
-                <img src="workshop-front.jpg" alt="Senthoor Auto Works Main Workshop Facade" class="hero-featured-photo" />
-                <div class="hero-image-badge">
-                  <i class="fas fa-circle-check text-green me-1"></i> Verified Workshop Facility
-                </div>
-                <div class="hero-expand-btn">
-                  <i class="fas fa-expand"></i> View Full Photo
-                </div>
-              </div>
-              <div class="p-3 bg-card-bottom">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                  <h3 class="font-heading fs-5 fw-bold text-white mb-0">Odakkattupudur Workshop</h3>
-                  <span class="badge bg-danger font-mono">Karur 639008</span>
-                </div>
-                <p class="text-muted fs-7 mb-0">Dual service bays equipped with 2-post hydraulic car lift, engine crane, and OBD-II diagnostics.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= ABOUT US & OFFICIAL FACILITY ================= -->
-    <section class="py-5 bg-surface border-bottom border-secondary border-opacity-25" id="about">
-      <div class="container-xl py-3">
-        <div class="row align-items-center g-5">
-          <!-- Left: Official Promo Banner & Facilities Display -->
-          <div class="col-lg-6">
-            <div class="about-poster-wrapper" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img-src="promo-banner.jpg" data-img-title="Senthoor Auto Works Official Service Chart & Guarantee">
-              <img src="promo-banner.jpg" alt="Senthoor Auto Works Official Banner" class="img-fluid rounded-3 shadow-lg border border-secondary border-opacity-25 w-100" />
-              <div class="poster-overlay-badge">
-                <i class="fas fa-award text-red me-1"></i> Multi-Brand Authorized Service
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: Detailed About Information -->
-          <div class="col-lg-6">
-            <span class="text-red font-mono text-uppercase fw-bold fs-7">About Senthoor Auto Works</span>
-            <h2 class="display-5 font-heading fw-bold text-white mt-1 mb-3">Complete Auto Care Partner in Karur</h2>
-            <p class="text-muted fs-6 mb-4">
-              Conveniently located at <strong>Odakkattupudur, Athur, Karur (639008)</strong>, <strong>Senthoor Auto Works (செந்தூர் ஆட்டோ ஒர்க்ஸ்)</strong> is a premier multi-brand car care facility. From routine scheduled maintenance and 3D wheel alignment to complex engine diagnostics, in-cabin electrical harness restoration, and precision denting-painting, we treat your car with factory-grade excellence.
-            </p>
-
-            <div class="row g-3">
-              <div class="col-sm-6">
-                <div class="glass-panel p-3 h-100">
-                  <div class="d-flex gap-3 align-items-start">
-                    <div class="service-icon-box flex-shrink-0 mb-0">
-                      <i class="fas fa-microchip"></i>
-                    </div>
-                    <div>
-                      <h3 class="fs-6 fw-bold text-white mb-1">OBD-II Scanning</h3>
-                      <p class="text-muted fs-8 mb-0">Advanced diagnostic scanners to isolate electrical & engine sensor faults accurately.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="glass-panel p-3 h-100">
-                  <div class="d-flex gap-3 align-items-start">
-                    <div class="service-icon-box flex-shrink-0 mb-0">
-                      <i class="fas fa-spray-can"></i>
-                    </div>
-                    <div>
-                      <h3 class="fs-6 fw-bold text-white mb-1">Tinkering & Paint</h3>
-                      <p class="text-muted fs-8 mb-0">High-grade dent pulling, anti-rust undercoating, and computer color matching.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="glass-panel p-3 h-100">
-                  <div class="d-flex gap-3 align-items-start">
-                    <div class="service-icon-box flex-shrink-0 mb-0">
-                      <i class="fas fa-bolt"></i>
-                    </div>
-                    <div>
-                      <h3 class="fs-6 fw-bold text-white mb-1">Electrical Specialist</h3>
-                      <p class="text-muted fs-8 mb-0">Complete dashboard, ECU, wiring loom, and central electronics repair.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="glass-panel p-3 h-100">
-                  <div class="d-flex gap-3 align-items-start">
-                    <div class="service-icon-box flex-shrink-0 mb-0">
-                      <i class="fas fa-file-invoice-dollar"></i>
-                    </div>
-                    <div>
-                      <h3 class="fs-6 fw-bold text-white mb-1">Insurance Claims</h3>
-                      <p class="text-muted fs-8 mb-0">Assistance with accidental insurance survey, cashless claim, and total body restore.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= CORE SERVICES SHOWCASE ================= -->
-    <section class="py-5" id="services">
-      <div class="container-xl py-3">
-        <div class="text-center max-w-700 mx-auto mb-5">
-          <span class="text-red font-mono text-uppercase fw-bold fs-7">Complete Automobile Solutions</span>
-          <h2 class="display-5 font-heading fw-bold text-white mt-1 mb-2">Our Specialized Services</h2>
-          <p class="text-muted fs-6">Click any service to instantly generate an estimate and book your appointment with our team.</p>
-        </div>
-
-        <div class="row g-4">
-          <!-- Service 1: Periodic Servicing -->
-          <div class="col-lg-4 col-md-6">
-            <div class="service-card glass-panel-hover">
-              <div>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <div class="service-icon-box mb-0">
-                    <i class="fas fa-car-side"></i>
-                  </div>
-                  <span class="badge bg-danger-subtle text-red font-mono">From ₹1,499</span>
-                </div>
-                <h3 class="fs-5 fw-bold text-white mb-2">Periodic Car Servicing</h3>
-                <p class="text-muted fs-7 mb-3">Engine oil replacement, synthetic lube flush, oil filter & air filter change, 40-point safety inspection, fluid top-ups, and complete water wash.</p>
-                <ul class="service-checklist mb-3">
-                  <li><i class="fas fa-check text-red me-2"></i>Full synthetic/semi-synthetic oil</li>
-                  <li><i class="fas fa-check text-red me-2"></i>Spark plug & brake check</li>
-                  <li><i class="fas fa-check text-red me-2"></i>Comprehensive multi-point checklist</li>
-                </ul>
-              </div>
-              <button class="btn btn-red-action btn-sm w-100 btn-book-trigger" data-service="Periodic Car Servicing" data-price="1499">
-                <i class="fas fa-receipt me-1"></i> Book & Generate Estimate
-              </button>
-            </div>
-          </div>
-
-          <!-- Service 2: Wheel Alignment -->
-          <div class="col-lg-4 col-md-6">
-            <div class="service-card glass-panel-hover">
-              <div>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <div class="service-icon-box mb-0">
-                    <i class="fas fa-dharmachakra"></i>
-                  </div>
-                  <span class="badge bg-danger-subtle text-red font-mono">From ₹499</span>
-                </div>
-                <h3 class="fs-5 fw-bold text-white mb-2">3D Wheel Alignment & Balancing</h3>
-                <p class="text-muted fs-7 mb-3">High-accuracy 3D computerized camera alignment, dynamic wheel balancing with counterweights, and tyre rotation to maximize tread longevity and road safety.</p>
-                <ul class="service-checklist mb-3">
-                  <li><i class="fas fa-check text-red me-2"></i>Computerized camber/caster/toe</li>
-                  <li><i class="fas fa-check text-red me-2"></i>Vibration-free high speed drive</li>
-                  <li><i class="fas fa-check text-red me-2"></i>Prolongs tyre life by 25%</li>
-                </ul>
-              </div>
-              <button class="btn btn-red-action btn-sm w-100 btn-book-trigger" data-service="3D Wheel Alignment & Balancing" data-price="499">
-                <i class="fas fa-receipt me-1"></i> Book & Generate Estimate
-              </button>
-            </div>
-          </div>
-
-          <!-- Service 3: Denting & Painting -->
-          <div class="col-lg-4 col-md-6">
-            <div class="service-card glass-panel-hover">
-              <div>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <div class="service-icon-box mb-0">
-                    <i class="fas fa-spray-can"></i>
-                  </div>
-                  <span class="badge bg-danger-subtle text-red font-mono">From ₹1,999</span>
-                </div>
-                <h3 class="fs-5 fw-bold text-white mb-2">Denting & Body Painting</h3>
-                <p class="text-muted fs-7 mb-3">Precision metal tinkering, scratch removal, anti-corrosion primer application, and OEM computerized color matching with high-gloss clear coat finish.</p>
-                <ul class="service-checklist mb-3">
-                  <li><i class="fas fa-check text-red me-2"></i>Seamless dent pulling & restoration</li>
-                  <li><i class="fas fa-check text-red me-2"></i>Exact paint hue matching</li>
-                  <li><i class="fas fa-check text-red me-2"></i>High gloss showroom finish</li>
-                </ul>
-              </div>
-              <button class="btn btn-red-action btn-sm w-100 btn-book-trigger" data-service="Denting & Body Painting" data-price="1999">
-                <i class="fas fa-receipt me-1"></i> Book & Generate Estimate
-              </button>
-            </div>
-          </div>
-
-          <!-- Service 4: Electrical & Wiring Overhaul -->
-          <div class="col-lg-4 col-md-6">
-            <div class="service-card glass-panel-hover">
-              <div>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <div class="service-icon-box mb-0">
-                    <i class="fas fa-bolt"></i>
-                  </div>
-                  <span class="badge bg-danger-subtle text-red font-mono">From ₹850</span>
-                </div>
-                <h3 class="fs-5 fw-bold text-white mb-2">Electrical & Wiring Harness Repair</h3>
-                <p class="text-muted fs-7 mb-3">Deep in-cabin wiring diagnostics, dashboard harness troubleshooting, short circuit resolution, sensor continuity testing, and alternator/starter overhaul.</p>
-                <ul class="service-checklist mb-3">
-                  <li><i class="fas fa-check text-red me-2"></i>Cabin & dashboard wire loom trace</li>
-                  <li><i class="fas fa-check text-red me-2"></i>Multimeter electrical testing</li>
-                  <li><i class="fas fa-check text-red me-2"></i>Battery & charging circuit health</li>
-                </ul>
-              </div>
-              <button class="btn btn-red-action btn-sm w-100 btn-book-trigger" data-service="Electrical & Wiring Harness Repair" data-price="850">
-                <i class="fas fa-receipt me-1"></i> Book & Generate Estimate
-              </button>
-            </div>
-          </div>
-
-          <!-- Service 5: AC Service & Refill -->
-          <div class="col-lg-4 col-md-6">
-            <div class="service-card glass-panel-hover">
-              <div>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <div class="service-icon-box mb-0">
-                    <i class="fas fa-snowflake"></i>
-                  </div>
-                  <span class="badge bg-danger-subtle text-red font-mono">From ₹999</span>
-                </div>
-                <h3 class="fs-5 fw-bold text-white mb-2">Car AC Service & Gas Refill</h3>
-                <p class="text-muted fs-7 mb-3">Complete AC compressor inspection, cooling coil cleaning, condenser flush, vacuum leak testing, and genuine R134a refrigerant gas top-up.</p>
-                <ul class="service-checklist mb-3">
-                  <li><i class="fas fa-check text-red me-2"></i>R134a refrigerant gas refill</li>
-                  <li><i class="fas fa-check text-red me-2"></i>Cabin filter anti-bacterial clean</li>
-                  <li><i class="fas fa-check text-red me-2"></i>Instant ice-cold cooling output</li>
-                </ul>
-              </div>
-              <button class="btn btn-red-action btn-sm w-100 btn-book-trigger" data-service="Car AC Service & Gas Refill" data-price="999">
-                <i class="fas fa-receipt me-1"></i> Book & Generate Estimate
-              </button>
-            </div>
-          </div>
-
-          <!-- Service 6: Computerized Engine Diagnostics -->
-          <div class="col-lg-4 col-md-6">
-            <div class="service-card glass-panel-hover">
-              <div>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <div class="service-icon-box mb-0">
-                    <i class="fas fa-microchip"></i>
-                  </div>
-                  <span class="badge bg-danger-subtle text-red font-mono">From ₹799</span>
-                </div>
-                <h3 class="fs-5 fw-bold text-white mb-2">Computer Engine Diagnostics</h3>
-                <p class="text-muted fs-7 mb-3">Full OBD-II diagnostic computer scan, live engine sensor readout, Check Engine Light error code clearing, fuel injection testing, and ECM calibration.</p>
-                <ul class="service-checklist mb-3">
-                  <li><i class="fas fa-check text-red me-2"></i>OBD-II Multi-Brand diagnostic scan</li>
-                  <li><i class="fas fa-check text-red me-2"></i>Check Engine error code diagnosis</li>
-                  <li><i class="fas fa-check text-red me-2"></i>Throttle & fuel sensor calibration</li>
-                </ul>
-              </div>
-              <button class="btn btn-red-action btn-sm w-100 btn-book-trigger" data-service="Computer Engine Diagnostics" data-price="799">
-                <i class="fas fa-receipt me-1"></i> Book & Generate Estimate
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= REAL WORKSHOP GALLERY SHOWCASE ================= -->
-    <section class="py-5 bg-surface border-top border-bottom border-secondary border-opacity-25" id="gallery">
-      <div class="container-xl py-3">
-        <div class="text-center max-w-700 mx-auto mb-4">
-          <span class="text-red font-mono text-uppercase fw-bold fs-7">Real Facility & Ongoing Works</span>
-          <h2 class="display-5 font-heading fw-bold text-white mt-1 mb-2">Our Workshop in Action</h2>
-          <p class="text-muted fs-6">Explore authentic photos of our Odakkattupudur workshop, hydraulic service bays, in-cabin electrical rewiring, and facility equipment.</p>
-        </div>
-
-        <!-- Filter Buttons -->
-        <div class="d-flex justify-content-center flex-wrap gap-2 mb-4 gallery-filter-bar">
-          <button class="btn btn-outline-glass btn-sm active" data-filter="all">All Photos</button>
-          <button class="btn btn-outline-glass btn-sm" data-filter="facility">Workshop Facility</button>
-          <button class="btn btn-outline-glass btn-sm" data-filter="electrical">Electrical & Wiring</button>
-          <button class="btn btn-outline-glass btn-sm" data-filter="banner">Service Charter</button>
-        </div>
-
-        <div class="row g-4 gallery-grid">
-          <!-- Item 1: Real Workshop Facade & Hydraulic Bay -->
-          <div class="col-lg-4 col-md-6 gallery-card" data-category="facility">
-            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img-src="workshop-front.jpg" data-img-title="Senthoor Auto Works Main Workshop Bay (Odakkattupudur, Athur, Karur)">
-              <img src="workshop-front.jpg" alt="Senthoor Auto Works Main Bay & Hydraulic Lift" class="gallery-img" />
-              <div class="gallery-caption">
-                <div>
-                  <span class="badge bg-danger fs-8 mb-1">Workshop Facility</span>
-                  <h4 class="fs-6 fw-bold text-white mb-0">Main Workshop Bay & Hydraulic Lift</h4>
-                  <span class="text-muted fs-8">Odakkattupudur, Athur, Karur (639008)</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 2: Electrical Deep Cabin Strip Down -->
-          <div class="col-lg-4 col-md-6 gallery-card" data-category="electrical">
-            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img-src="gallery1.jpg" data-img-title="Complete In-Cabin Electrical & Wiring Loom Overhaul">
-              <img src="gallery1.jpg" alt="Cabin Electrical Strip Down & Multimeter Diagnostics" class="gallery-img" />
-              <div class="gallery-caption">
-                <div>
-                  <span class="badge bg-danger fs-8 mb-1">Electrical Repair</span>
-                  <h4 class="fs-6 fw-bold text-white mb-0">In-Cabin Wiring Overhaul</h4>
-                  <span class="text-muted fs-8">Multimeter testing & sensor continuity check</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 3: Master Electrician Working on Dashboard -->
-          <div class="col-lg-4 col-md-6 gallery-card" data-category="electrical">
-            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img-src="gallery2.jpg" data-img-title="Master Automotive Electrician at Work on Dashboard Harness">
-              <img src="gallery2.jpg" alt="Technician Wiring Dashboard and Console" class="gallery-img" />
-              <div class="gallery-caption">
-                <div>
-                  <span class="badge bg-danger fs-8 mb-1">Electrical Repair</span>
-                  <h4 class="fs-6 fw-bold text-white mb-0">Dashboard Harness Assembly</h4>
-                  <span class="text-muted fs-8">Precision instrument cluster & ECM rewiring</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 4: Floorboard Harness Loom Routing -->
-          <div class="col-lg-4 col-md-6 gallery-card" data-category="electrical">
-            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img-src="gallery3.jpg" data-img-title="Floorboard Wiring Harness Alignment & Insulation">
-              <img src="gallery3.jpg" alt="Chassis Wiring Harness Routing" class="gallery-img" />
-              <div class="gallery-caption">
-                <div>
-                  <span class="badge bg-danger fs-8 mb-1">Electrical Repair</span>
-                  <h4 class="fs-6 fw-bold text-white mb-0">Chassis Wiring Alignment</h4>
-                  <span class="text-muted fs-8">Factory grade wire harness protection & routing</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 5: Circuit Assembly Under Inspection Lamp -->
-          <div class="col-lg-4 col-md-6 gallery-card" data-category="electrical">
-            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img-src="gallery4.jpg" data-img-title="Complex Electrical Diagnostics & Circuit Assembly">
-              <img src="gallery4.jpg" alt="Technician Working Under Inspection Light" class="gallery-img" />
-              <div class="gallery-caption">
-                <div>
-                  <span class="badge bg-danger fs-8 mb-1">Electrical Repair</span>
-                  <h4 class="fs-6 fw-bold text-white mb-0">Cabin Circuit Assembly</h4>
-                  <span class="text-muted fs-8">Specialized electrical troubleshooting in progress</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 6: Official Service Charter Banner -->
-          <div class="col-lg-4 col-md-6 gallery-card" data-category="banner">
-            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-img-src="promo-banner.jpg" data-img-title="Senthoor Auto Works Official Service Charter & Guarantee">
-              <img src="promo-banner.jpg" alt="Official Senthoor Auto Works Service Chart" class="gallery-img" />
-              <div class="gallery-caption">
-                <div>
-                  <span class="badge bg-danger fs-8 mb-1">Service Charter</span>
-                  <h4 class="fs-6 fw-bold text-white mb-0">Official Workshop Service Chart</h4>
-                  <span class="text-muted fs-8">100% Genuine parts & transparent pricing promise</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= WHY CHOOSE US ================= -->
-    <section class="py-5" id="why-us">
-      <div class="container-xl py-3">
-        <div class="text-center max-w-700 mx-auto mb-5">
-          <span class="text-red font-mono text-uppercase fw-bold fs-7">Our Workshop Promise</span>
-          <h2 class="display-5 font-heading fw-bold text-white mt-1">Why Drivers Trust Senthoor Auto Works</h2>
-        </div>
-
-        <div class="row g-4 text-center">
-          <div class="col-6 col-md-3">
-            <div class="glass-panel p-4 h-100">
-              <div class="service-icon-box mx-auto mb-3">
-                <i class="fas fa-user-gear"></i>
-              </div>
-              <h3 class="fs-6 fw-bold text-white mb-2">Expert Technicians</h3>
-              <p class="text-muted fs-7 mb-0">Hands-on experience across Maruti Suzuki, Hyundai, Tata, Mahindra, Toyota, Honda, and all multi-brand cars.</p>
-            </div>
-          </div>
-
-          <div class="col-6 col-md-3">
-            <div class="glass-panel p-4 h-100">
-              <div class="service-icon-box mx-auto mb-3">
-                <i class="fas fa-shield-halved"></i>
-              </div>
-              <h3 class="fs-6 fw-bold text-white mb-2">Original OEM Parts</h3>
-              <p class="text-muted fs-7 mb-0">100% genuine lubricants, filters, and manufacturer-certified spares with full warranty.</p>
-            </div>
-          </div>
-
-          <div class="col-6 col-md-3">
-            <div class="glass-panel p-4 h-100">
-              <div class="service-icon-box mx-auto mb-3">
-                <i class="fas fa-indian-rupee-sign"></i>
-              </div>
-              <h3 class="fs-6 fw-bold text-white mb-2">Transparent Pricing</h3>
-              <p class="text-muted fs-7 mb-0">Upfront digital cost estimates with zero hidden charges or unnecessary replacements.</p>
-            </div>
-          </div>
-
-          <div class="col-6 col-md-3">
-            <div class="glass-panel p-4 h-100">
-              <div class="service-icon-box mx-auto mb-3">
-                <i class="fas fa-award"></i>
-              </div>
-              <h3 class="fs-6 fw-bold text-white mb-2">Customer Satisfaction</h3>
-              <p class="text-muted fs-7 mb-0">Dedicated to quality repairs, smooth handover, and peace of mind on every journey.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= CUSTOMER REVIEWS & TESTIMONIALS ================= -->
-    <section class="py-5 bg-surface border-top border-bottom border-secondary border-opacity-25" id="reviews">
-      <div class="container-xl py-3">
-        <div class="text-center max-w-700 mx-auto mb-5">
-          <span class="text-red font-mono text-uppercase fw-bold fs-7">Customer Satisfaction</span>
-          <h2 class="display-5 font-heading fw-bold text-white mt-1">What Karur Car Owners Say</h2>
-        </div>
-
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div class="glass-panel p-4 h-100 d-flex flex-column justify-content-between">
-              <div>
-                <div class="text-warning mb-2">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="text-light fs-7 mb-3">"Got my Swift serviced here in Odakkattupudur. Excellent engine diagnostics and quick oil service. The car runs buttery smooth now. Very fair price compared to dealership!"</p>
-              </div>
-              <div class="d-flex align-items-center gap-2 pt-2 border-top border-secondary border-opacity-25">
-                <div class="avatar-circle">M</div>
-                <div>
-                  <h4 class="fs-7 fw-bold text-white mb-0">Murugan K.</h4>
-                  <span class="text-muted fs-8">Maruti Swift Owner • Athur</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="glass-panel p-4 h-100 d-flex flex-column justify-content-between">
-              <div>
-                <div class="text-warning mb-2">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="text-light fs-7 mb-3">"Had a serious electrical short circuit and dashboard light issue in my Nexon. Senthoor Auto Works technicians opened the dash, traced the exact wire and fixed it flawlessly within a few hours."</p>
-              </div>
-              <div class="d-flex align-items-center gap-2 pt-2 border-top border-secondary border-opacity-25">
-                <div class="avatar-circle">S</div>
-                <div>
-                  <h4 class="fs-7 fw-bold text-white mb-0">Senthil Nathan</h4>
-                  <span class="text-muted fs-8">Tata Nexon Owner • Karur</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="glass-panel p-4 h-100 d-flex flex-column justify-content-between">
-              <div>
-                <div class="text-warning mb-2">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="text-light fs-7 mb-3">"Top notch tinkering and painting work on my bumper and door scratches. The paint color matching was 100% factory identical. Highly recommended workshop in Karur area!"</p>
-              </div>
-              <div class="d-flex align-items-center gap-2 pt-2 border-top border-secondary border-opacity-25">
-                <div class="avatar-circle">P</div>
-                <div>
-                  <h4 class="fs-7 fw-bold text-white mb-0">Praveen Kumar</h4>
-                  <span class="text-muted fs-8">Hyundai i20 Owner • Odakkattupudur</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= DIGITAL ESTIMATE GENERATOR & BOOKING ================= -->
-    <section class="py-5" id="contact">
-      <div class="container-xl py-3">
-        <div class="row g-5">
-          <!-- Left: Workshop Details & Map -->
-          <div class="col-lg-5">
-            <span class="text-red font-mono text-uppercase fw-bold fs-7">Visit Our Workshop</span>
-            <h2 class="display-6 font-heading fw-bold text-white mt-1 mb-3">Location & Working Hours</h2>
-            <p class="text-muted fs-6 mb-4">
-              We welcome you to visit Senthoor Auto Works directly or call/WhatsApp us for immediate service booking.
-            </p>
-
-            <div class="glass-panel p-4 mb-4">
-              <div class="d-flex align-items-start gap-3 mb-3">
-                <i class="fas fa-location-dot text-red fs-4 mt-1"></i>
-                <div>
-                  <h4 class="fs-6 fw-bold text-white mb-1">Workshop Address</h4>
-                  <p class="text-muted fs-7 mb-0">
-                    <strong>Senthoor Auto Works (செந்தூர் ஆட்டோ ஒர்க்ஸ்)</strong><br />
-                    Odakkattupudur, Athur, Karur, Tamil Nadu – 639008<br />
-                    <span class="text-red fs-8">(Near Ettayapuram / Athur)</span>
-                  </p>
-                </div>
-              </div>
-
-              <div class="d-flex align-items-start gap-3 mb-3">
-                <i class="fas fa-clock text-red fs-4 mt-1"></i>
-                <div>
-                  <h4 class="fs-6 fw-bold text-white mb-1">Operating Hours</h4>
-                  <p class="text-muted fs-7 mb-0">Monday – Saturday: 10:00 AM – 7:00 PM</p>
-                  <span class="text-red fs-8 font-semibold">Sunday: Closed</span>
-                </div>
-              </div>
-
-              <div class="d-flex align-items-start gap-3">
-                <i class="fas fa-phone text-red fs-4 mt-1"></i>
-                <div>
-                  <h4 class="fs-6 fw-bold text-white mb-1">Direct Workshop Phone</h4>
-                  <p class="text-muted fs-7 mb-0">
-                    <a href="tel:+919787561810" class="text-white text-decoration-none fw-bold">+91 97875 61810</a> / 
-                    <a href="tel:+919787961810" class="text-white text-decoration-none fw-bold">+91 97879 61810</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="d-grid gap-2">
-              <a href="https://www.google.com/maps/place/Senthoor+Auto+Works/@10.9853746,78.0303491,16.93z/data=!4m6!3m5!1s0x3baa2f007b24e005:0x4771382ccff15f46!8m2!3d10.985304!4d78.032888!16s%2Fg%2F11z8j_g0k7" target="_blank" rel="noopener noreferrer" class="btn btn-outline-glass w-100 py-3 text-center d-flex align-items-center justify-content-center gap-2">
-                <i class="fas fa-map-location-dot text-red fs-5"></i>
-                <span>Open in Google Maps Navigation</span>
-                <i class="fas fa-arrow-up-right-from-square fs-8"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Right: Digital Booking & Estimate Bill Generator -->
-          <div class="col-lg-7">
-            <div class="glass-panel p-4">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <div>
-                  <span class="text-red font-mono text-uppercase fw-bold fs-7">Instant Online Booking</span>
-                  <h3 class="fs-4 font-heading fw-bold text-white mb-0">Generate Estimate & WhatsApp Bill</h3>
-                </div>
-                <span class="badge bg-danger-subtle text-red font-mono fs-7">#SAW-Karur</span>
-              </div>
-
-              <form id="contactForm" class="row g-3">
-                <div class="col-md-6">
-                  <label for="name" class="form-label text-muted fs-7 fw-semibold">Customer Full Name *</label>
-                  <input type="text" class="form-control bg-dark border-secondary text-white py-2" id="name" placeholder="e.g. Ramesh Kumar" required />
-                </div>
-
-                <div class="col-md-6">
-                  <label for="phone" class="form-label text-muted fs-7 fw-semibold">Mobile Phone Number *</label>
-                  <input type="tel" class="form-control bg-dark border-secondary text-white py-2" id="phone" placeholder="e.g. 9876543210" pattern="[0-9]{10}" required />
-                </div>
-
-                <div class="col-md-6">
-                  <label for="car" class="form-label text-muted fs-7 fw-semibold">Car Make & Model *</label>
-                  <input type="text" class="form-control bg-dark border-secondary text-white py-2" id="car" placeholder="e.g. Maruti Swift / Tata Nexon / i20" required />
-                </div>
-
-                <div class="col-md-6">
-                  <label for="service" class="form-label text-muted fs-7 fw-semibold">Select Primary Service *</label>
-                  <select class="form-select bg-dark border-secondary text-white py-2" id="service" required>
-                    <option value="Periodic Car Servicing" data-price="1499">Periodic Car Servicing (Est. ₹1,499)</option>
-                    <option value="3D Wheel Alignment & Balancing" data-price="499">3D Wheel Alignment & Balancing (Est. ₹499)</option>
-                    <option value="Denting & Body Painting" data-price="1999">Denting & Body Painting (Est. ₹1,999)</option>
-                    <option value="Electrical & Wiring Harness Repair" data-price="850">Electrical & Wiring Harness Repair (Est. ₹850)</option>
-                    <option value="Car AC Service & Gas Refill" data-price="999">Car AC Service & Gas Refill (Est. ₹999)</option>
-                    <option value="Computer Engine Diagnostics" data-price="799">Computer Engine Diagnostics (Est. ₹799)</option>
-                    <option value="Brake & Suspension Overhaul" data-price="550">Brake & Suspension Overhaul (Est. ₹550)</option>
-                    <option value="General Inspection & Custom Work" data-price="500">General Inspection & Custom Work (Est. ₹500)</option>
-                  </select>
-                </div>
-
-                <!-- Add-on Services Checklist -->
                 <div class="col-12">
-                  <label class="form-label text-muted fs-7 fw-semibold mb-2">Optional Add-ons (Select to add to estimate):</label>
-                  <div class="row g-2">
-                    <div class="col-sm-6">
-                      <div class="form-check p-2 glass-panel border-secondary border-opacity-25 rounded d-flex align-items-center">
-                        <input class="form-check-input ms-0 me-2" type="checkbox" id="addonOil" data-addon-price="600" />
-                        <label class="form-check-label text-light fs-8" for="addonOil">
-                          Fully Synthetic Oil Upgrade (+₹600)
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-check p-2 glass-panel border-secondary border-opacity-25 rounded d-flex align-items-center">
-                        <input class="form-check-input ms-0 me-2" type="checkbox" id="addonWash" data-addon-price="350" />
-                        <label class="form-check-label text-light fs-8" for="addonWash">
-                          Interior Deep Foam Wash (+₹350)
-                        </label>
-                      </div>
-                    </div>
+                  <a href="https://www.google.com/maps/place/Senthoor+Auto+Works/@10.9853746,78.0303491,16.93z/data=!4m6!3m5!1s0x3baa2f007b24e005:0x4771382ccff15f46!8m2!3d10.985304!4d78.032888!16s%2Fg%2F11z8j_g0k7" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light w-100 py-2 fs-7 fw-semibold rounded-2">
+                    <i class="fas fa-location-dot text-danger me-2" aria-hidden="true"></i>Odakkattupudur, Athur, Karur - 639008 <i class="fas fa-arrow-up-right-from-square ms-1" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Value Props Grid -->
+              <div class="row g-2 text-center text-dark pt-2">
+                <div class="col-6 col-sm-3">
+                  <div class="bg-white p-2 rounded-2 shadow-sm h-100">
+                    <i class="fas fa-user-gear text-danger fs-5 d-block mb-1" aria-hidden="true"></i>
+                    <span class="fw-bold fs-8">Expert Technicians</span>
                   </div>
                 </div>
+                <div class="col-6 col-sm-3">
+                  <div class="bg-white p-2 rounded-2 shadow-sm h-100">
+                    <i class="fas fa-shield-check text-danger fs-5 d-block mb-1" aria-hidden="true"></i>
+                    <span class="fw-bold fs-8">Genuine Spares</span>
+                  </div>
+                </div>
+                <div class="col-6 col-sm-3">
+                  <div class="bg-white p-2 rounded-2 shadow-sm h-100">
+                    <i class="fas fa-indian-rupee-sign text-danger fs-5 d-block mb-1" aria-hidden="true"></i>
+                    <span class="fw-bold fs-8">Affordable Pricing</span>
+                  </div>
+                </div>
+                <div class="col-6 col-sm-3">
+                  <div class="bg-white p-2 rounded-2 shadow-sm h-100">
+                    <i class="fas fa-thumbs-up text-danger fs-5 d-block mb-1" aria-hidden="true"></i>
+                    <span class="fw-bold fs-8">Customer Satisfaction</span>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            <!-- Real Workshop Facade Photo -->
+            <div class="col-lg-6">
+              <div class="rounded-3 overflow-hidden shadow border border-secondary bg-dark p-2">
+                <img src="workshop-front.jpg" alt="Senthoor Auto Works Main Workshop Bay (Odakkattupudur, Athur, Karur)" class="img-fluid w-100 rounded-2" style="max-height: 400px; object-fit: cover;" />
+                <div class="p-2 text-white bg-dark text-center">
+                  <small class="fw-semibold"><i class="fas fa-circle-check text-success me-1"></i> Senthoor Auto Works Main Workshop (Odakkattupudur, Athur, Karur)</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= ABOUT US ================= -->
+      <section class="py-5 bg-white border-bottom" id="about">
+        <div class="container-xl">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+              <div class="row g-2">
                 <div class="col-12">
-                  <label for="notes" class="form-label text-muted fs-7 fw-semibold">Specific Complaints / Notes (Optional)</label>
-                  <textarea class="form-control bg-dark border-secondary text-white" id="notes" rows="2" placeholder="e.g. unusual engine noise, AC cooling slow, wheel pulling to left..."></textarea>
+                  <img src="promo-banner.jpg" alt="Senthoor Auto Works Official Service Chart" class="img-fluid rounded-3 shadow-sm border w-100" style="max-height: 240px; object-fit: cover;" />
                 </div>
-
-                <div class="col-12 mt-4">
-                  <button type="submit" class="btn btn-red-action w-100 py-3 fs-6">
-                    <i class="fas fa-receipt me-2"></i> Generate Official Service Estimate & Receipt
-                  </button>
+                <div class="col-6">
+                  <img src="gallery1.jpg" alt="Electrical & Wiring Repair" class="img-fluid rounded-3 shadow-sm border w-100" style="height: 140px; object-fit: cover;" />
                 </div>
-              </form>
+                <div class="col-6">
+                  <img src="workshop-front.jpg" alt="Workshop Bay" class="img-fluid rounded-3 shadow-sm border w-100" style="height: 140px; object-fit: cover;" />
+                </div>
+              </div>
+            </div>
 
-              <!-- Digital Receipt Result Card (Initially Hidden) -->
-              <div id="bookingReceiptContainer" class="mt-4 d-none">
-                <div class="receipt-wrapper">
-                  <div class="d-flex justify-content-between align-items-start border-bottom pb-3 mb-3">
-                    <div class="d-flex align-items-center gap-2">
-                      <img src="logo.jpg" alt="Logo" class="receipt-logo" />
-                      <div>
-                        <div class="receipt-header-brand">SENTHOOR AUTO WORKS</div>
-                        <div class="fs-8 text-muted">Odakkattupudur, Athur, Karur - 639008</div>
-                        <div class="fs-8 text-muted">Phone: +91 97875 61810 / 97879 61810</div>
-                      </div>
+            <div class="col-lg-6">
+              <span class="text-danger font-mono text-uppercase fw-bold fs-7">About Us</span>
+              <h2 class="display-6 fw-bold text-dark mt-1 mb-3">Your Trusted Multi-Brand Car Service Partner</h2>
+              <p class="text-muted fs-6 mb-4">
+                Located conveniently in <strong>Odakkattupudur, Athur, Karur (639008)</strong>, Senthoor Auto Works is committed to providing top-quality automobile maintenance and repair services. From routine lubrication to advanced engine diagnostics and complete electrical rewiring, we treat your car with utmost care.
+              </p>
+
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="bg-red-subtle text-danger p-2 rounded-2 fs-5">
+                      <i class="fas fa-microchip" aria-hidden="true"></i>
                     </div>
-                    <div class="text-end">
-                      <span class="badge bg-danger text-white fs-7 font-mono" id="billReceiptNo">#SAW-2026-1001</span>
-                      <div class="fs-8 text-muted mt-1" id="billDate">--</div>
+                    <div>
+                      <h3 class="fs-6 fw-bold mb-1">Advanced Diagnostics</h3>
+                      <p class="text-muted fs-8 mb-0">Multi-brand OBD scanners to pin-point engine & electrical faults accurately.</p>
                     </div>
                   </div>
+                </div>
 
-                  <div class="row fs-7 mb-3">
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="bg-red-subtle text-danger p-2 rounded-2 fs-5">
+                      <i class="fas fa-spray-can" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                      <h3 class="fs-6 fw-bold mb-1">Denting & Painting</h3>
+                      <p class="text-muted fs-8 mb-0">High-grade body repair, scratch removal, and factory-matched gloss paint finish.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= WHY CHOOSE US ================= -->
+      <section class="py-5 bg-light" id="why-us">
+        <div class="container-xl">
+          <div class="text-center max-w-700 mx-auto mb-4">
+            <span class="text-danger font-mono text-uppercase fw-bold fs-7">Our Workshop Promise</span>
+            <h2 class="display-6 fw-bold text-dark mt-1">Why Drivers Choose Senthoor Auto Works</h2>
+          </div>
+
+          <div class="row g-4 text-center">
+            <div class="col-6 col-md-3">
+              <div class="bg-white p-4 rounded-3 shadow-sm border h-100">
+                <div class="bg-red-subtle text-danger p-3 rounded-circle d-inline-block mb-3">
+                  <i class="fas fa-user-gear fs-4" aria-hidden="true"></i>
+                </div>
+                <h3 class="fs-6 fw-bold mb-2">Expert Technicians</h3>
+                <p class="text-muted fs-8 mb-0">Experienced mechanics specializing in all Indian & international car brands.</p>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+              <div class="bg-white p-4 rounded-3 shadow-sm border h-100">
+                <div class="bg-red-subtle text-danger p-3 rounded-circle d-inline-block mb-3">
+                  <i class="fas fa-shield-check fs-4" aria-hidden="true"></i>
+                </div>
+                <h3 class="fs-6 fw-bold mb-2">Original Spares</h3>
+                <p class="text-muted fs-8 mb-0">100% genuine parts and top-tier lubricants with manufacturer warranty.</p>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+              <div class="bg-white p-4 rounded-3 shadow-sm border h-100">
+                <div class="bg-red-subtle text-danger p-3 rounded-circle d-inline-block mb-3">
+                  <i class="fas fa-indian-rupee-sign fs-4" aria-hidden="true"></i>
+                </div>
+                <h3 class="fs-6 fw-bold mb-2">Transparent Pricing</h3>
+                <p class="text-muted fs-8 mb-0">Upfront cost estimates with zero hidden charges or unnecessary replacements.</p>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+              <div class="bg-white p-4 rounded-3 shadow-sm border h-100">
+                <div class="bg-red-subtle text-danger p-3 rounded-circle d-inline-block mb-3">
+                  <i class="fas fa-clock-rotate-left fs-4" aria-hidden="true"></i>
+                </div>
+                <h3 class="fs-6 fw-bold mb-2">Fast Turnaround</h3>
+                <p class="text-muted fs-8 mb-0">Prompt servicing and timely delivery to get you back on the road quickly.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= TAB 2: SERVICES SHOWCASE ================= -->
+    <div class="mobile-app-pane" id="pane-services" role="tabpanel">
+      <section class="py-5 bg-light" id="services">
+        <div class="container-xl">
+          <div class="text-center max-w-700 mx-auto mb-5">
+            <span class="text-danger font-mono text-uppercase fw-bold fs-7">Complete Auto Care</span>
+            <h2 class="display-6 fw-bold text-dark mt-1 mb-2">Our Specialized Services</h2>
+            <p class="text-muted fs-6">Click any service to book and generate an instant digital estimate.</p>
+          </div>
+
+          <div class="row g-4">
+            <!-- Service 1 -->
+            <div class="col-md-4 col-sm-6">
+              <div class="card h-100 border shadow-sm service-card p-3 d-flex flex-column justify-content-between">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="bg-red-subtle text-danger p-3 rounded-3 fs-4">
+                      <i class="fas fa-car-side" aria-hidden="true"></i>
+                    </div>
+                    <span class="badge bg-danger-subtle text-danger font-mono">From ₹1,499</span>
+                  </div>
+                  <h3 class="fs-5 fw-bold text-dark mb-2">Car Servicing</h3>
+                  <p class="text-muted fs-7 mb-3">Complete engine oil flush, filter change, 40-point safety inspection, fluid top-up, and thorough water wash.</p>
+                </div>
+                <a href="#contact" class="btn btn-red w-100 btn-book-service mt-2" data-service="Car Servicing">
+                  <i class="fas fa-receipt me-1" aria-hidden="true"></i> Book & Generate Bill
+                </a>
+              </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="col-md-4 col-sm-6">
+              <div class="card h-100 border shadow-sm service-card p-3 d-flex flex-column justify-content-between">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="bg-red-subtle text-danger p-3 rounded-3 fs-4">
+                      <i class="fas fa-dharmachakra" aria-hidden="true"></i>
+                    </div>
+                    <span class="badge bg-danger-subtle text-danger font-mono">From ₹499</span>
+                  </div>
+                  <h3 class="fs-5 fw-bold text-dark mb-2">Wheel Alignment</h3>
+                  <p class="text-muted fs-7 mb-3">Precision 3D computerized alignment, dynamic wheel balancing, and tyre rotation for smoother handling and longer tyre life.</p>
+                </div>
+                <a href="#contact" class="btn btn-red w-100 btn-book-service mt-2" data-service="Wheel Alignment">
+                  <i class="fas fa-receipt me-1" aria-hidden="true"></i> Book & Generate Bill
+                </a>
+              </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="col-md-4 col-sm-6">
+              <div class="card h-100 border shadow-sm service-card p-3 d-flex flex-column justify-content-between">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="bg-red-subtle text-danger p-3 rounded-3 fs-4">
+                      <i class="fas fa-spray-can" aria-hidden="true"></i>
+                    </div>
+                    <span class="badge bg-danger-subtle text-danger font-mono">From ₹1,999</span>
+                  </div>
+                  <h3 class="fs-5 fw-bold text-dark mb-2">Denting & Painting</h3>
+                  <p class="text-muted fs-7 mb-3">Panel dent pulling, anti-rust primer coating, precision color-matching, and high-gloss clear coat finish.</p>
+                </div>
+                <a href="#contact" class="btn btn-red w-100 btn-book-service mt-2" data-service="Denting & Painting">
+                  <i class="fas fa-receipt me-1" aria-hidden="true"></i> Book & Generate Bill
+                </a>
+              </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="col-md-4 col-sm-6">
+              <div class="card h-100 border shadow-sm service-card p-3 d-flex flex-column justify-content-between">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="bg-red-subtle text-danger p-3 rounded-3 fs-4">
+                      <i class="fas fa-snowflake" aria-hidden="true"></i>
+                    </div>
+                    <span class="badge bg-danger-subtle text-danger font-mono">From ₹999</span>
+                  </div>
+                  <h3 class="fs-5 fw-bold text-dark mb-2">AC Service</h3>
+                  <p class="text-muted fs-7 mb-3">AC compressor health test, cooling coil clean, leak diagnosis, cabin filter service, and R134a refrigerant gas refill.</p>
+                </div>
+                <a href="#contact" class="btn btn-red w-100 btn-book-service mt-2" data-service="AC Service">
+                  <i class="fas fa-receipt me-1" aria-hidden="true"></i> Book & Generate Bill
+                </a>
+              </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="col-md-4 col-sm-6">
+              <div class="card h-100 border shadow-sm service-card p-3 d-flex flex-column justify-content-between">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="bg-red-subtle text-danger p-3 rounded-3 fs-4">
+                      <i class="fas fa-microchip" aria-hidden="true"></i>
+                    </div>
+                    <span class="badge bg-danger-subtle text-danger font-mono">From ₹799</span>
+                  </div>
+                  <h3 class="fs-5 fw-bold text-dark mb-2">Engine Diagnostics</h3>
+                  <p class="text-muted fs-7 mb-3">Advanced OBD-II computerized scanning, check engine light diagnosis, sensor testing, and error code clearing.</p>
+                </div>
+                <a href="#contact" class="btn btn-red w-100 btn-book-service mt-2" data-service="Engine Diagnostics">
+                  <i class="fas fa-receipt me-1" aria-hidden="true"></i> Book & Generate Bill
+                </a>
+              </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="col-md-4 col-sm-6">
+              <div class="card h-100 border shadow-sm service-card p-3 d-flex flex-column justify-content-between">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="bg-red-subtle text-danger p-3 rounded-3 fs-4">
+                      <i class="fas fa-bolt" aria-hidden="true"></i>
+                    </div>
+                    <span class="badge bg-danger-subtle text-danger font-mono">From ₹850</span>
+                  </div>
+                  <h3 class="fs-5 fw-bold text-dark mb-2">Electrical & Wiring Repair</h3>
+                  <p class="text-muted fs-7 mb-3">In-cabin wiring diagnostics, dashboard harness troubleshooting, short circuit resolution, and electrical sensor testing.</p>
+                </div>
+                <a href="#contact" class="btn btn-red w-100 btn-book-service mt-2" data-service="Electrical & Wiring Repair">
+                  <i class="fas fa-receipt me-1" aria-hidden="true"></i> Book & Generate Bill
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= TAB 3: GALLERY ================= -->
+    <div class="mobile-app-pane" id="pane-gallery" role="tabpanel">
+      <section class="py-5 bg-white" id="gallery">
+        <div class="container-xl">
+          <div class="text-center max-w-700 mx-auto mb-5">
+            <span class="text-danger font-mono text-uppercase fw-bold fs-7">Our Workshop & Works</span>
+            <h2 class="display-6 fw-bold text-dark mt-1 mb-2">Real Workshop Photos</h2>
+            <p class="text-muted fs-6">Take a look inside our facility in Odakkattupudur, Athur, Karur.</p>
+          </div>
+
+          <div class="row g-4">
+            <!-- Photo 1: Main Workshop Exterior -->
+            <div class="col-md-6 col-12">
+              <div class="rounded-2 border shadow-sm overflow-hidden">
+                <img src="workshop-front.jpg" alt="Senthoor Auto Works Main Workshop Bay & Hydraulic Lift" class="img-fluid w-100" style="height: 280px; object-fit: cover;" />
+                <div class="p-2 bg-light border-top text-center">
+                  <small class="fw-bold text-dark">Main Workshop Bay & Hydraulic Lift (Odakkattupudur, Athur)</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Photo 2: Electrical In-Cabin Repair -->
+            <div class="col-md-6 col-12">
+              <div class="rounded-2 border shadow-sm overflow-hidden">
+                <img src="gallery1.jpg" alt="Vehicle In-Cabin Electrical & Wiring Overhaul" class="img-fluid w-100" style="height: 280px; object-fit: cover;" />
+                <div class="p-2 bg-light border-top text-center">
+                  <small class="fw-bold text-dark">In-Cabin Electrical & Wiring Diagnostics</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Photo 3: Master Electrician Working -->
+            <div class="col-md-6 col-12">
+              <div class="rounded-2 border shadow-sm overflow-hidden">
+                <img src="gallery2.jpg" alt="Master Technician Wiring Dashboard and Console" class="img-fluid w-100" style="height: 280px; object-fit: cover;" />
+                <div class="p-2 bg-light border-top text-center">
+                  <small class="fw-bold text-dark">Dashboard & Console Wiring Assembly</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Photo 4: Chassis Wiring Alignment -->
+            <div class="col-md-6 col-12">
+              <div class="rounded-2 border shadow-sm overflow-hidden">
+                <img src="gallery3.jpg" alt="Floorboard Wiring Harness Alignment & Looming" class="img-fluid w-100" style="height: 280px; object-fit: cover;" />
+                <div class="p-2 bg-light border-top text-center">
+                  <small class="fw-bold text-dark">Floorboard Wiring Harness Looming & Insulation</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Photo 5: Circuit Assembly -->
+            <div class="col-md-6 col-12">
+              <div class="rounded-2 border shadow-sm overflow-hidden">
+                <img src="gallery4.jpg" alt="Circuit Diagnostics Under Inspection Lamp" class="img-fluid w-100" style="height: 280px; object-fit: cover;" />
+                <div class="p-2 bg-light border-top text-center">
+                  <small class="fw-bold text-dark">Electrical Circuit Diagnostics in Progress</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Photo 6: Official Service Charter Banner -->
+            <div class="col-md-6 col-12">
+              <div class="rounded-2 border shadow-sm overflow-hidden">
+                <img src="promo-banner.jpg" alt="Official Senthoor Auto Works Service Chart" class="img-fluid w-100" style="height: 280px; object-fit: cover;" />
+                <div class="p-2 bg-light border-top text-center">
+                  <small class="fw-bold text-dark">Official Workshop Service Charter & Genuine Parts</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= TAB 4: CONTACT & DIGITAL BOOKING BILL ================= -->
+    <div class="mobile-app-pane" id="pane-contact" role="tabpanel">
+      <section class="py-5 bg-light" id="contact">
+        <div class="container-xl">
+          <div class="row g-5">
+            <!-- Left: Contact Information & Google Maps -->
+            <div class="col-lg-5">
+              <span class="text-danger font-mono text-uppercase fw-bold fs-7">Visit Our Workshop</span>
+              <h2 class="display-6 fw-bold text-dark mt-1 mb-3">Location & Working Hours</h2>
+              <p class="text-muted fs-6 mb-4">
+                We welcome you to visit Senthoor Auto Works directly or contact us via phone/WhatsApp.
+              </p>
+
+              <div class="bg-white p-4 rounded-3 shadow-sm border mb-4">
+                <div class="d-flex align-items-start gap-3 mb-3">
+                  <i class="fas fa-location-dot text-danger fs-4 mt-1" aria-hidden="true"></i>
+                  <div>
+                    <h4 class="fs-6 fw-bold mb-1">Workshop Address</h4>
+                    <p class="text-muted fs-7 mb-0">
+                      <strong>Senthoor Auto Works (செந்தூர் ஆட்டோ ஒர்க்ஸ்)</strong><br />
+                      Odakkattupudur, Athur, Karur, Tamil Nadu – 639008<br />
+                      <span class="text-danger fs-8">(Near Ettayapuram / Athur)</span>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-start gap-3 mb-3">
+                  <i class="fas fa-clock text-danger fs-4 mt-1" aria-hidden="true"></i>
+                  <div>
+                    <h4 class="fs-6 fw-bold mb-1">Operating Hours</h4>
+                    <p class="text-muted fs-7 mb-0">Monday – Saturday: 10:00 AM – 7:00 PM</p>
+                    <span class="text-danger fs-8 fw-semibold">Sunday: Closed</span>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-start gap-3">
+                  <i class="fas fa-phone text-danger fs-4 mt-1" aria-hidden="true"></i>
+                  <div>
+                    <h4 class="fs-6 fw-bold mb-1">Direct Workshop Phone</h4>
+                    <p class="text-muted fs-7 mb-0">
+                      <a href="tel:+919787561810" class="text-dark text-decoration-none fw-bold">+91 97875 61810</a> / 
+                      <a href="tel:+919787961810" class="text-dark text-decoration-none fw-bold">+91 97879 61810</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Google Maps Link -->
+              <div class="d-grid gap-2">
+                <a href="https://www.google.com/maps/place/Senthoor+Auto+Works/@10.9853746,78.0303491,16.93z/data=!4m6!3m5!1s0x3baa2f007b24e005:0x4771382ccff15f46!8m2!3d10.985304!4d78.032888!16s%2Fg%2F11z8j_g0k7" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger w-100 py-2 text-center fw-bold fs-7">
+                  <i class="fas fa-map-location-dot me-2" aria-hidden="true"></i>Open Google Maps Navigation <i class="fas fa-arrow-up-right-from-square ms-1" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right: Digital Booking & Estimate Bill Generator -->
+            <div class="col-lg-7">
+              <div class="bg-white p-4 rounded-3 shadow-sm border">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div>
+                    <span class="text-danger font-mono text-uppercase fw-bold fs-7">Instant Online Booking</span>
+                    <h3 class="fs-4 fw-bold text-dark mb-0">Generate Official Service Voucher</h3>
+                  </div>
+                  <span class="badge bg-danger-subtle text-danger font-mono">#SAW-Karur</span>
+                </div>
+                
+                <form id="contactForm">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="name" class="visually-hidden">Your Name</label>
+                      <input type="text" class="form-control py-2" id="name" placeholder="Your Name *" required aria-label="Your Name" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="phone" class="visually-hidden">Phone Number</label>
+                      <input type="tel" class="form-control py-2" id="phone" placeholder="Phone Number *" required aria-label="Phone Number" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="car" class="visually-hidden">Car Model</label>
+                      <input type="text" class="form-control py-2" id="car" placeholder="Car Model (e.g. Swift / Baleno / Nexon) *" required aria-label="Car Model" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="service" class="visually-hidden">Select Service Needed</label>
+                      <select class="form-select py-2" id="service" required aria-label="Select Service Needed">
+                        <option value="" selected disabled>Select Service Needed *</option>
+                        <option>Car Servicing</option>
+                        <option>Wheel Alignment</option>
+                        <option>Denting & Painting</option>
+                        <option>AC Service</option>
+                        <option>Engine Diagnostics</option>
+                        <option>Electrical & Wiring Repair</option>
+                        <option>Periodic Maintenance</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <label for="notes" class="visually-hidden">Symptoms / Notes</label>
+                      <textarea class="form-control py-2" id="notes" rows="3" placeholder="Describe any specific issues or symptoms..." aria-label="Describe any issues or symptoms"></textarea>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-red w-100 py-2 fw-bold text-uppercase font-mono">
+                        <i class="fas fa-file-invoice-dollar me-2" aria-hidden="true"></i>Generate Digital Booking Bill
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- ================= GENERATED DIGITAL BOOKING RECEIPT ================= -->
+              <div id="bookingReceiptContainer" class="d-none mt-4">
+                <div class="bill-receipt-card position-relative p-4 border rounded-3 bg-white shadow-sm">
+                  <div class="bill-header text-center mb-3">
+                    <div class="d-flex justify-content-center align-items-center gap-2 mb-1">
+                      <img src="logo.jpg" alt="Logo" id="billHeaderLogo" class="receipt-brand-logo" />
+                      <h4 class="fw-bold text-dark font-mono mb-0">SENTHOOR AUTO WORKS</h4>
+                    </div>
+                    <small class="text-muted d-block fs-8">Odakkattupudur, Athur, Karur - 639008 • Ph: +91 97875 61810</small>
+                    <span class="badge bg-success-subtle text-success border border-success mt-2 fs-8">OFFICIAL SERVICE BOOKING VOUCHER</span>
+                  </div>
+
+                  <div class="row g-2 mb-3 fs-7">
                     <div class="col-6">
-                      <strong class="text-dark">Customer Name:</strong> <span id="billName">--</span><br />
-                      <strong class="text-dark">Contact:</strong> <span id="billPhone">--</span>
+                      <strong>Receipt No:</strong> <span id="billReceiptNo" class="font-mono text-red fw-bold">#SAW-2026-1001</span>
                     </div>
                     <div class="col-6 text-end">
-                      <strong class="text-dark">Vehicle:</strong> <span id="billCar">--</span><br />
-                      <strong class="text-dark">Status:</strong> <span class="badge bg-success-subtle text-success fs-8">Estimate Generated</span>
+                      <strong>Date:</strong> <span id="billDate">--</span>
                     </div>
                   </div>
 
-                  <table class="receipt-table">
-                    <thead>
+                  <table class="table table-bordered bill-table mb-3">
+                    <tbody>
                       <tr>
-                        <th>Item Description</th>
-                        <th class="text-end">Estimated Amount</th>
+                        <th scope="row" class="w-35">Customer Name</th>
+                        <td id="billName">-</td>
                       </tr>
-                    </thead>
-                    <tbody id="receiptItemsBody">
                       <tr>
-                        <td id="billService">--</td>
-                        <td class="text-end font-mono" id="billAmount">₹0</td>
+                        <th scope="row">Phone Number</th>
+                        <td id="billPhone">-</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Vehicle Model</th>
+                        <td id="billCar">-</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Requested Service</th>
+                        <td id="billService" class="fw-bold text-red">-</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Symptoms / Notes</th>
+                        <td id="billNotes">-</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Booking Status</th>
+                        <td><span class="badge bg-warning text-dark"><i class="fas fa-clock me-1" aria-hidden="true"></i> Slot Pending Confirmation</span></td>
                       </tr>
                     </tbody>
-                    <tfoot>
-                      <tr class="receipt-total-row">
-                        <td>ESTIMATED TOTAL (Approx.)</td>
-                        <td class="text-end font-mono text-danger" id="billTotal">₹0</td>
-                      </tr>
-                    </tfoot>
                   </table>
 
-                  <div class="p-2 bg-light rounded text-muted fs-8 mb-3">
-                    <i class="fas fa-circle-info text-danger me-1"></i> <strong>Customer Notes:</strong> <span id="billNotes">--</span>
-                  </div>
-
                   <div class="d-flex flex-wrap gap-2 no-print">
-                    <a id="btnShareWhatsApp" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-sm flex-fill">
-                      <i class="fab fa-whatsapp me-1"></i> Send Booking to WhatsApp
-                    </a>
-                    <button id="btnPrintReceipt" class="btn btn-dark btn-sm flex-fill" type="button">
-                      <i class="fas fa-print me-1"></i> Print / Save Receipt
+                    <button type="button" id="btnSendBillWhatsApp" class="btn btn-success flex-grow-1 fw-bold fs-7 py-2">
+                      <i class="fab fa-whatsapp me-1" aria-hidden="true"></i> Send Bill to WhatsApp
+                    </button>
+                    <button type="button" id="btnPrintBill" class="btn btn-outline-dark fw-bold fs-7 py-2">
+                      <i class="fas fa-print me-1" aria-hidden="true"></i> Print / Save PDF
                     </button>
                   </div>
                 </div>
@@ -885,66 +701,57 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="bg-dark py-4 text-white border-top border-secondary border-opacity-25">
-    <div class="container-xl text-center">
-      <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
-        <img src="logo.jpg" alt="Logo" class="footer-logo" />
-        <span class="font-heading fs-5 fw-bold">SENTHOOR AUTO WORKS</span>
+  <footer class="bg-dark text-white py-4 border-top">
+    <div class="container-xl d-flex flex-column flex-md-row justify-content-between align-items-center fs-7 text-white-50">
+      <div>
+        <strong class="text-white font-mono me-2">SENTHOOR AUTO WORKS</strong> © <span id="year">2026</span>. Odakkattupudur, Athur, Karur - 639008.
       </div>
-      <p class="text-muted fs-7 mb-2">
-        Odakkattupudur, Athur, Karur, Tamil Nadu 639008 | Phone: +91 97875 61810 / +91 97879 61810
-      </p>
-      <p class="text-muted fs-8 mb-0">© <span id="year">2026</span> Senthoor Auto Works (செந்தூர் ஆட்டோ ஒர்க்ஸ்). All Rights Reserved.</p>
+      <div class="d-flex gap-3 mt-2 mt-md-0">
+        <a href="tel:+919787561810" class="text-white-50 text-decoration-none"><i class="fas fa-phone text-danger me-1" aria-hidden="true"></i> +91 97875 61810</a>
+        <a href="https://wa.me/919787561810" class="text-success text-decoration-none" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp me-1" aria-hidden="true"></i> WhatsApp</a>
+      </div>
     </div>
   </footer>
 
-  <!-- ================= LIGHTBOX GALLERY MODAL ================= -->
-  <div class="modal fade lightbox-modal" id="lightboxModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header border-0 pb-0">
-          <h5 class="modal-title font-heading text-white fs-6" id="lightboxTitle">Workshop Image</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center p-3">
-          <img src="" id="lightboxImg" class="img-fluid rounded-3 shadow max-h-75vh" alt="Lightbox Preview" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= MOBILE BOTTOM FIXED ACTION BAR ================= -->
-  <nav class="mobile-bottom-bar d-lg-none" aria-label="Mobile Navigation">
-    <a href="#home" class="mobile-nav-btn active">
-      <i class="fas fa-house"></i>
+  <!-- ================= MOBILE APP BOTTOM NAVIGATION BAR ================= -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <button class="mobile-nav-item active" data-tab="pane-home">
+      <i class="fas fa-house" aria-hidden="true"></i>
       <span>Home</span>
-    </a>
-    <a href="#services" class="mobile-nav-btn">
-      <i class="fas fa-wrench"></i>
+    </button>
+    <button class="mobile-nav-item" data-tab="pane-services">
+      <i class="fas fa-wrench" aria-hidden="true"></i>
       <span>Services</span>
-    </a>
-    <a href="tel:+919787561810" class="mobile-nav-btn btn-call-highlight">
-      <i class="fas fa-phone"></i>
-      <span>Call</span>
-    </a>
-    <a href="https://wa.me/919787561810?text=Hi%20Senthoor%20Auto%20Works,%20I%20would%20like%20to%20book%20a%20car%20service." target="_blank" rel="noopener noreferrer" class="mobile-nav-btn btn-wa-highlight">
-      <i class="fab fa-whatsapp"></i>
-      <span>WhatsApp</span>
-    </a>
-    <a href="#contact" class="mobile-nav-btn">
-      <i class="fas fa-calculator"></i>
-      <span>Estimate</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="pane-gallery">
+      <i class="fas fa-images" aria-hidden="true"></i>
+      <span>Gallery</span>
+    </button>
+    <button class="mobile-nav-item" data-tab="pane-contact">
+      <i class="fas fa-location-dot" aria-hidden="true"></i>
+      <span>Contact</span>
+    </button>
+    <a href="https://wa.me/919787561810" target="_blank" rel="noopener noreferrer" class="mobile-nav-item highlight-whatsapp">
+      <i class="fab fa-whatsapp" aria-hidden="true"></i>
+      <span>Chat</span>
     </a>
   </nav>
 
-  <!-- Bootstrap 5 JS Bundle -->
+  <!-- Desktop Floating Buttons -->
+  <a href="https://wa.me/919787561810" class="float-btn float-whatsapp text-white shadow" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp fs-4" aria-hidden="true"></i>
+  </a>
+  <a href="tel:+919787561810" class="float-btn float-call text-white shadow" aria-label="Call Senthoor Auto Works">
+    <i class="fas fa-phone fs-5" aria-hidden="true"></i>
+  </a>
+
+  <!-- JS Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom JS -->
-  <script src="main.js?v=3.2"></script>
+  <script src="main.js?v=aug1"></script>
 </body>
 </html>
