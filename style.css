@@ -342,27 +342,70 @@ body {
 }
 
 /* Gallery Styling */
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .gallery-card {
-  height: 280px;
+  height: 290px;
+  background-color: #0f172a;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15) !important;
 }
 
 .gallery-img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
 
 .gallery-card:hover .gallery-img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
-.gallery-caption {
+.gallery-hover-overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.9) 100%);
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-card:hover .gallery-hover-overlay {
+  opacity: 1;
+}
+
+.gallery-zoom-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(225, 29, 72, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transform: scale(0.85);
+  transition: transform 0.25s ease, background-color 0.2s ease;
+}
+
+.gallery-card:hover .gallery-zoom-btn {
+  transform: scale(1);
+}
+
+.gallery-zoom-btn:hover {
+  background: #e11d48;
 }
 
 /* Contact Details */

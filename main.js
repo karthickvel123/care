@@ -128,6 +128,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // 6. Gallery Lightbox Modal Handler
+  const galleryCards = document.querySelectorAll('.gallery-card[data-img-src]');
+  const lightboxImg = document.getElementById('lightboxModalImg');
+  const galleryModalEl = document.getElementById('galleryModal');
+  
+  if (galleryCards.length && lightboxImg && galleryModalEl) {
+    const bsModal = new bootstrap.Modal(galleryModalEl);
+    galleryCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const imgSrc = card.getAttribute('data-img-src');
+        if (imgSrc) {
+          lightboxImg.src = imgSrc;
+          bsModal.show();
+        }
+      });
+    });
+  }
+
   // 6. Digital Booking Voucher Generator
   const form = document.getElementById('contactForm');
   const receiptContainer = document.getElementById('bookingReceiptContainer');

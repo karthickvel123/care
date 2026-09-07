@@ -620,51 +620,69 @@
       <section class="py-5 bg-light" id="gallery">
         <div class="container-xl">
           <div class="text-center max-w-700 mx-auto mb-4">
-            <span class="badge bg-red-subtle text-red font-mono text-uppercase px-3 py-1 rounded-pill fw-bold fs-8 mb-2">WORKSHOP GALLERY</span>
-            <h2 class="font-heading fw-bold text-dark display-6 mt-1">Our Work Gallery</h2>
-            <p class="text-muted fs-6">A glimpse of ongoing services and maintenance at our Karur workshop.</p>
+            <span class="badge bg-red-subtle text-red font-mono text-uppercase px-3 py-1 rounded-pill fw-bold fs-8 mb-2">GALLERY</span>
+            <h2 class="font-heading fw-bold text-dark display-6 mt-1">Workshop Gallery</h2>
+            <p class="text-muted fs-6">Click any photo to view in full size.</p>
           </div>
 
           <div class="row g-4">
             <div class="col-md-6 col-12">
-              <div class="gallery-card rounded-4 overflow-hidden shadow-sm border bg-white position-relative">
-                <img src="gallery1.jpg.jpeg" alt="Senthoor Auto Works - General Maintenance and Servicing" class="img-fluid w-100 gallery-img" />
-                <div class="gallery-caption p-3">
-                  <span class="badge bg-red font-mono fs-9 text-uppercase mb-1">Maintenance</span>
-                  <h4 class="text-white fs-6 mb-0 font-heading">General Car Servicing & Maintenance</h4>
+              <div class="gallery-card rounded-4 overflow-hidden shadow-sm border bg-white position-relative cursor-pointer" data-img-src="gallery1.jpg.jpeg">
+                <img src="gallery1.jpg.jpeg" alt="Senthoor Auto Works Workshop Photo 1" class="img-fluid w-100 gallery-img" />
+                <div class="gallery-hover-overlay">
+                  <div class="gallery-zoom-btn">
+                    <i class="fas fa-expand fs-5 text-white" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="col-md-6 col-12">
-              <div class="gallery-card rounded-4 overflow-hidden shadow-sm border bg-white position-relative">
-                <img src="gallery2.jpg.jpeg" alt="Senthoor Auto Works - Engine Diagnostics" class="img-fluid w-100 gallery-img" />
-                <div class="gallery-caption p-3">
-                  <span class="badge bg-red font-mono fs-9 text-uppercase mb-1">Diagnostics</span>
-                  <h4 class="text-white fs-6 mb-0 font-heading">Engine & Computer Diagnostics</h4>
+              <div class="gallery-card rounded-4 overflow-hidden shadow-sm border bg-white position-relative cursor-pointer" data-img-src="gallery2.jpg.jpeg">
+                <img src="gallery2.jpg.jpeg" alt="Senthoor Auto Works Workshop Photo 2" class="img-fluid w-100 gallery-img" />
+                <div class="gallery-hover-overlay">
+                  <div class="gallery-zoom-btn">
+                    <i class="fas fa-expand fs-5 text-white" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="col-md-6 col-12">
-              <div class="gallery-card rounded-4 overflow-hidden shadow-sm border bg-white position-relative">
-                <img src="gallery3.jpg.jpeg" alt="Senthoor Auto Works - Denting and Painting" class="img-fluid w-100 gallery-img" />
-                <div class="gallery-caption p-3">
-                  <span class="badge bg-red font-mono fs-9 text-uppercase mb-1">Body Shop</span>
-                  <h4 class="text-white fs-6 mb-0 font-heading">Denting & Spray Painting</h4>
+              <div class="gallery-card rounded-4 overflow-hidden shadow-sm border bg-white position-relative cursor-pointer" data-img-src="gallery3.jpg.jpeg">
+                <img src="gallery3.jpg.jpeg" alt="Senthoor Auto Works Workshop Photo 3" class="img-fluid w-100 gallery-img" />
+                <div class="gallery-hover-overlay">
+                  <div class="gallery-zoom-btn">
+                    <i class="fas fa-expand fs-5 text-white" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="col-md-6 col-12">
-              <div class="gallery-card rounded-4 overflow-hidden shadow-sm border bg-white position-relative">
-                <img src="gallery4.jpg.jpeg" alt="Senthoor Auto Works - Wheel Alignment" class="img-fluid w-100 gallery-img" />
-                <div class="gallery-caption p-3">
-                  <span class="badge bg-red font-mono fs-9 text-uppercase mb-1">Wheel Care</span>
-                  <h4 class="text-white fs-6 mb-0 font-heading">Wheel Alignment & Balancing</h4>
+              <div class="gallery-card rounded-4 overflow-hidden shadow-sm border bg-white position-relative cursor-pointer" data-img-src="gallery4.jpg.jpeg">
+                <img src="gallery4.jpg.jpeg" alt="Senthoor Auto Works Workshop Photo 4" class="img-fluid w-100 gallery-img" />
+                <div class="gallery-hover-overlay">
+                  <div class="gallery-zoom-btn">
+                    <i class="fas fa-expand fs-5 text-white" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+    </div>
+
+    <!-- Gallery Lightbox Modal -->
+    <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark border-0 rounded-4 overflow-hidden shadow-2xl">
+          <div class="modal-header border-0 pb-0 justify-content-end">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-2 text-center">
+            <img src="gallery1.jpg.jpeg" id="lightboxModalImg" alt="Enlarged Workshop View" class="img-fluid rounded-3" style="max-height: 80vh; object-fit: contain; width: 100%;" />
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ================= TAB 4: LOCATION & CONTACT ================= -->
