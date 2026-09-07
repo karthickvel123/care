@@ -3,31 +3,33 @@
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Dynamic copyright year
   const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // 2. Smart Logo Detector for exact uploaded filenames
-  const logoCandidates = ['logo.jpg.jpeg', 'logo.jpg%20.jpeg', 'logo.jpg', 'logo.png', 'logo.jpeg'];
-  let activeLogoPath = 'logo.jpg.jpeg';
-
-  function findExactLogo() {
-    let i = 0;
-    function checkNext() {
-      if (i >= logoCandidates.length) return;
-      const img = new Image();
-      img.onload = () => {
-        activeLogoPath = logoCandidates[i];
-        const billLogo = document.getElementById('billHeaderLogo');
-        if (billLogo) billLogo.src = activeLogoPath;
-      };
-      img.onerror = () => {
-        i++;
-        checkNext();
-      };
-      img.src = logoCandidates[i];
-    }
-    checkNext();
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
   }
-  findExactLogo();
+
+  // 2. Real-time Workshop Opening Status Badge
+  const statusBadge = document.getElementById('workshopStatusBadge');
+  if (statusBadge) {
+    const now = new Date();
+    // Use local India Time (UTC+5:30)
+    const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const istTime = new Date(utcTime + (3600000 * 5.5));
+    const day = istTime.getDay(); // 0 = Sun, 1 = Mon, ... 6 = Sat
+    const hour = istTime.getHours();
+    const min = istTime.getMinutes();
+    const currentTimeMinutes = hour * 60 + min;
+
+    // Workshop hours: Mon-Sat 10:00 AM (600 mins) to 7:00 PM (1140 mins)
+    const isOpen = (day >= 1 && day <= 6) && (currentTimeMinutes >= 600 && currentTimeMinutes < 1140);
+
+    if (isOpen) {
+      statusBadge.className = 'badge bg-success-subtle text-success border border-success-subtle px-2 py-1';
+      statusBadge.innerHTML = '<i class="fas fa-circle-dot me-1 text-success pulse-dot"></i> Open Now • Closes at 7:00 PM';
+    } else {
+      statusBadge.className = 'badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1';
+      statusBadge.innerHTML = '<i class="fas fa-clock me-1 text-warning"></i> Opens at 10:00 AM (Mon - Sat)';
+    }
+  }
 
   // 3. Mobile App Tab Switcher Logic
   const tabBtns = document.querySelectorAll('.app-tab-btn, .mobile-nav-item[data-tab]');
@@ -48,8 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
     tabBtns.forEach(btn => {
       if (btn.getAttribute('data-tab') === tabId) {
         btn.classList.add('active');
+        if (btn.hasAttribute('aria-selected')) {
+          btn.setAttribute('aria-selected', 'true');
+        }
       } else {
         btn.classList.remove('active');
+        if (btn.hasAttribute('aria-selected')) {
+          btn.setAttribute('aria-selected', 'false');
+        }
       }
     });
   }
@@ -66,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 4. Navbar link handler (Desktop & Mobile)
-  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link, .navbar-brand[data-tab]');
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
@@ -91,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Service Card "Book & Generate Bill" Buttons
+  // 5. Service Card "Select & Get Estimate" Buttons
   const serviceBookBtns = document.querySelectorAll('.btn-book-service');
   serviceBookBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -115,12 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           nameInput.focus();
           nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 150);
+        }, 200);
       }
     });
   });
 
-  // 6. Digital Bill / Receipt Generator Form
+  // 6. Digital Booking Voucher Generator
   const form = document.getElementById('contactForm');
   const receiptContainer = document.getElementById('bookingReceiptContainer');
   let currentWhatsAppUrl = '';
@@ -129,12 +137,12 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('name')?.value || '';
-      const phone = document.getElementById('phone')?.value || '';
-      const car = document.getElementById('car')?.value || '';
+      const name = document.getElementById('name')?.value.trim() || 'Valued Customer';
+      const phone = document.getElementById('phone')?.value.trim() || '';
+      const car = document.getElementById('car')?.value.trim() || 'Vehicle';
       const serviceSelect = document.getElementById('service');
-      const service = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex]?.text : '';
-      const notes = document.getElementById('notes')?.value || 'Routine Checkup';
+      const service = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex]?.text : 'Car Service';
+      const notes = document.getElementById('notes')?.value.trim() || 'Routine inspection / Standard service';
 
       // Generate Unique Receipt Number
       const receiptNo = `#SAW-2026-${Math.floor(1000 + Math.random() * 9000)}`;
@@ -142,17 +150,21 @@ document.addEventListener('DOMContentLoaded', () => {
       const formattedDate = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) + ' ' + now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
 
       // Populate Bill Fields
-      document.getElementById('billReceiptNo').textContent = receiptNo;
-      document.getElementById('billDate').textContent = formattedDate;
-      document.getElementById('billName').textContent = name;
-      document.getElementById('billPhone').textContent = phone;
-      document.getElementById('billCar').textContent = car;
-      document.getElementById('billService').textContent = service;
-      document.getElementById('billNotes').textContent = notes;
+      const billReceiptNo = document.getElementById('billReceiptNo');
+      const billDate = document.getElementById('billDate');
+      const billName = document.getElementById('billName');
+      const billPhone = document.getElementById('billPhone');
+      const billCar = document.getElementById('billCar');
+      const billService = document.getElementById('billService');
+      const billNotes = document.getElementById('billNotes');
 
-      // Update Bill Header Image
-      const billLogo = document.getElementById('billHeaderLogo');
-      if (billLogo) billLogo.src = activeLogoPath;
+      if (billReceiptNo) billReceiptNo.textContent = receiptNo;
+      if (billDate) billDate.textContent = formattedDate;
+      if (billName) billName.textContent = name;
+      if (billPhone) billPhone.textContent = phone;
+      if (billCar) billCar.textContent = car;
+      if (billService) billService.textContent = service;
+      if (billNotes) billNotes.textContent = notes;
 
       // WhatsApp URL string
       const message = `Hello Senthoor Auto Works! I have generated a Service Booking Voucher:\n\n` +
@@ -162,11 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
         `🚗 *Car Model:* ${car}\n` +
         `🛠️ *Service Needed:* ${service}\n` +
         `📝 *Notes:* ${notes}\n\n` +
-        `Please confirm my appointment slot!`;
+        `Please confirm my appointment slot at Odakkattupudur, Athur, Karur.`;
 
       currentWhatsAppUrl = `https://wa.me/919787561810?text=${encodeURIComponent(message)}`;
 
-      // Show Bill Container
+      // Reveal Bill Container
       if (receiptContainer) {
         receiptContainer.classList.remove('d-none');
         receiptContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -188,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 8. Print / Save PDF Button with Logo Image Tag
+  // 8. Print / Save PDF Button
   const btnPrintBill = document.getElementById('btnPrintBill');
   if (btnPrintBill) {
     btnPrintBill.addEventListener('click', () => {
@@ -199,51 +211,48 @@ document.addEventListener('DOMContentLoaded', () => {
       const custCar = document.getElementById('billCar')?.textContent || '';
       const custService = document.getElementById('billService')?.textContent || '';
       const custNotes = document.getElementById('billNotes')?.textContent || '';
-      const fullLogoUrl = window.location.origin + '/' + activeLogoPath;
 
       const printWin = window.open('', '_blank');
       printWin.document.write(`
         <!DOCTYPE html>
         <html>
         <head>
-          <title>Senthoor Auto Works - Receipt ${receiptNo}</title>
+          <title>Senthoor Auto Works - Voucher ${receiptNo}</title>
           <style>
-            body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; margin: 0; color: #1e293b; background: #fff; }
-            .card { border: 2px dashed #c41e3a; padding: 24px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
-            .header { text-align: center; border-bottom: 2px solid #c41e3a; padding-bottom: 12px; margin-bottom: 20px; }
-            .header img { max-height: 85px; max-width: 240px; object-fit: contain; margin-bottom: 8px; border-radius: 6px; }
-            .header h2 { margin: 4px 0; color: #c41e3a; font-size: 24px; letter-spacing: 1px; }
+            body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; margin: 0; color: #0f172a; background: #fff; }
+            .card { border: 2px dashed #e11d48; padding: 24px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+            .header { text-align: center; border-bottom: 2px solid #e11d48; padding-bottom: 12px; margin-bottom: 20px; }
+            .header h2 { margin: 4px 0; color: #e11d48; font-size: 24px; letter-spacing: 1px; }
             .header p { margin: 0; font-size: 13px; color: #64748b; }
             .badge { display: inline-block; background: #22c55e; color: #fff; padding: 4px 12px; font-size: 11px; font-weight: bold; border-radius: 12px; margin-top: 8px; }
             .info { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 14px; }
             table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
             th, td { border: 1px solid #cbd5e1; padding: 10px 12px; font-size: 14px; text-align: left; }
-            th { background: #f1f5f9; width: 35%; }
+            th { background: #f8fafc; width: 35%; font-weight: 600; color: #334155; }
             .footer { text-align: center; font-size: 12px; color: #64748b; margin-top: 20px; border-top: 1px solid #e2e8f0; padding-top: 10px; }
           </style>
         </head>
         <body>
           <div class="card">
             <div class="header">
-              <img src="${fullLogoUrl}" alt="Senthoor Auto Works Logo" />
               <h2>SENTHOOR AUTO WORKS</h2>
               <p>Odakkattupudur, Athur, Karur - 639008 | Phone: +91 97875 61810</p>
               <span class="badge">OFFICIAL SERVICE BOOKING VOUCHER</span>
             </div>
             <div class="info">
-              <div><strong>Receipt No:</strong> <span style="color:#c41e3a;">${receiptNo}</span></div>
+              <div><strong>Receipt No:</strong> <span style="color:#e11d48;">${receiptNo}</span></div>
               <div><strong>Date:</strong> ${date}</div>
             </div>
             <table>
               <tr><th>Customer Name</th><td>${custName}</td></tr>
               <tr><th>Phone Number</th><td>${custPhone}</td></tr>
               <tr><th>Vehicle Model</th><td>${custCar}</td></tr>
-              <tr><th>Requested Service</th><td style="font-weight:bold; color:#c41e3a;">${custService}</td></tr>
+              <tr><th>Requested Service</th><td style="font-weight:bold; color:#e11d48;">${custService}</td></tr>
               <tr><th>Symptoms / Notes</th><td>${custNotes}</td></tr>
               <tr><th>Booking Status</th><td>Pending Workshop Confirmation</td></tr>
             </table>
             <div class="footer">
-              <p>Thank you for choosing Senthoor Auto Works! Please show this voucher at our workshop.</p>
+              <p>Thank you for choosing Senthoor Auto Works! Please show this voucher upon arrival.</p>
             </div>
           </div>
           <script>
