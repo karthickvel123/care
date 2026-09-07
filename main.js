@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       statusPulse.className = 'pulse-indicator closed';
       statusText.className = 'text-red';
-      statusText.textContent = 'Closed Now • Opens 10 AM';
+      statusText.textContent = 'Closed Now • Opens Mon-Sat 10 AM';
     }
   }
   updateWorkshopStatus();
@@ -69,7 +69,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. Digital Service Bill & Estimate Receipt Generator
+  // 4. Gallery Category Filter
+  const filterBtns = document.querySelectorAll('.gallery-filter-bar button');
+  const galleryCards = document.querySelectorAll('.gallery-grid .gallery-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      galleryCards.forEach(card => {
+        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // 5. Digital Service Bill & Estimate Receipt Generator
   const contactForm = document.getElementById('contactForm');
   const receiptContainer = document.getElementById('bookingReceiptContainer');
 
@@ -77,14 +98,50 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('name')?.value || '';
+      const name = document.getElementById('name')?.value || 'Valued Customer';
       const phone = document.getElementById('phone')?.value || '';
-      const car = document.getElementById('car')?.value || '';
+      const car = document.getElementById('car')?.value || 'Vehicle';
       const serviceSelect = document.getElementById('service');
       const selectedOption = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex] : null;
-      const serviceName = selectedOption ? selectedOption.value : '';
-      const priceEstimate = selectedOption ? selectedOption.getAttribute('data-price') || '1499' : '1499';
+      const serviceName = selectedOption ? selectedOption.value : 'General Checkup';
+      const basePrice = selectedOption ? parseInt(selectedOption.getAttribute('data-price') || '1499') : 1499;
       const notes = document.getElementById('notes')?.value || 'Standard Inspection & Maintenance';
+
+      // Check Add-ons
+      const addonOil = document.getElementById('addonOil')?.checked;
+      const addonWash = document.getElementById('addonWash')?.checked;
+
+      let totalPrice = basePrice;
+      let breakdownRows = `
+        <tr>
+          <td><strong>${serviceName}</strong></td>
+          <td class="text-end font-mono">₹${basePrice.toLocaleString('en-IN')}</td>
+        </tr>
+      `;
+
+      let addonTextForWA = '';
+
+      if (addonOil) {
+        totalPrice += 600;
+        breakdownRows += `
+          <tr>
+            <td>Fully Synthetic Oil Upgrade</td>
+            <td class="text-end font-mono">₹600</td>
+          </tr>
+        `;
+        addonTextForWA += `%0A• Fully Synthetic Oil Upgrade (+₹600)`;
+      }
+
+      if (addonWash) {
+        totalPrice += 350;
+        breakdownRows += `
+          <tr>
+            <td>Interior Deep Foam Wash</td>
+            <td class="text-end font-mono">₹350</td>
+          </tr>
+        `;
+        addonTextForWA += `%0A• Interior Deep Foam Wash (+₹350)`;
+      }
 
       // Generate Unique Receipt Number & Timestamp
       const randomId = Math.floor(1000 + Math.random() * 9000);
@@ -98,9 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('billName').textContent = name;
       document.getElementById('billPhone').textContent = phone;
       document.getElementById('billCar').textContent = car;
-      document.getElementById('billService').textContent = serviceName;
-      document.getElementById('billAmount').textContent = `₹${parseInt(priceEstimate).toLocaleString('en-IN')}`;
-      document.getElementById('billTotal').textContent = `₹${parseInt(priceEstimate).toLocaleString('en-IN')}`;
+      document.getElementById('receiptItemsBody').innerHTML = breakdownRows;
+      document.getElementById('billTotal').textContent = `₹${totalPrice.toLocaleString('en-IN')}`;
       document.getElementById('billNotes').textContent = notes;
 
       // Generate WhatsApp Share Link
@@ -110,10 +166,11 @@ document.addEventListener('DOMContentLoaded', () => {
         `*Customer Name:* ${name}%0A` +
         `*Phone:* ${phone}%0A` +
         `*Vehicle:* ${car}%0A` +
-        `*Service Requested:* ${serviceName}%0A` +
-        `*Est. Amount:* ₹${parseInt(priceEstimate).toLocaleString('en-IN')}%0A` +
-        `*Notes:* ${notes}%0A%0A` +
-        `Please confirm my appointment at Odakkattupudur, Athur, Karur.`;
+        `*Primary Service:* ${serviceName}%0A` +
+        (addonTextForWA ? `*Add-ons:* ${addonTextForWA}%0A` : '') +
+        `*Estimated Total:* ₹${totalPrice.toLocaleString('en-IN')}%0A` +
+        `*Complaints / Notes:* ${notes}%0A%0A` +
+        `Please confirm my booking slot at Odakkattupudur, Athur, Karur.`;
 
       const waShareBtn = document.getElementById('btnShareWhatsApp');
       if (waShareBtn) {
@@ -128,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Print Receipt Button
+  // 6. Print Receipt Button
   const btnPrintReceipt = document.getElementById('btnPrintReceipt');
   if (btnPrintReceipt) {
     btnPrintReceipt.addEventListener('click', () => {
@@ -136,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Lightbox Gallery Modal Handler
+  // 7. Lightbox Gallery Modal Handler
   const lightboxModal = document.getElementById('lightboxModal');
   if (lightboxModal) {
     lightboxModal.addEventListener('show.bs.modal', (e) => {
@@ -154,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. Navigation Active Link & Scroll Spy
+  // 8. Navigation Active Link & Scroll Spy
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link-custom, .mobile-nav-btn');
 
@@ -163,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(current => {
       const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 120;
+      const sectionTop = current.offsetTop - 130;
       const sectionId = current.getAttribute('id');
 
       if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
